@@ -14,8 +14,11 @@ run.cmd
 ```
 
 `run.cmd full` is equivalent. The single plan is `build-modules.txt`: 25 recovered
-modules in dependency order, followed by `GRHFinal/Audit`. The latter prints the
-actual theorem types and selected axiom dependencies. There is no separate
+modules in dependency order, then `RHToGRHFirstFactorFrontier`,
+`GRHFinal/FirstFactorAudit`, and `GRHFinal/Audit` (28 modules total).
+The two audit entry points prepare 136 distinct axiom reports and expose the
+actual theorem types. The first-factor module and its audit are source additions,
+not imported native pass receipts. There is no separate
 finite-witness search in this assembly.
 
 The runner does not invoke Lake, Python, PowerShell, WSL, an installer, or a
@@ -86,7 +89,8 @@ Modules compile with `-j 1 -DwarningAsError=true`. The axiom parser permits only
 `propext`, `Classical.choice`, and `Quot.sound`. Missing reports in an `Audit`
 module, malformed reports, `sorryAx`, compiler-trust axioms, and any other
 reported axiom fail the build. The audit applies to the declarations printed
-by `GRHFinal/Audit.lean`; it does not validate every historical prose claim.
+by `GRHFinal/Audit.lean` and `GRHFinal/FirstFactorAudit.lean`; it does not validate
+every historical prose claim.
 
 `build-modules.txt` uses forward-slash module paths without `.lean`, one per
 line, in dependency order. Blank lines and lines beginning with `#` are ignored.

@@ -1,0 +1,22 @@
+[
+  {
+    "module": "RHToGRHFirstFactorFrontier",
+    "path": "RHToGRHFirstFactorFrontier.lean",
+    "candidate_source": "strategy_deep/grh-candidate/RHToGRHFirstFactorFrontier.lean",
+    "sha256": "16f00113025e80a36f9b8d19aa81b5ebac66215ae16d7f1444fa56e487ff07c1",
+    "bytes": 1852,
+    "unchanged_from_reviewed_candidate": true,
+    "native_verification": "NOT_RUN",
+    "kind": "NEW_MATHEMATICAL_SOURCE"
+  },
+  {
+    "module": "GRHFinal.FirstFactorAudit",
+    "path": "GRHFinal/FirstFactorAudit.lean",
+    "candidate_source": "strategy_deep/grh-candidate/FirstFactorAudit.lean",
+    "sha256": "6274a982496caf9d9d1f3dec5fbece2899aeb8459f28de2ae336cff5bdd1391b",
+    "bytes": 350,
+    "unchanged_from_reviewed_candidate": true,
+    "native_verification": "NOT_RUN",
+    "kind": "NATIVE_AUDIT_ENTRY_POINT"
+  }
+]

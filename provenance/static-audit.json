@@ -2,10 +2,11 @@
   "kind": "STATIC_SOURCE_IDENTITY_AND_IMPORT_CHECKS_ONLY_NOT_LEAN",
   "status": "PASS",
   "original_source_modules_checked": 25,
+  "new_source_files_checked": 2,
   "historical_notices_checked": 36,
-  "active_build_modules": 26,
-  "prepared_axiom_reports": 134,
-  "prepared_explicit_signature_checks": 17,
+  "active_build_modules": 28,
+  "prepared_axiom_reports": 136,
+  "prepared_explicit_signature_checks": 20,
   "external_imports": [
     "Mathlib",
     "Mathlib.Analysis.Complex.SqrtDeriv",
@@ -44,17 +45,20 @@
     "RHToGRHReflectionPairFrontier.lean": "0be288661754e85e00bc9ceab7905850cfb44bb9c63366078bdaccabafb5ee8e",
     "RHToGRHCompletedPairFactorFrontier.lean": "ab574e0d94e421df46da1ebab7ea7b3dbc177e883f3ddf93d88211201c930b95",
     "RHToGRHCompletedLFactorFrontier.lean": "a74bc6e0f557fa310fb8e596b72a231188c4b01872f56167eb6df0ec8644cc2d",
-    "GRHFinal/Audit.lean": "f9edcf35cacebc8c07b5e5d0f5ce4c02b6272e428411eebf77808807af9a4538"
+    "RHToGRHFirstFactorFrontier.lean": "16f00113025e80a36f9b8d19aa81b5ebac66215ae16d7f1444fa56e487ff07c1",
+    "GRHFinal/FirstFactorAudit.lean": "6274a982496caf9d9d1f3dec5fbece2899aeb8459f28de2ae336cff5bdd1391b",
+    "GRHFinal/Audit.lean": "08cb28d9480f4ed32204761ad6d1b176eed1d894c4fad6ba4b61d2084977e024"
   },
   "reviewed_tooling_sha256": {
     "run.cmd": "3971236529563fabd5c91d202e41bfc992b2d7a976d7f5eed3d67ba1576d4f43",
     "scripts/cache/Build.lean": "632cab8249802459bb2c1f44900c9ffae1b88e2fc54adbb3b07b05ee0895793c",
-    "scripts/static_audit.py": "aae5e4bb293641c5c4213d6ea1fea999a2b133414f1c3a9b1fb1ea4d9cd8d3e1",
-    "docs/BUILD.md": "e875e15b340f6efeeaae5a483ed2adb6a852a89bde86d0e01abc4bf6f9141c2b"
+    "scripts/static_audit.py": "9765ee445383b32c019b5cda660fba32c4b18398968269be211060053f9342ed",
+    "docs/BUILD.md": "fd5e09dc0415edf488bbc37a53d1df6700e1140d9341cfc017f172fcf4e3fecc"
   },
   "native_build": "NOT_RUN",
   "native_axiom_audit": "NOT_RUN",
   "rh_to_grh_lift": "OPEN",
   "unconditional_rh_iff_grh_proved": false,
+  "first_completed_l_factor_nonvanishing_under_rh": "OPEN",
   "errors": []
 }

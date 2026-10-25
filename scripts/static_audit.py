@@ -67,6 +67,7 @@ def lean_code(text):
 
 
 sources = json.loads((ROOT / 'provenance/source-files.json').read_text())
+new_sources = json.loads((ROOT / 'provenance/new-source-files.json').read_text())
 historical = json.loads((ROOT / 'provenance/historical-evidence.json').read_text())
 theorems = json.loads((ROOT / 'provenance/theorem-audit.json').read_text())
 status = json.loads((ROOT / 'provenance/status.json').read_text())
@@ -81,6 +82,20 @@ for entry in sources:
         require(path.stat().st_size == entry['bytes'], f'Source byte count: {entry["path"]}')
     require(entry['unchanged'] is True and entry['native_replay'] == 'NOT_RUN',
             f'Unexpected source provenance claim: {entry["path"]}')
+require(len(new_sources) == 2, 'Expected first-factor source and focused audit additions')
+new_paths = {entry['path'] for entry in new_sources}
+require(new_paths == {'RHToGRHFirstFactorFrontier.lean', 'GRHFinal/FirstFactorAudit.lean'},
+        'Unexpected new-source manifest paths')
+require(not (source_paths & new_paths), 'New sources overlap preserved originals')
+for entry in new_sources:
+    path = ROOT / entry['path']
+    require(path.is_file(), f'Missing new source: {entry["path"]}')
+    if path.is_file():
+        require(digest(path) == entry['sha256'], f'New source hash: {entry["path"]}')
+        require(path.stat().st_size == entry['bytes'], f'New source byte count: {entry["path"]}')
+    require(entry['unchanged_from_reviewed_candidate'] is True and
+            entry['native_verification'] == 'NOT_RUN',
+            f'Unexpected new-source verification claim: {entry["path"]}')
 for notice in historical['notices']:
     path = ROOT / notice['path']
     require(path.is_file(), f'Missing historical notice: {path}')
@@ -89,10 +104,10 @@ for notice in historical['notices']:
 
 plan = [line.strip() for line in (ROOT / 'build-modules.txt').read_text().splitlines()
         if line.strip() and not line.lstrip().startswith('#')]
-require(len(plan) == len(set(plan)) == 26, 'Expected 26 distinct build modules')
+require(len(plan) == len(set(plan)) == 28, 'Expected 28 distinct build modules')
 require(len({p.casefold() for p in plan}) == len(plan), 'Windows module case collision')
-require({p + '.lean' for p in plan} == source_paths | {'GRHFinal/Audit.lean'},
-        'Build plan differs from original source closure plus audit')
+require({p + '.lean' for p in plan} == source_paths | new_paths | {'GRHFinal/Audit.lean'},
+        'Build plan differs from original closure, new first-factor sources, and main audit')
 seen, external_imports = set(), set()
 for module in plan:
     require(bool(re.fullmatch(r'[A-Za-z0-9_]+(?:/[A-Za-z0-9_]+)*', module)),
@@ -114,11 +129,15 @@ for module in plan:
                     f'{module}: unresolved non-Mathlib import {dependency}')
     seen.add(module)
 
-audit_code = lean_code((ROOT / 'GRHFinal/Audit.lean').read_text())
+audit_modules = [module for module in plan if module.endswith('Audit')]
+require(audit_modules == ['GRHFinal/FirstFactorAudit', 'GRHFinal/Audit'],
+        'Expected focused first-factor audit followed by main audit')
+audit_code = '\n'.join(lean_code((ROOT / (module + '.lean')).read_text())
+                       for module in audit_modules)
 printed = re.findall(r'^\s*#print\s+axioms\s+(\S+)', audit_code, re.M)
 records = theorems['theorems']
-require(len(printed) == len(set(printed)) == len(records) == 134,
-        'Expected 134 distinct prepared axiom reports')
+require(len(printed) == len(set(printed)) == len(records) == 136,
+        'Expected 136 distinct prepared axiom reports')
 require(set(printed) == {x['name'] for x in records}, 'Axiom audit and theorem index differ')
 for entry in records:
     path = ROOT / entry['source_path']
@@ -134,12 +153,17 @@ required_endpoints = {
     'CayleyGRHClosure.GRH_IMPLIES_MATHLIB_RH',
     'CayleyGRHStrong.TEXTBOOK_ALL_CHARACTERS_GRH_A_TIER_ATLAS',
     'RHToGRHCompletedLFactor.COMPLETED_L_FACTORS_NONZERO_IFF_RH_IMPLIES_GRH',
+    'RHToGRHFirstFactor.FIRST_FACTOR_IFF_FOUR_FACTORS',
+    'RHToGRHFirstFactor.FIRST_FACTOR_IFF_RH_IMPLIES_GRH',
 }
 require(required_endpoints <= set(printed), 'Required endpoint omitted from axiom audit')
 require(theorems['native_status'] == 'NOT_RUN', 'Unsupported native theorem audit status')
 require(status['native_build'] == status['native_axiom_audit'] == 'NOT_RUN',
         'Initial assembly must not claim a native pass')
 require(status['rh_to_grh_lift'] == 'OPEN', 'Open transfer premise was changed')
+require(status['first_completed_l_factor_nonvanishing_under_rh'] == 'OPEN' and
+        status['first_factor_reduction'] == 'SOURCE_PROOF_NATIVE_NOT_RUN',
+        'First-factor reduction was presented as a discharged or verified input')
 require(status['unconditional_rh_iff_grh_proved'] is False and
         status['rh_proved'] is False and status['grh_proved'] is False,
         'Unsupported unconditional theorem claim')
@@ -163,6 +187,7 @@ report = {
     'kind': 'STATIC_SOURCE_IDENTITY_AND_IMPORT_CHECKS_ONLY_NOT_LEAN',
     'status': 'FAIL' if errors else 'PASS',
     'original_source_modules_checked': len(sources),
+    'new_source_files_checked': len(new_sources),
     'historical_notices_checked': len(historical['notices']),
     'active_build_modules': len(plan),
     'prepared_axiom_reports': len(printed),
@@ -173,6 +198,7 @@ report = {
                               ['run.cmd', 'scripts/cache/Build.lean', 'scripts/static_audit.py', 'docs/BUILD.md']},
     'native_build': 'NOT_RUN', 'native_axiom_audit': 'NOT_RUN',
     'rh_to_grh_lift': 'OPEN', 'unconditional_rh_iff_grh_proved': False,
+    'first_completed_l_factor_nonvanishing_under_rh': 'OPEN',
     'errors': errors,
 }
 (ROOT / 'provenance/static-audit.json').write_text(json.dumps(report, indent=2) + '\n')

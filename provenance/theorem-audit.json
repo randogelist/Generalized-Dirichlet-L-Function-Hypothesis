@@ -4,16 +4,22 @@
   "native_status": "NOT_RUN",
   "compiled_axiom_output_available_in_this_session": false,
   "scope": {
-    "assembled_source_modules": 25,
-    "endpoint_modules": 17,
-    "theorems_with_prepared_axiom_prints": 134,
+    "assembled_source_modules": 26,
+    "endpoint_modules": 18,
+    "theorems_with_prepared_axiom_prints": 136,
     "audit_module": "GRHFinal.Audit",
-    "upstream_sources_unchanged": true
+    "upstream_sources_unchanged": true,
+    "preserved_original_mathematical_modules": 25,
+    "new_mathematical_modules": 1,
+    "audit_modules": [
+      "GRHFinal.FirstFactorAudit",
+      "GRHFinal.Audit"
+    ]
   },
   "conclusion": {
     "unconditional_ordinary_RH_iff_Dirichlet_GRH_found": false,
     "strongest_RH_iff_GRH_results": "Conditional on an explicit generalized Cayley lift or cross-family transfer.",
-    "RH_to_GRH_frontier": "The lift, cross-family transfer, primitive-character zero-freeness, centered/reflection-pair nonvanishing, and completed-L four-factor nonvanishing are equivalent formulations of RH → Dirichlet GRH. None is proved as an unconditional proposition in these sources.",
+    "RH_to_GRH_frontier": "The lift, cross-family transfer, primitive-character zero-freeness, centered/reflection-pair nonvanishing, and completed-L four-factor nonvanishing are equivalent formulations of RH → Dirichlet GRH. None is proved as an unconditional proposition in these sources. The new universal first completed-L-factor nonvanishing condition is source-reduced to the four-factor condition by inversion and primitive zero reflection; that universal condition remains OPEN, with native verification NOT_RUN.",
     "GRH_scope": "Zeros of actual Mathlib DirichletCharacter.LFunction in 0 < Re(s) < 1, first primitive characters, then all characters via the primitive-character Euler-factor bridge. Not a theorem for arbitrary automorphic/Artin L-functions.",
     "actual_RH_target": "_root_.RiemannHypothesis",
     "finite_witness": "None. The analytic criteria quantify over all moduli, appropriate characters, and critical-domain points or admissible real sample pairs."
@@ -48,6 +54,13 @@
       "formula": "RH → for every nonzero modulus N, primitive χ, and z in the critical square domain and Complex.slitPlane, Λ(χ, 1/2+sqrt z), Λ(χ⁻¹, 1/2+sqrt z), Λ(χ, 1-(1/2+sqrt z)), and Λ(χ⁻¹, 1-(1/2+sqrt z)) are nonzero.",
       "source_path": "RHToGRHCompletedLFactorFrontier.lean",
       "source_line": 17
+    },
+    {
+      "name": "RHToGRHFirstFactor.RiemannToPrimitiveCharacterFirstCompletedLFactorNonzero",
+      "formula": "_root_.RiemannHypothesis → ∀ (N : ℕ) [NeZero N] (χ : DirichletCharacter ℂ N), χ.IsPrimitive → ∀ z ∈ CayleyGRHStrong.completedPairCriticalSquareDomain, z ∈ Complex.slitPlane → DirichletCharacter.completedLFunction χ (1 / 2 + z.sqrt) ≠ 0",
+      "source_path": "RHToGRHFirstFactorFrontier.lean",
+      "source_line": 17,
+      "status": "OPEN_NOT_DISCHARGED"
     }
   ],
   "source_audit": {
@@ -73,7 +86,8 @@
     "COMPLETED_L_FACTORS_NONZERO_IFF_RH_IMPLIES_GRH proves an equivalence involving the implication RH → GRH; it proves neither that implication nor the left-hand analytic frontier.",
     "GeneralizedCharacter.lean is scalar geometric-sequence algebra, not a construction of Dirichlet characters or a GRH proof.",
     "The actual logarithmic-derivative observable is Option-valued with none exactly at a denominator zero; totality does not by itself establish a separate global holomorphy theorem for the principal character.",
-    "RHToGRHCenteredPairFrontier.lean:57–66 uses hRH without a visible local binder in CENTERED_COMPLETED_PAIR_GLOBAL_IFF_POINTWISE. Independent source review expects an unintended outer implicit {hRH : RiemannHypothesis} under the default automatic-implicit settings, or an unknown-identifier failure with those settings disabled. No native printed signature was found. The prepared #check @ exposes this at native validation. This helper is not used by the main RH↔GRH lift, cross-transfer, or four-factor endpoints; original bytes remain unchanged."
+    "RHToGRHCenteredPairFrontier.lean:57–66 uses hRH without a visible local binder in CENTERED_COMPLETED_PAIR_GLOBAL_IFF_POINTWISE. Independent source review expects an unintended outer implicit {hRH : RiemannHypothesis} under the default automatic-implicit settings, or an unknown-identifier failure with those settings disabled. No native printed signature was found. The prepared #check @ exposes this at native validation. This helper is not used by the main RH↔GRH lift, cross-transfer, or four-factor endpoints; original bytes remain unchanged.",
+    "FIRST_FACTOR_IFF_RH_IMPLIES_GRH reduces the same universal open implication to one completed-L factor family. It does not prove that family, a finite witness criterion, RH → GRH, or unconditional RH ↔ GRH; native compilation and axiom auditing remain NOT_RUN."
   ],
   "historical_evidence": "provenance/historical-evidence.json",
   "source_provenance": "provenance/source-files.json",
@@ -289,6 +303,16 @@
       "imports": [
         "RHToGRHCompletedPairFactorFrontier"
       ]
+    },
+    {
+      "module": "RHToGRHFirstFactorFrontier",
+      "path": "RHToGRHFirstFactorFrontier.lean",
+      "sha256": "16f00113025e80a36f9b8d19aa81b5ebac66215ae16d7f1444fa56e487ff07c1",
+      "imports": [
+        "RHToGRHCompletedLFactorFrontier",
+        "PrimitiveCompletedPair"
+      ],
+      "origin": "NEW_REVIEWED_SOURCE_CANDIDATE_NATIVE_NOT_RUN"
     }
   ],
   "theorems": [
@@ -1765,6 +1789,28 @@
       "classification": "CONJUNCTION_OF_EXISTING_RESULTS",
       "source_has_proof_body": true,
       "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "RHToGRHFirstFactor.FIRST_FACTOR_IFF_FOUR_FACTORS",
+      "module": "RHToGRHFirstFactorFrontier",
+      "source_path": "RHToGRHFirstFactorFrontier.lean",
+      "source_line": 25,
+      "source_sha256": "16f00113025e80a36f9b8d19aa81b5ebac66215ae16d7f1444fa56e487ff07c1",
+      "declaration_header": "theorem FIRST_FACTOR_IFF_FOUR_FACTORS :\n    RiemannToPrimitiveCharacterFirstCompletedLFactorNonzero ↔\n      RiemannToPrimitiveCharacterCompletedLFactorsNonzero",
+      "classification": "REFORMULATION_OF_OPEN_RH_TO_GRH_IMPLICATION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "RHToGRHFirstFactor.FIRST_FACTOR_IFF_RH_IMPLIES_GRH",
+      "module": "RHToGRHFirstFactorFrontier",
+      "source_path": "RHToGRHFirstFactorFrontier.lean",
+      "source_line": 43,
+      "source_sha256": "16f00113025e80a36f9b8d19aa81b5ebac66215ae16d7f1444fa56e487ff07c1",
+      "declaration_header": "theorem FIRST_FACTOR_IFF_RH_IMPLIES_GRH :\n    RiemannToPrimitiveCharacterFirstCompletedLFactorNonzero ↔\n      (_root_.RiemannHypothesis →\n        CayleyGRHClosure.GeneralizedRiemannHypothesis)",
+      "classification": "REFORMULATION_OF_OPEN_RH_TO_GRH_IMPLICATION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
     }
   ],
   "follow_up_source_issue": {
@@ -1774,5 +1820,6 @@
     "status": "SOURCE_SCOPING_ISSUE_NATIVE_SIGNATURE_UNVERIFIED",
     "suggested_future_fix": "Replace anonymous (_root_.RiemannHypothesis → ...) with (∀ hRH : _root_.RiemannHypothesis, ...) to bind the intended local hypothesis. Apply only as an explicitly recorded derived-source patch, keeping archived original bytes.",
     "affects_main_endpoint_dependency": "This helper is not referenced by the principal equivalence proof bodies; the file containing it remains in the module import closure."
-  }
+  },
+  "new_source_provenance": "provenance/new-source-files.json"
 }

@@ -28,5 +28,12 @@
     "path": "docs/YOU_ARE_GOODWORKFLOWFRONTIER_v1_0_15.txt",
     "sha256": "9cd05b3c8ef50fc1efab4760ccc5b08531ada72820aa76e8c8a67f32ffea017e",
     "unchanged": true
-  }
+  },
+  "new_mathematical_modules": 1,
+  "active_build_modules": 28,
+  "prepared_axiom_reports": 136,
+  "first_completed_l_factor_nonvanishing_under_rh": "OPEN",
+  "first_factor_reduction": "SOURCE_PROOF_NATIVE_NOT_RUN",
+  "first_factor_obligation": "RHToGRHFirstFactor.RiemannToPrimitiveCharacterFirstCompletedLFactorNonzero",
+  "first_factor_equivalence": "RHToGRHFirstFactor.FIRST_FACTOR_IFF_RH_IMPLIES_GRH"
 }

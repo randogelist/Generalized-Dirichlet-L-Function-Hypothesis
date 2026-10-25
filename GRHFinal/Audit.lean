@@ -1,4 +1,4 @@
-import RHToGRHCompletedLFactorFrontier
+import GRHFinal.FirstFactorAudit
 
 /-
 Native audit entry point for the recovered Dirichlet-GRH theorem graph.
@@ -17,6 +17,7 @@ An axiom print for a conditional theorem does not discharge those premises.
 #check @RHToGRHFrontier.RiemannToGeneralizedCayleyLift
 #check @RHToGRHCrossCayley.GolPhiToGeneralizedCompletedPairCayleyTransfer
 #check @RHToGRHCompletedLFactor.RiemannToPrimitiveCharacterCompletedLFactorsNonzero
+#check @RHToGRHFirstFactor.RiemannToPrimitiveCharacterFirstCompletedLFactorNonzero
 #check @CayleyGRHClosure.GRH_IMPLIES_MATHLIB_RH
 #check @CayleyGRHStrong.TEXTBOOK_GENERALIZED_RIEMANN_HYPOTHESIS_IFF_GRH
 #check @CayleyGRHStrong.GENERALIZED_COMPLETED_PAIR_ACTUAL_CAYLEY_OBSERVABLE_CRITICAL_TOTAL_IFF_GRH
