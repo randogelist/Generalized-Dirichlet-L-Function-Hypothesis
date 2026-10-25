@@ -1,0 +1,15 @@
+GP_BKQR_CAYLEY_GRH_LOG_DERIVATIVE_A_TIER_LEAN_v0_8_0
+
+PURPOSE
+- Extend the passing v0.7.0 actual completed-pair slit-theta GRH reduction.
+- Construct the actual completed-pair slit-theta logarithmic derivative as an Option-valued object.
+- Prove its critical-domain totality is exactly equivalent to actual slit-theta zero-freeness, hence GRH.
+- Prove GRH makes the existing literal two-point completed-pair Cayley observable defined on every explicitly admissible critical sample.
+
+NO NEW MATHEMATICAL ASSUMPTIONS.
+NO RESEARCH AXIOMS.
+NO SORRY/ADMIT.
+
+OPEN FRONTIERS
+1. An unconditional analytic proof of slit-theta zero-freeness on the critical square/slit domain (this would prove GRH).
+2. A full coverage theorem showing the concrete (a,r) Cayley parameterization covers the whole relevant slit domain; only then would two-point Cayley-observable totality itself become an iff-GRH formulation.

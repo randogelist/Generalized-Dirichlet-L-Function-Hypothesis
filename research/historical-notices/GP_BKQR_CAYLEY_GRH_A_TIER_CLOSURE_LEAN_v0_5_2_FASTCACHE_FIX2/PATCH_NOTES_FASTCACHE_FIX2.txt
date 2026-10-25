@@ -1,0 +1,7 @@
+v0_5_2 FASTCACHE FIX2
+- Replaced the broken all-or-nothing fallback with a clean per-module hydration runner.
+- Existing exact source-matched .olean artifacts are reused directly.
+- Missing inherited artifacts are copied from the known passing v0_4_2 build when available.
+- If an inherited artifact is missing there too, only that module is compiled into the persistent cache.
+- The persistent cache is never deleted merely because one module is absent.
+- Main.lean is rerun on every invocation for the final audit.

@@ -1,0 +1,17 @@
+import RHToGRHCompletedLFactorFrontier
+
+#check RHToGRHCompletedLFactor.RiemannToPrimitiveCharacterCompletedLFactorsNonzero
+#check RHToGRHCompletedLFactor.COMPLETED_L_FACTORS_NONZERO_IFF_COMPLETED_PAIR_FACTORS_NONZERO
+#check RHToGRHCompletedLFactor.COMPLETED_L_FACTORS_NONZERO_IFF_RH_IMPLIES_GRH
+#check RHToGRHCompletedLFactor.CompletedLFirstCharacterPointObligation
+#check RHToGRHCompletedLFactor.RH_TO_GRH_COMPLETED_L_FACTOR_FRONTIER_ATLAS
+
+-- Standard Mathlib analytic identities now sitting directly below the frontier.
+#print DirichletCharacter.completedLFunction
+#check DirichletCharacter.LFunction_eq_completed_div_gammaFactor
+#check DirichletCharacter.IsPrimitive.completedLFunction_one_sub
+#check DirichletCharacter.conductor_inv
+#check DirichletCharacter.isPrimitive_def
+
+#print axioms RHToGRHCompletedLFactor.COMPLETED_L_FACTORS_NONZERO_IFF_RH_IMPLIES_GRH
+#print axioms RHToGRHCompletedLFactor.RH_TO_GRH_COMPLETED_L_FACTOR_FRONTIER_ATLAS

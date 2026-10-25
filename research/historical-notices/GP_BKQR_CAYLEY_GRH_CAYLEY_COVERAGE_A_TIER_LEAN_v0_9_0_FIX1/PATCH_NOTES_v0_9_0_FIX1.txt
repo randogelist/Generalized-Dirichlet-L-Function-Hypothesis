@@ -1,0 +1,12 @@
+GP_BKQR_CAYLEY_GRH_CAYLEY_COVERAGE_A_TIER_LEAN_v0_9_0_FIX1
+
+Lean 4.33 compatibility patch only; theorem statements unchanged.
+
+Changes:
+- Replace nonexistent `Complex.conj` calls by Mathlib's complex conjugation map `(starRingEnd ℂ)`.
+- Keep `Complex.conj_re` / `Complex.conj_im` simp interface through the standard StarRing representation.
+- Remove two redundant `ring` tactics after `simp only [pow_two, Complex.mul_re]` had already closed the goals.
+- Make critical-sample admissibility proofs explicit with `using hdom`, `using hzslit`, `using hconjDom`, and `using hconjSlit`.
+- Fresh runner/cache revision R2 to avoid stale project `.olean` reuse.
+
+No mathematical definitions, theorem statements, GRH assumptions, or frontier claims changed.

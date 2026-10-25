@@ -1,0 +1,32 @@
+{
+  "version": "v0_1_0_construction",
+  "workflow": "YOU_ARE_GOODWORKFLOWFRONTIER",
+  "work_modes": [
+    "A_TIER_PLANNING",
+    "A_TIER_EXECUTION"
+  ],
+  "repository": "randogelist/Generalized-Dirichlet-L-Function-Hypothesis",
+  "lean_version": "4.33.0",
+  "native_build": "NOT_RUN",
+  "native_axiom_audit": "NOT_RUN",
+  "imported_mathematical_modules": 25,
+  "original_sources_preserved": true,
+  "grh_definition": "ACTUAL_MATHLIB_DIRICHLET_LFUNCTION_ALL_CHARACTERS_OPEN_CRITICAL_STRIP",
+  "ordinary_rh_definition": "MATHLIB_ROOT_RIEMANN_HYPOTHESIS",
+  "grh_cayley_equivalences": "RECOVERED_PROOF_SOURCE",
+  "grh_implies_rh": "RECOVERED_PROOF_SOURCE",
+  "rh_iff_grh": "CONDITIONAL_ON_GENERALIZED_CAYLEY_LIFT_OR_CROSS_TRANSFER",
+  "rh_to_grh_lift": "OPEN",
+  "four_completed_l_factor_nonvanishing_under_rh": "OPEN",
+  "rh_proved": false,
+  "grh_proved": false,
+  "unconditional_rh_iff_grh_proved": false,
+  "accepted_finite_grh_witness": null,
+  "lean_ready": false,
+  "proof_tier": null,
+  "workflow_definition": {
+    "path": "docs/YOU_ARE_GOODWORKFLOWFRONTIER_v1_0_15.txt",
+    "sha256": "9cd05b3c8ef50fc1efab4760ccc5b08531ada72820aa76e8c8a67f32ffea017e",
+    "unchanged": true
+  }
+}

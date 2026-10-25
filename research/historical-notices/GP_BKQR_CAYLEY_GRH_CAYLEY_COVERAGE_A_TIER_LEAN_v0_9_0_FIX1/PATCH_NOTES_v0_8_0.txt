@@ -1,0 +1,9 @@
+v0.8.0 delta over passing v0.7.0:
+- Added CompletedPairLogDerivativeTotality.lean.
+- New actual analytic object: completedPairSlitThetaLogDerivative = Theta'/Theta, partial exactly at Theta zeros.
+- Proves critical-domain log-derivative totality iff actual slit-theta zero-freeness.
+- Lifts to family theorem: generalized log-derivative totality iff GRH.
+- Exposes denominator theorem for the actual two-point completed-pair Cayley observable.
+- Defines explicit critical-sample admissibility for its two sample points.
+- Proves GRH implies actual Cayley-observable totality on every admissible critical sample.
+- Does NOT claim converse for two-point Cayley totality without a coverage theorem.

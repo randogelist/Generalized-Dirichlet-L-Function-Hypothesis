@@ -1,0 +1,16 @@
+import RHToGRHCompletedPairFactorFrontier
+
+#check RHToGRHCompletedPairFactor.RiemannToPrimitiveCharacterCompletedPairFactorsNonzero
+#check RHToGRHCompletedPairFactor.COMPLETED_PAIR_FACTORS_NONZERO_IFF_REFLECTION_PAIR_NONZERO
+#check RHToGRHCompletedPairFactor.COMPLETED_PAIR_FACTORS_NONZERO_IFF_RH_IMPLIES_GRH
+#check RHToGRHCompletedPairFactor.CompletedPairFirstFactorPointObligation
+#check RHToGRHCompletedPairFactor.CompletedPairReflectedFactorPointObligation
+#check RHToGRHCompletedPairFactor.RH_TO_GRH_COMPLETED_PAIR_FACTOR_FRONTIER_ATLAS
+
+-- This is now the decisive definition.  Its body should expose the actual
+-- completed Dirichlet-L expression below every Cayley/slit/reflection wrapper.
+#print CayleyGRHStrong.completedDirichletPair
+#print CayleyGRHStrong.reflectionSymmetrizedCompletedPair
+
+#print axioms RHToGRHCompletedPairFactor.COMPLETED_PAIR_FACTORS_NONZERO_IFF_RH_IMPLIES_GRH
+#print axioms RHToGRHCompletedPairFactor.RH_TO_GRH_COMPLETED_PAIR_FACTOR_FRONTIER_ATLAS

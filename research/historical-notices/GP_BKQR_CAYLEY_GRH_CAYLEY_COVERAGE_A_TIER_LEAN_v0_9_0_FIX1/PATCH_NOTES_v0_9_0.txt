@@ -1,0 +1,12 @@
+GP_BKQR_CAYLEY_GRH_CAYLEY_COVERAGE_A_TIER_LEAN_v0_9_0
+
+Delta from passing v0.8.0:
+- proves the literal Cayley upper/lower sample points are conjugates;
+- proves conjugation invariance of the principal slit plane and critical square domain;
+- explicitly solves the Cayley parameters for every off-critical-line square w^2;
+- proves every point of the critical square/slit domain is covered by an admissible Cayley sample pair;
+- upgrades actual two-point completed-pair Cayley observable totality from GRH consequence to exact GRH equivalence;
+- adds frozen v0.9 coverage atlas.
+
+No research axioms. No sorry/admit. No unconditional GRH claim.
+The remaining mathematical frontier is unconditional analytic zero-freeness / observable totality itself.

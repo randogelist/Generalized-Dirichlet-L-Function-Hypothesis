@@ -1,0 +1,5 @@
+FIX4 changes only the Lean elaboration of CompletedPairCayleyAnalytic.lean plus package/runner labels.
+
+1. Replaced no-progress simp calls and brittle complex-real coercion arithmetic with explicit `change` goals over ℝ followed by `linarith`.
+2. Rewrote COMPLETED_PAIR_SLIT_THETA_DIFFERENTIABLE_ON to compose directly in the original DifferentiableWithinAt target, avoiding the module-instance mismatch introduced by an explicit `change`.
+3. No theorem statements changed. No mathematical assumptions added.

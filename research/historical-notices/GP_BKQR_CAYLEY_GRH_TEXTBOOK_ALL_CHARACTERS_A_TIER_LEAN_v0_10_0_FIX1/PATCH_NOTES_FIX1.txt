@@ -1,0 +1,16 @@
+GP_BKQR_CAYLEY_GRH_TEXTBOOK_ALL_CHARACTERS_A_TIER_LEAN_v0_10_0_FIX1
+
+Lean 4.33 repair of the textbook all-character reduction.
+
+Changes:
+1. Correct Euler-factor orientation:
+   from `1 - x = 0`, use `(sub_eq_zero.mp hzero).symm` to obtain `x = 1`.
+2. Use the actual Mathlib theorem `Finset.prod_ne_zero_iff.mpr`.
+3. Strengthen the supporting primitive-reduction lemma to the exact critical strip
+   `0 < Re(s) < 1`; this gives `s ≠ 1` from the upper-strip inequality, instead of the
+   invalid attempt to derive it from `0 < Re(s)` alone.
+4. Give the supporting primitive-reduction lemma an implicit `[NeZero χ.conductor]`
+   instance. The closed headline theorem constructs this canonically from
+   `χ.conductor_ne_zero`; no research parameter or theorem hypothesis is added to the
+   A-tier headline theorem.
+5. No definition or headline theorem statement changed.

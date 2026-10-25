@@ -1,0 +1,15 @@
+GP_BKQR_CAYLEY_GRH_COMPLETED_PAIR_A_TIER_LEAN_v0_6_0_FIX5
+
+Lean source delta from FIX4:
+- CompletedPairCayleyAnalytic.lean only.
+- Replaced six brittle `change` steps involving complex real projections of `(1/2 : C)` and `(1/2 + w).re` with `norm_num` normalization using `Complex.sub_re` / `Complex.add_re`, followed by the existing `linarith` arguments.
+- No theorem statements, definitions, assumptions, zero predicates, or functional-equation results changed.
+
+Runner delta:
+- Package label -> FIX5.
+- Fresh project cache key R6.
+- Straight-line native Windows Lean 4.33.0 runner retained.
+
+Expected continuation point:
+- CompletedPairCayleyAnalytic.lean.
+- If that passes, StrongGRHClosure.lean and Main.lean remain.

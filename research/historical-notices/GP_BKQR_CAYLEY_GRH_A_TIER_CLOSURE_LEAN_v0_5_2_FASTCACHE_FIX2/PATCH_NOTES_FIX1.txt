@@ -1,0 +1,16 @@
+GP_BKQR_CAYLEY_RH_A_TIER_CLOSURE_LEAN_v0_4_1_FIX1
+
+Lean 4.33 compatibility-only patch after the user's native v0.4.0 run.
+
+1. GolPhiSlice.lean, GOLPHI_AT_ONE_EQ_GOLPHI_S1:
+   instantiate Complex.natCast_mul_natCast_cpow with the exact natural normal
+   form (2*k+1+1), matching the unfolded dirichletTerm index without asking
+   simp to identify it with 2*k+2 under complex coercions.
+
+2. GolPhiSlice.lean, COMPLETED_GOLPHI_S1_DIFFERENTIABLE:
+   use the definitional equality completedGolPhiS1 = mathlibXi via `change`,
+   then apply MATHLIB_XI_DIFFERENTIABLE directly. This avoids higher-order
+   simp failing to delta-reduce the function argument of Differentiable.
+
+No definitions, theorem statements, RH-equivalence interfaces, imports, or
+closure claims changed.

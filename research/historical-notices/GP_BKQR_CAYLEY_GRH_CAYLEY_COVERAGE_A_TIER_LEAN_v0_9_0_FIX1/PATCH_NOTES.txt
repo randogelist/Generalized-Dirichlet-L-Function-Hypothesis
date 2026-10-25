@@ -1,0 +1,24 @@
+FIX1 (2026-10-06)
+- PrimitiveCompletedPair.lean: replaced the failing call to `DirichletCharacter.isPrimitive_def.mp`
+  with a definition-level `change` proof plus the stable Mathlib theorem `DirichletCharacter.conductor_inv`.
+- No mathematical assumptions or theorem statements changed.
+- Cache/runner revision bumped to R2.
+
+v0_6_0 delta from GP_BKQR_CAYLEY_GRH_A_TIER_CLOSURE_LEAN_v0_5_2_FASTCACHE_FIX2
+
+- All inherited Lean modules are unchanged.
+- Added CompletedDirichletBridge.lean:
+  actual completed-L zero equivalence in the critical strip and completed GRH.
+- Added PrimitiveCompletedPair.lean:
+  inverse primitivity, primitive functional equation, zero reflection,
+  actual completed inverse-pair, pair functional equation, pair RH <-> GRH.
+- Added CompletedPairCayleyAnalytic.lean:
+  reflection symmetrization, centered even object, analytic slit theta,
+  actual logarithmic Cayley observable, direct denominator-zero bridge.
+- Added StrongGRHClosure.lean:
+  family-level completed-pair Cayley zero-loss/saturation/unit-energy GRH atlas.
+- Replaced Main.lean with expanded #check / #print axioms audit.
+- New persistent native Windows Lean 4.33.0 runner.
+
+Critical status discipline:
+This package is not marked PASS until run.cmd passes on the user's compiler.

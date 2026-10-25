@@ -1,0 +1,27 @@
+GP_BKQR_CAYLEY_RH_A_TIER_CLOSURE_LEAN_v0_4_2_FIX2
+
+Imported source layers:
+
+1. GP_BKQR_CAYLEY_CONSTRUCTED_LEAN_v0_2_1_FIX1
+   - explicit phase-free gain
+   - Cayley coordinate, square defect, contraction
+   - center saturation iff sigma=1/2
+   - scalar Cayley step and exact energy defect
+
+2. GP_BKQR_CAYLEY_STANDARD_LOSS_ANCHOR_LEAN_v0_3_0
+   - explicit arbitrary complex-jet energy pair
+   - premise-free jetCayleyLoss_nonneg
+
+3. CAYLEY_GOLPHI_RH_EQUIV_LEAN_v0_1_0
+   - actual completed GolPhi slice / Mathlib xi layer
+   - nontrivial completed-GolPhi zero iff nontrivial zeta zero
+   - GolPhi RH iff Mathlib RiemannHypothesis
+
+New merger layer:
+  CayleyRHClosure.lean
+
+It identifies zero constructed spectral Cayley defect, contraction saturation,
+and unit-state Cayley energy preservation with the critical-line condition,
+then composes this with the actual GolPhi/zeta zero equivalence.
+
+No literal K2/K4 multiplicity-jet realization is assumed or claimed.

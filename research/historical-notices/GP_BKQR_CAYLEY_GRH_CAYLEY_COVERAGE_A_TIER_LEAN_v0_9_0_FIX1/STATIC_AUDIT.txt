@@ -1,0 +1,38 @@
+STATIC_AUDIT=PASS
+AUDIT_SCOPE=SOURCE_ONLY_NOT_LEAN_KERNEL
+DATE=2026-10-06
+
+INHERITED_SOURCE_MATCHES_V0_5_2=10_OF_10
+  ScaleGeometry.lean=MATCH
+  HausdorffKernel.lean=MATCH
+  GeneralizedCharacter.lean=MATCH
+  CayleyConstruction.lean=MATCH
+  StandardCayleyLoss.lean=MATCH
+  CayleyGolPhi/CayleyCore.lean=MATCH
+  CayleyGolPhi/GolPhiSlice.lean=MATCH
+  CayleyGolPhi/ZeroEquivalence.lean=MATCH
+  CayleyRHClosure.lean=MATCH
+  CayleyGRHClosure.lean=MATCH
+
+NEW_LEAN_MODULES=4
+  CompletedDirichletBridge.lean
+  PrimitiveCompletedPair.lean
+  CompletedPairCayleyAnalytic.lean
+  StrongGRHClosure.lean
+
+SORRY_SCAN=NONE
+ADMIT_SCAN=NONE
+PUBLIC_AXIOM_DECLARATION_SCAN=NONE
+
+MATHLIB_API_TARGETS_CHECKED_AGAINST_CURRENT_PUBLIC_SOURCE=
+  DirichletCharacter.completedLFunction
+  DirichletCharacter.gammaFactor
+  DirichletCharacter.LFunction_eq_completed_div_gammaFactor
+  DirichletCharacter.rootNumber
+  DirichletCharacter.IsPrimitive.completedLFunction_one_sub
+  DirichletCharacter.conductor_inv
+  DirichletCharacter.isPrimitive_def
+  Complex.GammaR_ne_zero_of_re_pos (Lean identifier uses Gammaℝ)
+
+IMPORTANT=STATIC_AUDIT_IS_NOT_A_KERNEL_COMPILE
+NATIVE_WINDOWS_LEAN_4_33_0_RUN_REQUIRED=YES

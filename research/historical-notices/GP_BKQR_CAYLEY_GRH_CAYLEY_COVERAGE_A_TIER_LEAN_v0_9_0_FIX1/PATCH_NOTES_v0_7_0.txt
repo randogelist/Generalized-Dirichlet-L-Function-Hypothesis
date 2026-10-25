@@ -1,0 +1,5 @@
+v0.7.0 adds an actual slit-theta zero-free GRH formulation on top of the passing v0.6.0 FIX5 baseline.
+The key new identity is Theta_chi(w^2)=H_chi(w), obtained from the exact evenness H_chi(-w)=H_chi(w)
+and the algebraic fact sqrt(w^2)=+/-w.  Squaring sends Re(w)=0 exactly to the complement of Mathlib's
+Complex.slitPlane.  Hence zero-freeness of the actual completed-pair theta on the squared critical-strip
+slit domain is equivalent to centered pair RH and, over primitive characters, to GRH.

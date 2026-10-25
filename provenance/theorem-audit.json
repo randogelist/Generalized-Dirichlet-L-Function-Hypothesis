@@ -1,0 +1,1778 @@
+{
+  "schema_version": 1,
+  "audit_kind": "SOURCE_INSPECTION_AND_PREPARED_NATIVE_AXIOM_PRINTS",
+  "native_status": "NOT_RUN",
+  "compiled_axiom_output_available_in_this_session": false,
+  "scope": {
+    "assembled_source_modules": 25,
+    "endpoint_modules": 17,
+    "theorems_with_prepared_axiom_prints": 134,
+    "audit_module": "GRHFinal.Audit",
+    "upstream_sources_unchanged": true
+  },
+  "conclusion": {
+    "unconditional_ordinary_RH_iff_Dirichlet_GRH_found": false,
+    "strongest_RH_iff_GRH_results": "Conditional on an explicit generalized Cayley lift or cross-family transfer.",
+    "RH_to_GRH_frontier": "The lift, cross-family transfer, primitive-character zero-freeness, centered/reflection-pair nonvanishing, and completed-L four-factor nonvanishing are equivalent formulations of RH → Dirichlet GRH. None is proved as an unconditional proposition in these sources.",
+    "GRH_scope": "Zeros of actual Mathlib DirichletCharacter.LFunction in 0 < Re(s) < 1, first primitive characters, then all characters via the primitive-character Euler-factor bridge. Not a theorem for arbitrary automorphic/Artin L-functions.",
+    "actual_RH_target": "_root_.RiemannHypothesis",
+    "finite_witness": "None. The analytic criteria quantify over all moduli, appropriate characters, and critical-domain points or admissible real sample pairs."
+  },
+  "main_definitions": [
+    {
+      "name": "CayleyGRHClosure.DirichletNontrivialZero",
+      "formula": "DirichletCharacter.LFunction χ s = 0 ∧ 0 < s.re ∧ s.re < 1"
+    },
+    {
+      "name": "CayleyGRHClosure.DirichletRiemannHypothesis",
+      "formula": "∀ s : ℂ, DirichletNontrivialZero χ s → s.re = (1 / 2 : ℝ)"
+    },
+    {
+      "name": "CayleyGRHClosure.GeneralizedRiemannHypothesis",
+      "formula": "∀ (N : ℕ) [NeZero N] (χ : DirichletCharacter ℂ N), χ.IsPrimitive → DirichletRiemannHypothesis χ"
+    },
+    {
+      "name": "CayleyGRHStrong.TextbookGeneralizedRiemannHypothesis",
+      "formula": "∀ (N : ℕ) [NeZero N] (χ : DirichletCharacter ℂ N), DirichletRiemannHypothesis χ"
+    },
+    {
+      "name": "RHToGRHFrontier.RiemannToGeneralizedCayleyLift",
+      "formula": "_root_.RiemannHypothesis → GeneralizedCompletedPairActualCayleyObservableCriticalTotal"
+    },
+    {
+      "name": "RHToGRHCrossCayley.GolPhiToGeneralizedCompletedPairCayleyTransfer",
+      "formula": "GolPhiCayleyZeroLoss → GeneralizedCompletedPairActualCayleyObservableCriticalTotal"
+    },
+    {
+      "name": "RHToGRHCompletedLFactor.RiemannToPrimitiveCharacterCompletedLFactorsNonzero",
+      "formula": "RH → for every nonzero modulus N, primitive χ, and z in the critical square domain and Complex.slitPlane, Λ(χ, 1/2+sqrt z), Λ(χ⁻¹, 1/2+sqrt z), Λ(χ, 1-(1/2+sqrt z)), and Λ(χ⁻¹, 1-(1/2+sqrt z)) are nonzero.",
+      "source_path": "RHToGRHCompletedLFactorFrontier.lean",
+      "source_line": 17
+    }
+  ],
+  "source_audit": {
+    "recovered_nested_archives_scanned": 25,
+    "recovered_lean_file_occurrences": 276,
+    "unique_lean_byte_hashes_scanned": 45,
+    "excluded_from_code_scan": "Nested Lean comments, line comments, string literals",
+    "forbidden_code_tokens_searched": [
+      "sorry",
+      "admit",
+      "axiom",
+      "opaque",
+      "native_decide",
+      "unsafe",
+      "sorryAx"
+    ],
+    "forbidden_code_token_hits": [],
+    "limitations": "This lexical scan does not determine elaborated kernel dependencies or imported Mathlib axioms. Only a native #print axioms result can do that."
+  },
+  "caveats": [
+    "Names such as A_TIER or comments saying already-compiled are historical source language, not a current verification claim.",
+    "Existing RH_IFF_GRH_OF_GENERALIZED_CAYLEY_LIFT and RH_IFF_GRH_OF_CROSS_CAYLEY_TRANSFER must never be presented with their hLift/hTransfer parameters omitted.",
+    "COMPLETED_L_FACTORS_NONZERO_IFF_RH_IMPLIES_GRH proves an equivalence involving the implication RH → GRH; it proves neither that implication nor the left-hand analytic frontier.",
+    "GeneralizedCharacter.lean is scalar geometric-sequence algebra, not a construction of Dirichlet characters or a GRH proof.",
+    "The actual logarithmic-derivative observable is Option-valued with none exactly at a denominator zero; totality does not by itself establish a separate global holomorphy theorem for the principal character.",
+    "RHToGRHCenteredPairFrontier.lean:57–66 uses hRH without a visible local binder in CENTERED_COMPLETED_PAIR_GLOBAL_IFF_POINTWISE. Independent source review expects an unintended outer implicit {hRH : RiemannHypothesis} under the default automatic-implicit settings, or an unknown-identifier failure with those settings disabled. No native printed signature was found. The prepared #check @ exposes this at native validation. This helper is not used by the main RH↔GRH lift, cross-transfer, or four-factor endpoints; original bytes remain unchanged."
+  ],
+  "historical_evidence": "provenance/historical-evidence.json",
+  "source_provenance": "provenance/source-files.json",
+  "sources": [
+    {
+      "module": "ScaleGeometry",
+      "path": "ScaleGeometry.lean",
+      "sha256": "384c844e7927f69900f8f3f4547115af016db1dbe43aa82ea58a97d67bc8fe04",
+      "imports": [
+        "Mathlib"
+      ]
+    },
+    {
+      "module": "HausdorffKernel",
+      "path": "HausdorffKernel.lean",
+      "sha256": "c971898ba7bc9657b12dbc0ce0f01eab243553b5aea84ff13afce7cc50b59c8a",
+      "imports": [
+        "ScaleGeometry"
+      ]
+    },
+    {
+      "module": "GeneralizedCharacter",
+      "path": "GeneralizedCharacter.lean",
+      "sha256": "c4ba708b8217e463b18545df2d59e18b5cb8d18cf9b2fe732aaad4c9c367ed44",
+      "imports": [
+        "HausdorffKernel"
+      ]
+    },
+    {
+      "module": "CayleyConstruction",
+      "path": "CayleyConstruction.lean",
+      "sha256": "0da5a6afc63579fa5fe08cfc440811874e1caa8d7a6a613ec66ddb5efeaa03f2",
+      "imports": [
+        "GeneralizedCharacter"
+      ]
+    },
+    {
+      "module": "CayleyGolPhi.CayleyCore",
+      "path": "CayleyGolPhi/CayleyCore.lean",
+      "sha256": "29b6366ed563c5a01e40f1cf82bbc9d173f806a5cf90f096f13b221795e07b81",
+      "imports": [
+        "Mathlib",
+        "Mathlib.NumberTheory.LSeries.RiemannZeta",
+        "Mathlib.Analysis.Complex.SqrtDeriv"
+      ]
+    },
+    {
+      "module": "CayleyGolPhi.GolPhiSlice",
+      "path": "CayleyGolPhi/GolPhiSlice.lean",
+      "sha256": "daa4140558365fcf50178c1f7194a36b9ea70563627c6011ec9a4bae6d18aaa4",
+      "imports": [
+        "CayleyGolPhi.CayleyCore",
+        "Mathlib.Topology.Algebra.InfiniteSum.NatInt",
+        "Mathlib.Topology.Algebra.InfiniteSum.Ring",
+        "Mathlib.Topology.Algebra.InfiniteSum.Group"
+      ]
+    },
+    {
+      "module": "CayleyGolPhi.ZeroEquivalence",
+      "path": "CayleyGolPhi/ZeroEquivalence.lean",
+      "sha256": "c94d8b4542b0af93b02021acf8df9df7482cb60b1fc623c9d3fc625b1c26cc09",
+      "imports": [
+        "CayleyGolPhi.GolPhiSlice",
+        "Mathlib.NumberTheory.LSeries.Nonvanishing",
+        "Mathlib.Analysis.SpecialFunctions.Trigonometric.Complex"
+      ]
+    },
+    {
+      "module": "StandardCayleyLoss",
+      "path": "StandardCayleyLoss.lean",
+      "sha256": "3325cda903fce484dae15b287a538fe1d7876ae57c3b7832d88712d5f36049d9",
+      "imports": [
+        "CayleyConstruction"
+      ]
+    },
+    {
+      "module": "CayleyRHClosure",
+      "path": "CayleyRHClosure.lean",
+      "sha256": "518c59f5f83e026919d8bf926bdd7848ea800084e915750923d2aabba4599331",
+      "imports": [
+        "CayleyGolPhi.ZeroEquivalence",
+        "StandardCayleyLoss"
+      ]
+    },
+    {
+      "module": "CayleyGRHClosure",
+      "path": "CayleyGRHClosure.lean",
+      "sha256": "e8383d8a298c89a213dc0ecbff05e25984eaa517054d2bc49fc2018895a9ff98",
+      "imports": [
+        "CayleyRHClosure",
+        "Mathlib.NumberTheory.LSeries.DirichletContinuation"
+      ]
+    },
+    {
+      "module": "CompletedDirichletBridge",
+      "path": "CompletedDirichletBridge.lean",
+      "sha256": "b2a99d92a3bc4f57e152054427db0bea62a9d928f4d8f080b7972aa75819f062",
+      "imports": [
+        "CayleyGRHClosure"
+      ]
+    },
+    {
+      "module": "PrimitiveCompletedPair",
+      "path": "PrimitiveCompletedPair.lean",
+      "sha256": "809514a5932d061808cfbfafe962678b4da017f40cfe57f2bf465fb4ce981371",
+      "imports": [
+        "CompletedDirichletBridge"
+      ]
+    },
+    {
+      "module": "CompletedPairCayleyAnalytic",
+      "path": "CompletedPairCayleyAnalytic.lean",
+      "sha256": "63d42c45fa4f1d2f87aa4a7ef1bdb4642dd878ee6711057ab3eae8e4fdb17aab",
+      "imports": [
+        "PrimitiveCompletedPair",
+        "Mathlib.Analysis.Complex.SqrtDeriv"
+      ]
+    },
+    {
+      "module": "StrongGRHClosure",
+      "path": "StrongGRHClosure.lean",
+      "sha256": "3d5c21315522f2227015afb6d71bf94be715f964024d5ea0ac85a795ddd35645",
+      "imports": [
+        "CompletedPairCayleyAnalytic"
+      ]
+    },
+    {
+      "module": "CompletedPairSquareSlitGeometry",
+      "path": "CompletedPairSquareSlitGeometry.lean",
+      "sha256": "670939460879085ca7ecb60747b9d0e1a58d77e59425fa44a47aeba11b0a9496",
+      "imports": [
+        "StrongGRHClosure"
+      ]
+    },
+    {
+      "module": "CompletedPairLogDerivativeTotality",
+      "path": "CompletedPairLogDerivativeTotality.lean",
+      "sha256": "03910da18a6bce04e11e082305b8dc136e4253ea8ff3b82c1ecdab3b3c43dfcb",
+      "imports": [
+        "CompletedPairSquareSlitGeometry"
+      ]
+    },
+    {
+      "module": "CompletedPairCayleyCoverage",
+      "path": "CompletedPairCayleyCoverage.lean",
+      "sha256": "4accf27b131c1552939e5064b37e3f076a5dbd1fdb69432c6f3972686bdca7a2",
+      "imports": [
+        "CompletedPairLogDerivativeTotality"
+      ]
+    },
+    {
+      "module": "TextbookDirichletGRH",
+      "path": "TextbookDirichletGRH.lean",
+      "sha256": "95f6f1563f9701f7c144be437713abbdc6136a96c963f129aede9c61280e49fb",
+      "imports": [
+        "CompletedPairCayleyCoverage",
+        "Mathlib.Analysis.Normed.Ring.Finite"
+      ]
+    },
+    {
+      "module": "RHToGRHCayleyLiftFrontier",
+      "path": "RHToGRHCayleyLiftFrontier.lean",
+      "sha256": "1f4305998e7befe68c59fbdac4544f942508e5c15a4a147fa6a602a1483c5e2f",
+      "imports": [
+        "TextbookDirichletGRH"
+      ]
+    },
+    {
+      "module": "RHToGRHCrossCayleyDisassembly",
+      "path": "RHToGRHCrossCayleyDisassembly.lean",
+      "sha256": "56819defdfea949bfbaed3e836de87e0f00f020acbf640f70c76d40aa0221661",
+      "imports": [
+        "CayleyRHClosure",
+        "RHToGRHCayleyLiftFrontier"
+      ]
+    },
+    {
+      "module": "RHToGRHPrimitiveCharacterFrontier",
+      "path": "RHToGRHPrimitiveCharacterFrontier.lean",
+      "sha256": "f72650a4756e0785316309a53f208c3dbd4d6fd4067526ccbc5036f25f262254",
+      "imports": [
+        "RHToGRHCrossCayleyDisassembly"
+      ]
+    },
+    {
+      "module": "RHToGRHCenteredPairFrontier",
+      "path": "RHToGRHCenteredPairFrontier.lean",
+      "sha256": "dd5c232d84b0d5d709b6f8fc1f9883578695dfae3824311c4e831999bc6cd174",
+      "imports": [
+        "RHToGRHPrimitiveCharacterFrontier"
+      ]
+    },
+    {
+      "module": "RHToGRHReflectionPairFrontier",
+      "path": "RHToGRHReflectionPairFrontier.lean",
+      "sha256": "0be288661754e85e00bc9ceab7905850cfb44bb9c63366078bdaccabafb5ee8e",
+      "imports": [
+        "RHToGRHCenteredPairFrontier"
+      ]
+    },
+    {
+      "module": "RHToGRHCompletedPairFactorFrontier",
+      "path": "RHToGRHCompletedPairFactorFrontier.lean",
+      "sha256": "ab574e0d94e421df46da1ebab7ea7b3dbc177e883f3ddf93d88211201c930b95",
+      "imports": [
+        "RHToGRHReflectionPairFrontier"
+      ]
+    },
+    {
+      "module": "RHToGRHCompletedLFactorFrontier",
+      "path": "RHToGRHCompletedLFactorFrontier.lean",
+      "sha256": "a74bc6e0f557fa310fb8e596b72a231188c4b01872f56167eb6df0ec8644cc2d",
+      "imports": [
+        "RHToGRHCompletedPairFactorFrontier"
+      ]
+    }
+  ],
+  "theorems": [
+    {
+      "name": "CayleyRHAClosure.spectralCayleyLoss_nonneg",
+      "module": "CayleyRHClosure",
+      "source_path": "CayleyRHClosure.lean",
+      "source_line": 21,
+      "source_sha256": "518c59f5f83e026919d8bf926bdd7848ea800084e915750923d2aabba4599331",
+      "declaration_header": "theorem spectralCayleyLoss_nonneg (s : ℂ) :\n    0 ≤ spectralCayleyLoss s",
+      "classification": "DERIVED_HELPER_OR_REFORMULATION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "CayleyRHAClosure.spectralCayleyLoss_eq_zero_iff_criticalLine",
+      "module": "CayleyRHClosure",
+      "source_path": "CayleyRHClosure.lean",
+      "source_line": 26,
+      "source_sha256": "518c59f5f83e026919d8bf926bdd7848ea800084e915750923d2aabba4599331",
+      "declaration_header": "theorem spectralCayleyLoss_eq_zero_iff_criticalLine (s : ℂ) :\n    spectralCayleyLoss s = 0 ↔ s.re = (1 / 2 : ℝ)",
+      "classification": "DERIVED_HELPER_OR_REFORMULATION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "CayleyRHAClosure.spectralCayleyTransmission_eq_one_iff_criticalLine",
+      "module": "CayleyRHClosure",
+      "source_path": "CayleyRHClosure.lean",
+      "source_line": 31,
+      "source_sha256": "518c59f5f83e026919d8bf926bdd7848ea800084e915750923d2aabba4599331",
+      "declaration_header": "theorem spectralCayleyTransmission_eq_one_iff_criticalLine (s : ℂ) :\n    spectralCayleyTransmission s = 1 ↔ s.re = (1 / 2 : ℝ)",
+      "classification": "DERIVED_HELPER_OR_REFORMULATION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "CayleyRHAClosure.spectralCayleyUnitEnergyLoss_eq_loss",
+      "module": "CayleyRHClosure",
+      "source_path": "CayleyRHClosure.lean",
+      "source_line": 36,
+      "source_sha256": "518c59f5f83e026919d8bf926bdd7848ea800084e915750923d2aabba4599331",
+      "declaration_header": "theorem spectralCayleyUnitEnergyLoss_eq_loss (s : ℂ) :\n    spectralCayleyUnitEnergyLoss s = spectralCayleyLoss s",
+      "classification": "DERIVED_HELPER_OR_REFORMULATION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "CayleyRHAClosure.spectralCayleyUnitEnergy_preserved_iff_criticalLine",
+      "module": "CayleyRHClosure",
+      "source_path": "CayleyRHClosure.lean",
+      "source_line": 43,
+      "source_sha256": "518c59f5f83e026919d8bf926bdd7848ea800084e915750923d2aabba4599331",
+      "declaration_header": "theorem spectralCayleyUnitEnergy_preserved_iff_criticalLine (s : ℂ) :\n    GPBKQRKernel.scalarEnergy (GPBKQRKernel.cayleyStep s.re 1) =\n        GPBKQRKernel.scalarEnergy 1 ↔\n      s.re = (1 / 2 : ℝ)",
+      "classification": "DERIVED_HELPER_OR_REFORMULATION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "CayleyRHAClosure.GOLPHI_CAYLEY_ZERO_LOSS_IFF_GOLPHI_RH",
+      "module": "CayleyRHClosure",
+      "source_path": "CayleyRHClosure.lean",
+      "source_line": 69,
+      "source_sha256": "518c59f5f83e026919d8bf926bdd7848ea800084e915750923d2aabba4599331",
+      "declaration_header": "theorem GOLPHI_CAYLEY_ZERO_LOSS_IFF_GOLPHI_RH :\n    GolPhiCayleyZeroLoss ↔ CayleyGolPhi.GolPhiRiemannHypothesis",
+      "classification": "DERIVED_HELPER_OR_REFORMULATION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "CayleyRHAClosure.GOLPHI_CAYLEY_ZERO_LOSS_IFF_MATHLIB_RH",
+      "module": "CayleyRHClosure",
+      "source_path": "CayleyRHClosure.lean",
+      "source_line": 78,
+      "source_sha256": "518c59f5f83e026919d8bf926bdd7848ea800084e915750923d2aabba4599331",
+      "declaration_header": "theorem GOLPHI_CAYLEY_ZERO_LOSS_IFF_MATHLIB_RH :\n    GolPhiCayleyZeroLoss ↔ _root_.RiemannHypothesis",
+      "classification": "DERIVED_HELPER_OR_REFORMULATION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "CayleyRHAClosure.ZETA_CAYLEY_ZERO_LOSS_IFF_MATHLIB_RH",
+      "module": "CayleyRHClosure",
+      "source_path": "CayleyRHClosure.lean",
+      "source_line": 84,
+      "source_sha256": "518c59f5f83e026919d8bf926bdd7848ea800084e915750923d2aabba4599331",
+      "declaration_header": "theorem ZETA_CAYLEY_ZERO_LOSS_IFF_MATHLIB_RH :\n    ZetaCayleyZeroLoss ↔ _root_.RiemannHypothesis",
+      "classification": "DERIVED_HELPER_OR_REFORMULATION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "CayleyRHAClosure.GOLPHI_CAYLEY_ZERO_LOSS_IFF_ZETA_CAYLEY_ZERO_LOSS",
+      "module": "CayleyRHClosure",
+      "source_path": "CayleyRHClosure.lean",
+      "source_line": 97,
+      "source_sha256": "518c59f5f83e026919d8bf926bdd7848ea800084e915750923d2aabba4599331",
+      "declaration_header": "theorem GOLPHI_CAYLEY_ZERO_LOSS_IFF_ZETA_CAYLEY_ZERO_LOSS :\n    GolPhiCayleyZeroLoss ↔ ZetaCayleyZeroLoss",
+      "classification": "DERIVED_HELPER_OR_REFORMULATION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "CayleyRHAClosure.GOLPHI_CAYLEY_SATURATION_IFF_MATHLIB_RH",
+      "module": "CayleyRHClosure",
+      "source_path": "CayleyRHClosure.lean",
+      "source_line": 106,
+      "source_sha256": "518c59f5f83e026919d8bf926bdd7848ea800084e915750923d2aabba4599331",
+      "declaration_header": "theorem GOLPHI_CAYLEY_SATURATION_IFF_MATHLIB_RH :\n    GolPhiCayleySaturation ↔ _root_.RiemannHypothesis",
+      "classification": "DERIVED_HELPER_OR_REFORMULATION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "CayleyRHAClosure.GOLPHI_CAYLEY_UNIT_ENERGY_PRESERVATION_IFF_MATHLIB_RH",
+      "module": "CayleyRHClosure",
+      "source_path": "CayleyRHClosure.lean",
+      "source_line": 119,
+      "source_sha256": "518c59f5f83e026919d8bf926bdd7848ea800084e915750923d2aabba4599331",
+      "declaration_header": "theorem GOLPHI_CAYLEY_UNIT_ENERGY_PRESERVATION_IFF_MATHLIB_RH :\n    GolPhiCayleyUnitEnergyPreservation ↔ _root_.RiemannHypothesis",
+      "classification": "DERIVED_HELPER_OR_REFORMULATION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "CayleyRHAClosure.CAYLEY_RH_A_TIER_CLOSURE_ATLAS",
+      "module": "CayleyRHClosure",
+      "source_path": "CayleyRHClosure.lean",
+      "source_line": 132,
+      "source_sha256": "518c59f5f83e026919d8bf926bdd7848ea800084e915750923d2aabba4599331",
+      "declaration_header": "theorem CAYLEY_RH_A_TIER_CLOSURE_ATLAS :\n    (GolPhiCayleyZeroLoss ↔ _root_.RiemannHypothesis) ∧\n    (ZetaCayleyZeroLoss ↔ _root_.RiemannHypothesis) ∧\n    (GolPhiCayleySaturation ↔ _root_.RiemannHypothesis) ∧\n    (GolPhiCayleyUnitEnergyPreservation ↔ _root_.RiemannHypothesis)",
+      "classification": "CONJUNCTION_OF_EXISTING_RESULTS",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "CayleyGRHClosure.CAYLEY_ZERO_LOSS_FOR_IFF_CRITICAL_LINE_ZERO_HYPOTHESIS",
+      "module": "CayleyGRHClosure",
+      "source_path": "CayleyGRHClosure.lean",
+      "source_line": 25,
+      "source_sha256": "e8383d8a298c89a213dc0ecbff05e25984eaa517054d2bc49fc2018895a9ff98",
+      "declaration_header": "theorem CAYLEY_ZERO_LOSS_FOR_IFF_CRITICAL_LINE_ZERO_HYPOTHESIS\n    (Zero : ℂ → Prop) :\n    CayleyZeroLossFor Zero ↔ CriticalLineZeroHypothesis Zero",
+      "classification": "DERIVED_HELPER_OR_REFORMULATION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "CayleyGRHClosure.CAYLEY_SATURATION_FOR_IFF_CRITICAL_LINE_ZERO_HYPOTHESIS",
+      "module": "CayleyGRHClosure",
+      "source_path": "CayleyGRHClosure.lean",
+      "source_line": 37,
+      "source_sha256": "e8383d8a298c89a213dc0ecbff05e25984eaa517054d2bc49fc2018895a9ff98",
+      "declaration_header": "theorem CAYLEY_SATURATION_FOR_IFF_CRITICAL_LINE_ZERO_HYPOTHESIS\n    (Zero : ℂ → Prop) :\n    CayleySaturationFor Zero ↔ CriticalLineZeroHypothesis Zero",
+      "classification": "DERIVED_HELPER_OR_REFORMULATION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "CayleyGRHClosure.CAYLEY_UNIT_ENERGY_PRESERVATION_FOR_IFF_CRITICAL_LINE_ZERO_HYPOTHESIS",
+      "module": "CayleyGRHClosure",
+      "source_path": "CayleyGRHClosure.lean",
+      "source_line": 49,
+      "source_sha256": "e8383d8a298c89a213dc0ecbff05e25984eaa517054d2bc49fc2018895a9ff98",
+      "declaration_header": "theorem CAYLEY_UNIT_ENERGY_PRESERVATION_FOR_IFF_CRITICAL_LINE_ZERO_HYPOTHESIS\n    (Zero : ℂ → Prop) :\n    CayleyUnitEnergyPreservationFor Zero ↔ CriticalLineZeroHypothesis Zero",
+      "classification": "DERIVED_HELPER_OR_REFORMULATION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "CayleyGRHClosure.ZERO_EQUIV_TRANSPORTS_CAYLEY_ZERO_LOSS",
+      "module": "CayleyGRHClosure",
+      "source_path": "CayleyGRHClosure.lean",
+      "source_line": 61,
+      "source_sha256": "e8383d8a298c89a213dc0ecbff05e25984eaa517054d2bc49fc2018895a9ff98",
+      "declaration_header": "theorem ZERO_EQUIV_TRANSPORTS_CAYLEY_ZERO_LOSS\n    (Zero₁ Zero₂ : ℂ → Prop)\n    (hZero : ∀ s : ℂ, Zero₁ s ↔ Zero₂ s) :\n    CayleyZeroLossFor Zero₁ ↔ CayleyZeroLossFor Zero₂",
+      "classification": "DERIVED_HELPER_OR_REFORMULATION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "CayleyGRHClosure.DIRICHLET_CAYLEY_ZERO_LOSS_IFF_RH",
+      "module": "CayleyGRHClosure",
+      "source_path": "CayleyGRHClosure.lean",
+      "source_line": 109,
+      "source_sha256": "e8383d8a298c89a213dc0ecbff05e25984eaa517054d2bc49fc2018895a9ff98",
+      "declaration_header": "theorem DIRICHLET_CAYLEY_ZERO_LOSS_IFF_RH\n    {N : ℕ} [NeZero N]\n    (χ : DirichletCharacter ℂ N) :\n    DirichletCayleyZeroLoss χ ↔ DirichletRiemannHypothesis χ",
+      "classification": "DERIVED_HELPER_OR_REFORMULATION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "CayleyGRHClosure.DIRICHLET_CAYLEY_SATURATION_IFF_RH",
+      "module": "CayleyGRHClosure",
+      "source_path": "CayleyGRHClosure.lean",
+      "source_line": 119,
+      "source_sha256": "e8383d8a298c89a213dc0ecbff05e25984eaa517054d2bc49fc2018895a9ff98",
+      "declaration_header": "theorem DIRICHLET_CAYLEY_SATURATION_IFF_RH\n    {N : ℕ} [NeZero N]\n    (χ : DirichletCharacter ℂ N) :\n    DirichletCayleySaturation χ ↔ DirichletRiemannHypothesis χ",
+      "classification": "DERIVED_HELPER_OR_REFORMULATION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "CayleyGRHClosure.DIRICHLET_CAYLEY_UNIT_ENERGY_PRESERVATION_IFF_RH",
+      "module": "CayleyGRHClosure",
+      "source_path": "CayleyGRHClosure.lean",
+      "source_line": 129,
+      "source_sha256": "e8383d8a298c89a213dc0ecbff05e25984eaa517054d2bc49fc2018895a9ff98",
+      "declaration_header": "theorem DIRICHLET_CAYLEY_UNIT_ENERGY_PRESERVATION_IFF_RH\n    {N : ℕ} [NeZero N]\n    (χ : DirichletCharacter ℂ N) :\n    DirichletCayleyUnitEnergyPreservation χ ↔\n      DirichletRiemannHypothesis χ",
+      "classification": "DERIVED_HELPER_OR_REFORMULATION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "CayleyGRHClosure.GENERALIZED_DIRICHLET_CAYLEY_ZERO_LOSS_IFF_GRH",
+      "module": "CayleyGRHClosure",
+      "source_path": "CayleyGRHClosure.lean",
+      "source_line": 160,
+      "source_sha256": "e8383d8a298c89a213dc0ecbff05e25984eaa517054d2bc49fc2018895a9ff98",
+      "declaration_header": "theorem GENERALIZED_DIRICHLET_CAYLEY_ZERO_LOSS_IFF_GRH :\n    GeneralizedDirichletCayleyZeroLoss ↔ GeneralizedRiemannHypothesis",
+      "classification": "GRH_EQUIVALENT_CRITERION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "CayleyGRHClosure.GENERALIZED_DIRICHLET_CAYLEY_SATURATION_IFF_GRH",
+      "module": "CayleyGRHClosure",
+      "source_path": "CayleyGRHClosure.lean",
+      "source_line": 169,
+      "source_sha256": "e8383d8a298c89a213dc0ecbff05e25984eaa517054d2bc49fc2018895a9ff98",
+      "declaration_header": "theorem GENERALIZED_DIRICHLET_CAYLEY_SATURATION_IFF_GRH :\n    GeneralizedDirichletCayleySaturation ↔ GeneralizedRiemannHypothesis",
+      "classification": "GRH_EQUIVALENT_CRITERION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "CayleyGRHClosure.GENERALIZED_DIRICHLET_CAYLEY_UNIT_ENERGY_PRESERVATION_IFF_GRH",
+      "module": "CayleyGRHClosure",
+      "source_path": "CayleyGRHClosure.lean",
+      "source_line": 178,
+      "source_sha256": "e8383d8a298c89a213dc0ecbff05e25984eaa517054d2bc49fc2018895a9ff98",
+      "declaration_header": "theorem GENERALIZED_DIRICHLET_CAYLEY_UNIT_ENERGY_PRESERVATION_IFF_GRH :\n    GeneralizedDirichletCayleyUnitEnergyPreservation ↔\n      GeneralizedRiemannHypothesis",
+      "classification": "GRH_EQUIVALENT_CRITERION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "CayleyGRHClosure.MOD_ONE_DIRICHLET_RH_IFF_MATHLIB_RH",
+      "module": "CayleyGRHClosure",
+      "source_path": "CayleyGRHClosure.lean",
+      "source_line": 190,
+      "source_sha256": "e8383d8a298c89a213dc0ecbff05e25984eaa517054d2bc49fc2018895a9ff98",
+      "declaration_header": "theorem MOD_ONE_DIRICHLET_RH_IFF_MATHLIB_RH :\n    DirichletRiemannHypothesis (1 : DirichletCharacter ℂ 1) ↔\n      _root_.RiemannHypothesis",
+      "classification": "DERIVED_HELPER_OR_REFORMULATION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "CayleyGRHClosure.GRH_IMPLIES_MATHLIB_RH",
+      "module": "CayleyGRHClosure",
+      "source_path": "CayleyGRHClosure.lean",
+      "source_line": 212,
+      "source_sha256": "e8383d8a298c89a213dc0ecbff05e25984eaa517054d2bc49fc2018895a9ff98",
+      "declaration_header": "theorem GRH_IMPLIES_MATHLIB_RH :\n    GeneralizedRiemannHypothesis → _root_.RiemannHypothesis",
+      "classification": "GRH_TO_ACTUAL_MATHLIB_RH",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "CayleyGRHClosure.CAYLEY_GRH_A_TIER_CLOSURE_ATLAS",
+      "module": "CayleyGRHClosure",
+      "source_path": "CayleyGRHClosure.lean",
+      "source_line": 220,
+      "source_sha256": "e8383d8a298c89a213dc0ecbff05e25984eaa517054d2bc49fc2018895a9ff98",
+      "declaration_header": "theorem CAYLEY_GRH_A_TIER_CLOSURE_ATLAS :\n    (GeneralizedDirichletCayleyZeroLoss ↔ GeneralizedRiemannHypothesis) ∧\n    (GeneralizedDirichletCayleySaturation ↔ GeneralizedRiemannHypothesis) ∧\n    (GeneralizedDirichletCayleyUnitEnergyPreservation ↔\n      GeneralizedRiemannHypothesis) ∧\n    (GeneralizedRiemannHypothesis → _root_.RiemannHypothesis)",
+      "classification": "CONJUNCTION_OF_EXISTING_RESULTS",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "CayleyGRHStrong.gammaFactor_ne_zero_of_re_pos",
+      "module": "CompletedDirichletBridge",
+      "source_path": "CompletedDirichletBridge.lean",
+      "source_line": 10,
+      "source_sha256": "b2a99d92a3bc4f57e152054427db0bea62a9d928f4d8f080b7972aa75819f062",
+      "declaration_header": "theorem gammaFactor_ne_zero_of_re_pos\n    {N : ℕ} [NeZero N]\n    (χ : DirichletCharacter ℂ N) {s : ℂ} (hs : 0 < s.re) :\n    DirichletCharacter.gammaFactor χ s ≠ 0",
+      "classification": "DERIVED_HELPER_OR_REFORMULATION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "CayleyGRHStrong.LFUNCTION_EQ_ZERO_IFF_COMPLETED_LFUNCTION_EQ_ZERO_OF_RE_POS",
+      "module": "CompletedDirichletBridge",
+      "source_path": "CompletedDirichletBridge.lean",
+      "source_line": 24,
+      "source_sha256": "b2a99d92a3bc4f57e152054427db0bea62a9d928f4d8f080b7972aa75819f062",
+      "declaration_header": "theorem LFUNCTION_EQ_ZERO_IFF_COMPLETED_LFUNCTION_EQ_ZERO_OF_RE_POS\n    {N : ℕ} [NeZero N]\n    (χ : DirichletCharacter ℂ N) {s : ℂ} (hs : 0 < s.re) :\n    DirichletCharacter.LFunction χ s = 0 ↔\n      DirichletCharacter.completedLFunction χ s = 0",
+      "classification": "DERIVED_HELPER_OR_REFORMULATION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "CayleyGRHStrong.DIRICHLET_NONTRIVIAL_ZERO_IFF_COMPLETED_DIRICHLET_NONTRIVIAL_ZERO",
+      "module": "CompletedDirichletBridge",
+      "source_path": "CompletedDirichletBridge.lean",
+      "source_line": 53,
+      "source_sha256": "b2a99d92a3bc4f57e152054427db0bea62a9d928f4d8f080b7972aa75819f062",
+      "declaration_header": "theorem DIRICHLET_NONTRIVIAL_ZERO_IFF_COMPLETED_DIRICHLET_NONTRIVIAL_ZERO\n    {N : ℕ} [NeZero N]\n    (χ : DirichletCharacter ℂ N) (s : ℂ) :\n    DirichletNontrivialZero χ s ↔ CompletedDirichletNontrivialZero χ s",
+      "classification": "DERIVED_HELPER_OR_REFORMULATION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "CayleyGRHStrong.COMPLETED_DIRICHLET_RH_IFF_DIRICHLET_RH",
+      "module": "CompletedDirichletBridge",
+      "source_path": "CompletedDirichletBridge.lean",
+      "source_line": 72,
+      "source_sha256": "b2a99d92a3bc4f57e152054427db0bea62a9d928f4d8f080b7972aa75819f062",
+      "declaration_header": "theorem COMPLETED_DIRICHLET_RH_IFF_DIRICHLET_RH\n    {N : ℕ} [NeZero N]\n    (χ : DirichletCharacter ℂ N) :\n    CompletedDirichletRiemannHypothesis χ ↔\n      DirichletRiemannHypothesis χ",
+      "classification": "DERIVED_HELPER_OR_REFORMULATION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "CayleyGRHStrong.COMPLETED_GRH_IFF_GRH",
+      "module": "CompletedDirichletBridge",
+      "source_path": "CompletedDirichletBridge.lean",
+      "source_line": 91,
+      "source_sha256": "b2a99d92a3bc4f57e152054427db0bea62a9d928f4d8f080b7972aa75819f062",
+      "declaration_header": "theorem COMPLETED_GRH_IFF_GRH :\n    CompletedGeneralizedRiemannHypothesis ↔ GeneralizedRiemannHypothesis",
+      "classification": "GRH_EQUIVALENT_CRITERION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "CayleyGRHStrong.COMPLETED_DIRICHLET_CAYLEY_ZERO_LOSS_IFF_COMPLETED_RH",
+      "module": "CompletedDirichletBridge",
+      "source_path": "CompletedDirichletBridge.lean",
+      "source_line": 107,
+      "source_sha256": "b2a99d92a3bc4f57e152054427db0bea62a9d928f4d8f080b7972aa75819f062",
+      "declaration_header": "theorem COMPLETED_DIRICHLET_CAYLEY_ZERO_LOSS_IFF_COMPLETED_RH\n    {N : ℕ} [NeZero N]\n    (χ : DirichletCharacter ℂ N) :\n    CompletedDirichletCayleyZeroLoss χ ↔\n      CompletedDirichletRiemannHypothesis χ",
+      "classification": "DERIVED_HELPER_OR_REFORMULATION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "CayleyGRHStrong.GENERALIZED_COMPLETED_DIRICHLET_CAYLEY_ZERO_LOSS_IFF_GRH",
+      "module": "CompletedDirichletBridge",
+      "source_path": "CompletedDirichletBridge.lean",
+      "source_line": 123,
+      "source_sha256": "b2a99d92a3bc4f57e152054427db0bea62a9d928f4d8f080b7972aa75819f062",
+      "declaration_header": "theorem GENERALIZED_COMPLETED_DIRICHLET_CAYLEY_ZERO_LOSS_IFF_GRH :\n    GeneralizedCompletedDirichletCayleyZeroLoss ↔ GeneralizedRiemannHypothesis",
+      "classification": "GRH_EQUIVALENT_CRITERION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "CayleyGRHStrong.primitive_inv",
+      "module": "PrimitiveCompletedPair",
+      "source_path": "PrimitiveCompletedPair.lean",
+      "source_line": 8,
+      "source_sha256": "809514a5932d061808cfbfafe962678b4da017f40cfe57f2bf465fb4ce981371",
+      "declaration_header": "theorem primitive_inv\n    {N : ℕ} [NeZero N] {χ : DirichletCharacter ℂ N}\n    (hχ : χ.IsPrimitive) : (χ⁻¹).IsPrimitive",
+      "classification": "DERIVED_HELPER_OR_REFORMULATION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "CayleyGRHStrong.PRIMITIVE_COMPLETED_LFUNCTION_FUNCTIONAL_EQUATION",
+      "module": "PrimitiveCompletedPair",
+      "source_path": "PrimitiveCompletedPair.lean",
+      "source_line": 18,
+      "source_sha256": "809514a5932d061808cfbfafe962678b4da017f40cfe57f2bf465fb4ce981371",
+      "declaration_header": "theorem PRIMITIVE_COMPLETED_LFUNCTION_FUNCTIONAL_EQUATION\n    {N : ℕ} [NeZero N] {χ : DirichletCharacter ℂ N}\n    (hχ : χ.IsPrimitive) (s : ℂ) :\n    DirichletCharacter.completedLFunction χ (1 - s) =\n      N ^ (s - 1 / 2) * DirichletCharacter.rootNumber χ *\n        DirichletCharacter.completedLFunction χ⁻¹ s",
+      "classification": "DERIVED_HELPER_OR_REFORMULATION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "CayleyGRHStrong.PRIMITIVE_COMPLETED_ZERO_REFLECTION_IFF",
+      "module": "PrimitiveCompletedPair",
+      "source_path": "PrimitiveCompletedPair.lean",
+      "source_line": 29,
+      "source_sha256": "809514a5932d061808cfbfafe962678b4da017f40cfe57f2bf465fb4ce981371",
+      "declaration_header": "theorem PRIMITIVE_COMPLETED_ZERO_REFLECTION_IFF\n    {N : ℕ} [NeZero N] {χ : DirichletCharacter ℂ N}\n    (hχ : χ.IsPrimitive) (s : ℂ) :\n    DirichletCharacter.completedLFunction χ (1 - s) = 0 ↔\n      DirichletCharacter.completedLFunction χ⁻¹ s = 0",
+      "classification": "DERIVED_HELPER_OR_REFORMULATION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "CayleyGRHStrong.PRIMITIVE_COMPLETED_ZERO_AT_S_IFF_INVERSE_AT_ONE_SUB",
+      "module": "PrimitiveCompletedPair",
+      "source_path": "PrimitiveCompletedPair.lean",
+      "source_line": 43,
+      "source_sha256": "809514a5932d061808cfbfafe962678b4da017f40cfe57f2bf465fb4ce981371",
+      "declaration_header": "theorem PRIMITIVE_COMPLETED_ZERO_AT_S_IFF_INVERSE_AT_ONE_SUB\n    {N : ℕ} [NeZero N] {χ : DirichletCharacter ℂ N}\n    (hχ : χ.IsPrimitive) (s : ℂ) :\n    DirichletCharacter.completedLFunction χ s = 0 ↔\n      DirichletCharacter.completedLFunction χ⁻¹ (1 - s) = 0",
+      "classification": "DERIVED_HELPER_OR_REFORMULATION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "CayleyGRHStrong.PRIMITIVE_COMPLETED_NONTRIVIAL_ZERO_REFLECT",
+      "module": "PrimitiveCompletedPair",
+      "source_path": "PrimitiveCompletedPair.lean",
+      "source_line": 52,
+      "source_sha256": "809514a5932d061808cfbfafe962678b4da017f40cfe57f2bf465fb4ce981371",
+      "declaration_header": "theorem PRIMITIVE_COMPLETED_NONTRIVIAL_ZERO_REFLECT\n    {N : ℕ} [NeZero N] {χ : DirichletCharacter ℂ N}\n    (hχ : χ.IsPrimitive) {s : ℂ}\n    (hs : CompletedDirichletNontrivialZero χ s) :\n    CompletedDirichletNontrivialZero χ⁻¹ (1 - s)",
+      "classification": "DERIVED_HELPER_OR_REFORMULATION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "CayleyGRHStrong.PRIMITIVE_COMPLETED_NONTRIVIAL_ZERO_REFLECTION_IFF",
+      "module": "PrimitiveCompletedPair",
+      "source_path": "PrimitiveCompletedPair.lean",
+      "source_line": 65,
+      "source_sha256": "809514a5932d061808cfbfafe962678b4da017f40cfe57f2bf465fb4ce981371",
+      "declaration_header": "theorem PRIMITIVE_COMPLETED_NONTRIVIAL_ZERO_REFLECTION_IFF\n    {N : ℕ} [NeZero N] {χ : DirichletCharacter ℂ N}\n    (hχ : χ.IsPrimitive) (s : ℂ) :\n    CompletedDirichletNontrivialZero χ s ↔\n      CompletedDirichletNontrivialZero χ⁻¹ (1 - s)",
+      "classification": "DERIVED_HELPER_OR_REFORMULATION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "CayleyGRHStrong.COMPLETED_DIRICHLET_PAIR_INV",
+      "module": "PrimitiveCompletedPair",
+      "source_path": "PrimitiveCompletedPair.lean",
+      "source_line": 84,
+      "source_sha256": "809514a5932d061808cfbfafe962678b4da017f40cfe57f2bf465fb4ce981371",
+      "declaration_header": "theorem COMPLETED_DIRICHLET_PAIR_INV\n    {N : ℕ} [NeZero N]\n    (χ : DirichletCharacter ℂ N) (s : ℂ) :\n    completedDirichletPair χ⁻¹ s = completedDirichletPair χ s",
+      "classification": "DERIVED_HELPER_OR_REFORMULATION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "CayleyGRHStrong.PRIMITIVE_COMPLETED_DIRICHLET_PAIR_FUNCTIONAL_EQUATION",
+      "module": "PrimitiveCompletedPair",
+      "source_path": "PrimitiveCompletedPair.lean",
+      "source_line": 100,
+      "source_sha256": "809514a5932d061808cfbfafe962678b4da017f40cfe57f2bf465fb4ce981371",
+      "declaration_header": "theorem PRIMITIVE_COMPLETED_DIRICHLET_PAIR_FUNCTIONAL_EQUATION\n    {N : ℕ} [NeZero N] {χ : DirichletCharacter ℂ N}\n    (hχ : χ.IsPrimitive) (s : ℂ) :\n    completedDirichletPair χ (1 - s) =\n      completedDirichletPairFunctionalFactor χ s * completedDirichletPair χ s",
+      "classification": "DERIVED_HELPER_OR_REFORMULATION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "CayleyGRHStrong.COMPLETED_DIRICHLET_PAIR_EQ_ZERO_IFF",
+      "module": "PrimitiveCompletedPair",
+      "source_path": "PrimitiveCompletedPair.lean",
+      "source_line": 112,
+      "source_sha256": "809514a5932d061808cfbfafe962678b4da017f40cfe57f2bf465fb4ce981371",
+      "declaration_header": "theorem COMPLETED_DIRICHLET_PAIR_EQ_ZERO_IFF\n    {N : ℕ} [NeZero N]\n    (χ : DirichletCharacter ℂ N) (s : ℂ) :\n    completedDirichletPair χ s = 0 ↔\n      DirichletCharacter.completedLFunction χ s = 0 ∨\n      DirichletCharacter.completedLFunction χ⁻¹ s = 0",
+      "classification": "DERIVED_HELPER_OR_REFORMULATION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "CayleyGRHStrong.PRIMITIVE_COMPLETED_DIRICHLET_PAIR_ZERO_REFLECTION_IFF",
+      "module": "PrimitiveCompletedPair",
+      "source_path": "PrimitiveCompletedPair.lean",
+      "source_line": 123,
+      "source_sha256": "809514a5932d061808cfbfafe962678b4da017f40cfe57f2bf465fb4ce981371",
+      "declaration_header": "theorem PRIMITIVE_COMPLETED_DIRICHLET_PAIR_ZERO_REFLECTION_IFF\n    {N : ℕ} [NeZero N] {χ : DirichletCharacter ℂ N}\n    (hχ : χ.IsPrimitive) (s : ℂ) :\n    completedDirichletPair χ (1 - s) = 0 ↔\n      completedDirichletPair χ s = 0",
+      "classification": "DERIVED_HELPER_OR_REFORMULATION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "CayleyGRHStrong.PRIMITIVE_COMPLETED_PAIR_RH_IFF_DIRICHLET_RH",
+      "module": "PrimitiveCompletedPair",
+      "source_path": "PrimitiveCompletedPair.lean",
+      "source_line": 148,
+      "source_sha256": "809514a5932d061808cfbfafe962678b4da017f40cfe57f2bf465fb4ce981371",
+      "declaration_header": "theorem PRIMITIVE_COMPLETED_PAIR_RH_IFF_DIRICHLET_RH\n    {N : ℕ} [NeZero N] {χ : DirichletCharacter ℂ N}\n    (hχ : χ.IsPrimitive) :\n    PrimitiveCompletedPairRiemannHypothesis χ ↔\n      DirichletRiemannHypothesis χ",
+      "classification": "DERIVED_HELPER_OR_REFORMULATION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "CayleyGRHStrong.GENERALIZED_COMPLETED_PAIR_RH_IFF_GRH",
+      "module": "PrimitiveCompletedPair",
+      "source_path": "PrimitiveCompletedPair.lean",
+      "source_line": 186,
+      "source_sha256": "809514a5932d061808cfbfafe962678b4da017f40cfe57f2bf465fb4ce981371",
+      "declaration_header": "theorem GENERALIZED_COMPLETED_PAIR_RH_IFF_GRH :\n    GeneralizedCompletedPairRiemannHypothesis ↔ GeneralizedRiemannHypothesis",
+      "classification": "GRH_EQUIVALENT_CRITERION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "CayleyGRHStrong.REFLECTION_SYMMETRIZED_COMPLETED_PAIR_ONE_SUB",
+      "module": "CompletedPairCayleyAnalytic",
+      "source_path": "CompletedPairCayleyAnalytic.lean",
+      "source_line": 17,
+      "source_sha256": "63d42c45fa4f1d2f87aa4a7ef1bdb4642dd878ee6711057ab3eae8e4fdb17aab",
+      "declaration_header": "theorem REFLECTION_SYMMETRIZED_COMPLETED_PAIR_ONE_SUB\n    {N : ℕ} [NeZero N]\n    (χ : DirichletCharacter ℂ N) (s : ℂ) :\n    reflectionSymmetrizedCompletedPair χ (1 - s) =\n      reflectionSymmetrizedCompletedPair χ s",
+      "classification": "DERIVED_HELPER_OR_REFORMULATION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "CayleyGRHStrong.PRIMITIVE_REFLECTION_SYMMETRIZED_PAIR_ZERO_IFF_PAIR_ZERO",
+      "module": "CompletedPairCayleyAnalytic",
+      "source_path": "CompletedPairCayleyAnalytic.lean",
+      "source_line": 26,
+      "source_sha256": "63d42c45fa4f1d2f87aa4a7ef1bdb4642dd878ee6711057ab3eae8e4fdb17aab",
+      "declaration_header": "theorem PRIMITIVE_REFLECTION_SYMMETRIZED_PAIR_ZERO_IFF_PAIR_ZERO\n    {N : ℕ} [NeZero N] {χ : DirichletCharacter ℂ N}\n    (hχ : χ.IsPrimitive) (s : ℂ) :\n    reflectionSymmetrizedCompletedPair χ s = 0 ↔\n      completedDirichletPair χ s = 0",
+      "classification": "DERIVED_HELPER_OR_REFORMULATION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "CayleyGRHStrong.CENTERED_COMPLETED_DIRICHLET_PAIR_EVEN",
+      "module": "CompletedPairCayleyAnalytic",
+      "source_path": "CompletedPairCayleyAnalytic.lean",
+      "source_line": 48,
+      "source_sha256": "63d42c45fa4f1d2f87aa4a7ef1bdb4642dd878ee6711057ab3eae8e4fdb17aab",
+      "declaration_header": "theorem CENTERED_COMPLETED_DIRICHLET_PAIR_EVEN\n    {N : ℕ} [NeZero N]\n    (χ : DirichletCharacter ℂ N) (w : ℂ) :\n    centeredCompletedDirichletPair χ (-w) =\n      centeredCompletedDirichletPair χ w",
+      "classification": "DERIVED_HELPER_OR_REFORMULATION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "CayleyGRHStrong.PRIMITIVE_CENTERED_COMPLETED_PAIR_ZERO_IFF_PAIR_ZERO",
+      "module": "CompletedPairCayleyAnalytic",
+      "source_path": "CompletedPairCayleyAnalytic.lean",
+      "source_line": 59,
+      "source_sha256": "63d42c45fa4f1d2f87aa4a7ef1bdb4642dd878ee6711057ab3eae8e4fdb17aab",
+      "declaration_header": "theorem PRIMITIVE_CENTERED_COMPLETED_PAIR_ZERO_IFF_PAIR_ZERO\n    {N : ℕ} [NeZero N] {χ : DirichletCharacter ℂ N}\n    (hχ : χ.IsPrimitive) (w : ℂ) :\n    centeredCompletedDirichletPair χ w = 0 ↔\n      completedDirichletPair χ ((1 / 2 : ℂ) + w) = 0",
+      "classification": "DERIVED_HELPER_OR_REFORMULATION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "CayleyGRHStrong.PRIMITIVE_CENTERED_COMPLETED_PAIR_RH_IFF_PAIR_RH",
+      "module": "CompletedPairCayleyAnalytic",
+      "source_path": "CompletedPairCayleyAnalytic.lean",
+      "source_line": 82,
+      "source_sha256": "63d42c45fa4f1d2f87aa4a7ef1bdb4642dd878ee6711057ab3eae8e4fdb17aab",
+      "declaration_header": "theorem PRIMITIVE_CENTERED_COMPLETED_PAIR_RH_IFF_PAIR_RH\n    {N : ℕ} [NeZero N] {χ : DirichletCharacter ℂ N}\n    (hχ : χ.IsPrimitive) :\n    CenteredCompletedPairRiemannHypothesis χ ↔\n      PrimitiveCompletedPairRiemannHypothesis χ",
+      "classification": "DERIVED_HELPER_OR_REFORMULATION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "CayleyGRHStrong.GENERALIZED_CENTERED_COMPLETED_PAIR_RH_IFF_GRH",
+      "module": "CompletedPairCayleyAnalytic",
+      "source_path": "CompletedPairCayleyAnalytic.lean",
+      "source_line": 125,
+      "source_sha256": "63d42c45fa4f1d2f87aa4a7ef1bdb4642dd878ee6711057ab3eae8e4fdb17aab",
+      "declaration_header": "theorem GENERALIZED_CENTERED_COMPLETED_PAIR_RH_IFF_GRH :\n    GeneralizedCenteredCompletedPairRiemannHypothesis ↔\n      GeneralizedRiemannHypothesis",
+      "classification": "GRH_EQUIVALENT_CRITERION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "CayleyGRHStrong.COMPLETED_DIRICHLET_PAIR_DIFFERENTIABLE",
+      "module": "CompletedPairCayleyAnalytic",
+      "source_path": "CompletedPairCayleyAnalytic.lean",
+      "source_line": 138,
+      "source_sha256": "63d42c45fa4f1d2f87aa4a7ef1bdb4642dd878ee6711057ab3eae8e4fdb17aab",
+      "declaration_header": "theorem COMPLETED_DIRICHLET_PAIR_DIFFERENTIABLE\n    {N : ℕ} [NeZero N] {χ : DirichletCharacter ℂ N}\n    (hχ : χ ≠ 1) :\n    Differentiable ℂ (completedDirichletPair χ)",
+      "classification": "DERIVED_HELPER_OR_REFORMULATION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "CayleyGRHStrong.REFLECTION_SYMMETRIZED_COMPLETED_PAIR_DIFFERENTIABLE",
+      "module": "CompletedPairCayleyAnalytic",
+      "source_path": "CompletedPairCayleyAnalytic.lean",
+      "source_line": 151,
+      "source_sha256": "63d42c45fa4f1d2f87aa4a7ef1bdb4642dd878ee6711057ab3eae8e4fdb17aab",
+      "declaration_header": "theorem REFLECTION_SYMMETRIZED_COMPLETED_PAIR_DIFFERENTIABLE\n    {N : ℕ} [NeZero N] {χ : DirichletCharacter ℂ N}\n    (hχ : χ ≠ 1) :\n    Differentiable ℂ (reflectionSymmetrizedCompletedPair χ)",
+      "classification": "DERIVED_HELPER_OR_REFORMULATION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "CayleyGRHStrong.CENTERED_COMPLETED_DIRICHLET_PAIR_DIFFERENTIABLE",
+      "module": "CompletedPairCayleyAnalytic",
+      "source_path": "CompletedPairCayleyAnalytic.lean",
+      "source_line": 161,
+      "source_sha256": "63d42c45fa4f1d2f87aa4a7ef1bdb4642dd878ee6711057ab3eae8e4fdb17aab",
+      "declaration_header": "theorem CENTERED_COMPLETED_DIRICHLET_PAIR_DIFFERENTIABLE\n    {N : ℕ} [NeZero N] {χ : DirichletCharacter ℂ N}\n    (hχ : χ ≠ 1) :\n    Differentiable ℂ (centeredCompletedDirichletPair χ)",
+      "classification": "DERIVED_HELPER_OR_REFORMULATION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "CayleyGRHStrong.COMPLETED_PAIR_SLIT_THETA_DIFFERENTIABLE_ON",
+      "module": "CompletedPairCayleyAnalytic",
+      "source_path": "CompletedPairCayleyAnalytic.lean",
+      "source_line": 178,
+      "source_sha256": "63d42c45fa4f1d2f87aa4a7ef1bdb4642dd878ee6711057ab3eae8e4fdb17aab",
+      "declaration_header": "theorem COMPLETED_PAIR_SLIT_THETA_DIFFERENTIABLE_ON\n    {N : ℕ} [NeZero N] {χ : DirichletCharacter ℂ N}\n    (hχ : χ ≠ 1) :\n    DifferentiableOn ℂ (completedPairSlitTheta χ) Complex.slitPlane",
+      "classification": "DERIVED_HELPER_OR_REFORMULATION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "CayleyGRHStrong.PRIMITIVE_COMPLETED_PAIR_THETA_ZERO_IFF_PAIR_ZERO",
+      "module": "CompletedPairCayleyAnalytic",
+      "source_path": "CompletedPairCayleyAnalytic.lean",
+      "source_line": 190,
+      "source_sha256": "63d42c45fa4f1d2f87aa4a7ef1bdb4642dd878ee6711057ab3eae8e4fdb17aab",
+      "declaration_header": "theorem PRIMITIVE_COMPLETED_PAIR_THETA_ZERO_IFF_PAIR_ZERO\n    {N : ℕ} [NeZero N] {χ : DirichletCharacter ℂ N}\n    (hχ : χ.IsPrimitive) (z : ℂ) :\n    completedPairSlitTheta χ z = 0 ↔\n      completedDirichletPair χ\n        ((1 / 2 : ℂ) + Complex.sqrt z) = 0",
+      "classification": "DERIVED_HELPER_OR_REFORMULATION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "CayleyGRHStrong.PRIMITIVE_COMPLETED_PAIR_CAYLEY_OBSERVABLE_NONE_IFF_PAIR_ZERO",
+      "module": "CompletedPairCayleyAnalytic",
+      "source_path": "CompletedPairCayleyAnalytic.lean",
+      "source_line": 222,
+      "source_sha256": "63d42c45fa4f1d2f87aa4a7ef1bdb4642dd878ee6711057ab3eae8e4fdb17aab",
+      "declaration_header": "theorem PRIMITIVE_COMPLETED_PAIR_CAYLEY_OBSERVABLE_NONE_IFF_PAIR_ZERO\n    {N : ℕ} [NeZero N] {χ : DirichletCharacter ℂ N}\n    (hχ : χ.IsPrimitive) (a r : ℝ) :\n    completedPairActualCayleyObservable χ a r = none ↔\n      completedDirichletPair χ\n          ((1 / 2 : ℂ) + Complex.sqrt (CayleyGolPhi.cayleyPointPlus a r)) = 0 ∨\n      completedDirichletPair χ\n          ((1 / 2 : ℂ) + Complex.sqrt (CayleyGolPhi.cayleyPointMinus a r)) = 0",
+      "classification": "DERIVED_HELPER_OR_REFORMULATION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "CayleyGRHStrong.PRIMITIVE_COMPLETED_PAIR_CAYLEY_ZERO_LOSS_IFF_PAIR_RH",
+      "module": "StrongGRHClosure",
+      "source_path": "StrongGRHClosure.lean",
+      "source_line": 31,
+      "source_sha256": "3d5c21315522f2227015afb6d71bf94be715f964024d5ea0ac85a795ddd35645",
+      "declaration_header": "theorem PRIMITIVE_COMPLETED_PAIR_CAYLEY_ZERO_LOSS_IFF_PAIR_RH\n    {N : ℕ} [NeZero N]\n    (χ : DirichletCharacter ℂ N) :\n    PrimitiveCompletedPairCayleyZeroLoss χ ↔\n      PrimitiveCompletedPairRiemannHypothesis χ",
+      "classification": "DERIVED_HELPER_OR_REFORMULATION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "CayleyGRHStrong.PRIMITIVE_COMPLETED_PAIR_CAYLEY_SATURATION_IFF_PAIR_RH",
+      "module": "StrongGRHClosure",
+      "source_path": "StrongGRHClosure.lean",
+      "source_line": 42,
+      "source_sha256": "3d5c21315522f2227015afb6d71bf94be715f964024d5ea0ac85a795ddd35645",
+      "declaration_header": "theorem PRIMITIVE_COMPLETED_PAIR_CAYLEY_SATURATION_IFF_PAIR_RH\n    {N : ℕ} [NeZero N]\n    (χ : DirichletCharacter ℂ N) :\n    PrimitiveCompletedPairCayleySaturation χ ↔\n      PrimitiveCompletedPairRiemannHypothesis χ",
+      "classification": "DERIVED_HELPER_OR_REFORMULATION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "CayleyGRHStrong.PRIMITIVE_COMPLETED_PAIR_CAYLEY_UNIT_ENERGY_IFF_PAIR_RH",
+      "module": "StrongGRHClosure",
+      "source_path": "StrongGRHClosure.lean",
+      "source_line": 53,
+      "source_sha256": "3d5c21315522f2227015afb6d71bf94be715f964024d5ea0ac85a795ddd35645",
+      "declaration_header": "theorem PRIMITIVE_COMPLETED_PAIR_CAYLEY_UNIT_ENERGY_IFF_PAIR_RH\n    {N : ℕ} [NeZero N]\n    (χ : DirichletCharacter ℂ N) :\n    PrimitiveCompletedPairCayleyUnitEnergyPreservation χ ↔\n      PrimitiveCompletedPairRiemannHypothesis χ",
+      "classification": "DERIVED_HELPER_OR_REFORMULATION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "CayleyGRHStrong.GENERALIZED_COMPLETED_PAIR_CAYLEY_ZERO_LOSS_IFF_GRH",
+      "module": "StrongGRHClosure",
+      "source_path": "StrongGRHClosure.lean",
+      "source_line": 79,
+      "source_sha256": "3d5c21315522f2227015afb6d71bf94be715f964024d5ea0ac85a795ddd35645",
+      "declaration_header": "theorem GENERALIZED_COMPLETED_PAIR_CAYLEY_ZERO_LOSS_IFF_GRH :\n    GeneralizedCompletedPairCayleyZeroLoss ↔ GeneralizedRiemannHypothesis",
+      "classification": "GRH_EQUIVALENT_CRITERION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "CayleyGRHStrong.GENERALIZED_COMPLETED_PAIR_CAYLEY_SATURATION_IFF_GRH",
+      "module": "StrongGRHClosure",
+      "source_path": "StrongGRHClosure.lean",
+      "source_line": 90,
+      "source_sha256": "3d5c21315522f2227015afb6d71bf94be715f964024d5ea0ac85a795ddd35645",
+      "declaration_header": "theorem GENERALIZED_COMPLETED_PAIR_CAYLEY_SATURATION_IFF_GRH :\n    GeneralizedCompletedPairCayleySaturation ↔ GeneralizedRiemannHypothesis",
+      "classification": "GRH_EQUIVALENT_CRITERION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "CayleyGRHStrong.GENERALIZED_COMPLETED_PAIR_CAYLEY_UNIT_ENERGY_IFF_GRH",
+      "module": "StrongGRHClosure",
+      "source_path": "StrongGRHClosure.lean",
+      "source_line": 101,
+      "source_sha256": "3d5c21315522f2227015afb6d71bf94be715f964024d5ea0ac85a795ddd35645",
+      "declaration_header": "theorem GENERALIZED_COMPLETED_PAIR_CAYLEY_UNIT_ENERGY_IFF_GRH :\n    GeneralizedCompletedPairCayleyUnitEnergyPreservation ↔\n      GeneralizedRiemannHypothesis",
+      "classification": "GRH_EQUIVALENT_CRITERION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "CayleyGRHStrong.COMPLETED_PAIR_GRH_A_TIER_CLOSURE_ATLAS",
+      "module": "StrongGRHClosure",
+      "source_path": "StrongGRHClosure.lean",
+      "source_line": 115,
+      "source_sha256": "3d5c21315522f2227015afb6d71bf94be715f964024d5ea0ac85a795ddd35645",
+      "declaration_header": "theorem COMPLETED_PAIR_GRH_A_TIER_CLOSURE_ATLAS :\n    (CompletedGeneralizedRiemannHypothesis ↔ GeneralizedRiemannHypothesis) ∧\n    (GeneralizedCompletedPairRiemannHypothesis ↔ GeneralizedRiemannHypothesis) ∧\n    (GeneralizedCenteredCompletedPairRiemannHypothesis ↔ GeneralizedRiemannHypothesis) ∧\n    (GeneralizedCompletedPairCayleyZeroLoss ↔ GeneralizedRiemannHypothesis) ∧\n    (GeneralizedCompletedPairCayleySaturation ↔ GeneralizedRiemannHypothesis) ∧\n    (GeneralizedCompletedPairCayleyUnitEnergyPreservation ↔\n      GeneralizedRiemannHypothesis) ∧\n    (GeneralizedRiemannHypothesis → _root_.RiemannHypothesis)",
+      "classification": "CONJUNCTION_OF_EXISTING_RESULTS",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "CayleyGRHStrong.COMPLEX_SQRT_SQUARE",
+      "module": "CompletedPairSquareSlitGeometry",
+      "source_path": "CompletedPairSquareSlitGeometry.lean",
+      "source_line": 8,
+      "source_sha256": "670939460879085ca7ecb60747b9d0e1a58d77e59425fa44a47aeba11b0a9496",
+      "declaration_header": "theorem COMPLEX_SQRT_SQUARE (z : ℂ) : (Complex.sqrt z) ^ 2 = z",
+      "classification": "DERIVED_HELPER_OR_REFORMULATION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "CayleyGRHStrong.COMPLEX_SQRT_SQUARE_EQ_OR_NEG",
+      "module": "CompletedPairSquareSlitGeometry",
+      "source_path": "CompletedPairSquareSlitGeometry.lean",
+      "source_line": 15,
+      "source_sha256": "670939460879085ca7ecb60747b9d0e1a58d77e59425fa44a47aeba11b0a9496",
+      "declaration_header": "theorem COMPLEX_SQRT_SQUARE_EQ_OR_NEG (w : ℂ) :\n    Complex.sqrt (w ^ 2) = w ∨ Complex.sqrt (w ^ 2) = -w",
+      "classification": "DERIVED_HELPER_OR_REFORMULATION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "CayleyGRHStrong.COMPLETED_PAIR_SLIT_THETA_SQUARE",
+      "module": "CompletedPairSquareSlitGeometry",
+      "source_path": "CompletedPairSquareSlitGeometry.lean",
+      "source_line": 33,
+      "source_sha256": "670939460879085ca7ecb60747b9d0e1a58d77e59425fa44a47aeba11b0a9496",
+      "declaration_header": "theorem COMPLETED_PAIR_SLIT_THETA_SQUARE\n    {N : ℕ} [NeZero N] (χ : DirichletCharacter ℂ N) (w : ℂ) :\n    completedPairSlitTheta χ (w ^ 2) = centeredCompletedDirichletPair χ w",
+      "classification": "DERIVED_HELPER_OR_REFORMULATION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "CayleyGRHStrong.COMPLETED_PAIR_SLIT_THETA_SQUARE_ZERO_IFF",
+      "module": "CompletedPairSquareSlitGeometry",
+      "source_path": "CompletedPairSquareSlitGeometry.lean",
+      "source_line": 42,
+      "source_sha256": "670939460879085ca7ecb60747b9d0e1a58d77e59425fa44a47aeba11b0a9496",
+      "declaration_header": "theorem COMPLETED_PAIR_SLIT_THETA_SQUARE_ZERO_IFF\n    {N : ℕ} [NeZero N] (χ : DirichletCharacter ℂ N) (w : ℂ) :\n    completedPairSlitTheta χ (w ^ 2) = 0 ↔\n      centeredCompletedDirichletPair χ w = 0",
+      "classification": "DERIVED_HELPER_OR_REFORMULATION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "CayleyGRHStrong.SQUARE_NOT_MEM_SLIT_PLANE_IFF_RE_EQ_ZERO",
+      "module": "CompletedPairSquareSlitGeometry",
+      "source_path": "CompletedPairSquareSlitGeometry.lean",
+      "source_line": 51,
+      "source_sha256": "670939460879085ca7ecb60747b9d0e1a58d77e59425fa44a47aeba11b0a9496",
+      "declaration_header": "theorem SQUARE_NOT_MEM_SLIT_PLANE_IFF_RE_EQ_ZERO (w : ℂ) :\n    w ^ 2 ∉ Complex.slitPlane ↔ w.re = 0",
+      "classification": "DERIVED_HELPER_OR_REFORMULATION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "CayleyGRHStrong.SQUARE_MEM_SLIT_PLANE_IFF_RE_NE_ZERO",
+      "module": "CompletedPairSquareSlitGeometry",
+      "source_path": "CompletedPairSquareSlitGeometry.lean",
+      "source_line": 85,
+      "source_sha256": "670939460879085ca7ecb60747b9d0e1a58d77e59425fa44a47aeba11b0a9496",
+      "declaration_header": "theorem SQUARE_MEM_SLIT_PLANE_IFF_RE_NE_ZERO (w : ℂ) :\n    w ^ 2 ∈ Complex.slitPlane ↔ w.re ≠ 0",
+      "classification": "DERIVED_HELPER_OR_REFORMULATION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "CayleyGRHStrong.COMPLETED_PAIR_SLIT_THETA_CRITICAL_ZERO_FREE_IFF_CENTERED_RH",
+      "module": "CompletedPairSquareSlitGeometry",
+      "source_path": "CompletedPairSquareSlitGeometry.lean",
+      "source_line": 108,
+      "source_sha256": "670939460879085ca7ecb60747b9d0e1a58d77e59425fa44a47aeba11b0a9496",
+      "declaration_header": "theorem COMPLETED_PAIR_SLIT_THETA_CRITICAL_ZERO_FREE_IFF_CENTERED_RH\n    {N : ℕ} [NeZero N] (χ : DirichletCharacter ℂ N) :\n    CompletedPairSlitThetaCriticalZeroFree χ ↔\n      CenteredCompletedPairRiemannHypothesis χ",
+      "classification": "DERIVED_HELPER_OR_REFORMULATION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "CayleyGRHStrong.GENERALIZED_COMPLETED_PAIR_SLIT_THETA_CRITICAL_ZERO_FREE_IFF_GRH",
+      "module": "CompletedPairSquareSlitGeometry",
+      "source_path": "CompletedPairSquareSlitGeometry.lean",
+      "source_line": 138,
+      "source_sha256": "670939460879085ca7ecb60747b9d0e1a58d77e59425fa44a47aeba11b0a9496",
+      "declaration_header": "theorem GENERALIZED_COMPLETED_PAIR_SLIT_THETA_CRITICAL_ZERO_FREE_IFF_GRH :\n    GeneralizedCompletedPairSlitThetaCriticalZeroFree ↔\n      CayleyGRHClosure.GeneralizedRiemannHypothesis",
+      "classification": "GRH_EQUIVALENT_CRITERION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "CayleyGRHStrong.COMPLETED_PAIR_GRH_SLIT_THETA_A_TIER_ATLAS",
+      "module": "CompletedPairSquareSlitGeometry",
+      "source_path": "CompletedPairSquareSlitGeometry.lean",
+      "source_line": 156,
+      "source_sha256": "670939460879085ca7ecb60747b9d0e1a58d77e59425fa44a47aeba11b0a9496",
+      "declaration_header": "theorem COMPLETED_PAIR_GRH_SLIT_THETA_A_TIER_ATLAS :\n    (CompletedGeneralizedRiemannHypothesis ↔\n      CayleyGRHClosure.GeneralizedRiemannHypothesis) ∧\n    (GeneralizedCompletedPairRiemannHypothesis ↔\n      CayleyGRHClosure.GeneralizedRiemannHypothesis) ∧\n    (GeneralizedCenteredCompletedPairRiemannHypothesis ↔\n      CayleyGRHClosure.GeneralizedRiemannHypothesis) ∧\n    (GeneralizedCompletedPairSlitThetaCriticalZeroFree ↔\n      CayleyGRHClosure.GeneralizedRiemannHypothesis) ∧\n    (GeneralizedCompletedPairCayleyZeroLoss ↔\n      CayleyGRHClosure.GeneralizedRiemannHypothesis) ∧\n    (GeneralizedCompletedPairCayleySaturation ↔\n      CayleyGRHClosure.GeneralizedRiemannHypothesis) ∧\n    (GeneralizedCompletedPairCayleyUnitEnergyPreservation ↔\n      CayleyGRHClosure.GeneralizedRiemannHypothesis) ∧\n    (CayleyGRHClosure.GeneralizedRiemannHypothesis → _root_.RiemannHypothesis)",
+      "classification": "CONJUNCTION_OF_EXISTING_RESULTS",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "CayleyGRHStrong.COMPLETED_PAIR_SLIT_THETA_LOG_DERIVATIVE_NONE_IFF_ZERO",
+      "module": "CompletedPairLogDerivativeTotality",
+      "source_path": "CompletedPairLogDerivativeTotality.lean",
+      "source_line": 18,
+      "source_sha256": "03910da18a6bce04e11e082305b8dc136e4253ea8ff3b82c1ecdab3b3c43dfcb",
+      "declaration_header": "theorem COMPLETED_PAIR_SLIT_THETA_LOG_DERIVATIVE_NONE_IFF_ZERO\n    {N : ℕ} [NeZero N]\n    (χ : DirichletCharacter ℂ N) (z : ℂ) :\n    completedPairSlitThetaLogDerivative χ z = none ↔\n      completedPairSlitTheta χ z = 0",
+      "classification": "DERIVED_HELPER_OR_REFORMULATION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "CayleyGRHStrong.COMPLETED_PAIR_SLIT_THETA_CRITICAL_LOG_DERIVATIVE_TOTAL_IFF_ZERO_FREE",
+      "module": "CompletedPairLogDerivativeTotality",
+      "source_path": "CompletedPairLogDerivativeTotality.lean",
+      "source_line": 37,
+      "source_sha256": "03910da18a6bce04e11e082305b8dc136e4253ea8ff3b82c1ecdab3b3c43dfcb",
+      "declaration_header": "theorem COMPLETED_PAIR_SLIT_THETA_CRITICAL_LOG_DERIVATIVE_TOTAL_IFF_ZERO_FREE\n    {N : ℕ} [NeZero N]\n    (χ : DirichletCharacter ℂ N) :\n    CompletedPairSlitThetaCriticalLogDerivativeTotal χ ↔\n      CompletedPairSlitThetaCriticalZeroFree χ",
+      "classification": "DERIVED_HELPER_OR_REFORMULATION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "CayleyGRHStrong.GENERALIZED_COMPLETED_PAIR_SLIT_THETA_CRITICAL_LOG_DERIVATIVE_TOTAL_IFF_GRH",
+      "module": "CompletedPairLogDerivativeTotality",
+      "source_path": "CompletedPairLogDerivativeTotality.lean",
+      "source_line": 58,
+      "source_sha256": "03910da18a6bce04e11e082305b8dc136e4253ea8ff3b82c1ecdab3b3c43dfcb",
+      "declaration_header": "theorem GENERALIZED_COMPLETED_PAIR_SLIT_THETA_CRITICAL_LOG_DERIVATIVE_TOTAL_IFF_GRH :\n    GeneralizedCompletedPairSlitThetaCriticalLogDerivativeTotal ↔\n      CayleyGRHClosure.GeneralizedRiemannHypothesis",
+      "classification": "GRH_EQUIVALENT_CRITERION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "CayleyGRHStrong.COMPLETED_PAIR_ACTUAL_CAYLEY_OBSERVABLE_NONE_IFF_THETA_ZERO",
+      "module": "CompletedPairLogDerivativeTotality",
+      "source_path": "CompletedPairLogDerivativeTotality.lean",
+      "source_line": 75,
+      "source_sha256": "03910da18a6bce04e11e082305b8dc136e4253ea8ff3b82c1ecdab3b3c43dfcb",
+      "declaration_header": "theorem COMPLETED_PAIR_ACTUAL_CAYLEY_OBSERVABLE_NONE_IFF_THETA_ZERO\n    {N : ℕ} [NeZero N]\n    (χ : DirichletCharacter ℂ N) (a r : ℝ) :\n    completedPairActualCayleyObservable χ a r = none ↔\n      completedPairSlitTheta χ (CayleyGolPhi.cayleyPointPlus a r) = 0 ∨\n      completedPairSlitTheta χ (CayleyGolPhi.cayleyPointMinus a r) = 0",
+      "classification": "DERIVED_HELPER_OR_REFORMULATION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "CayleyGRHStrong.COMPLETED_PAIR_ACTUAL_CAYLEY_OBSERVABLE_DEFINED_OF_CRITICAL_ZERO_FREE",
+      "module": "CompletedPairLogDerivativeTotality",
+      "source_path": "CompletedPairLogDerivativeTotality.lean",
+      "source_line": 97,
+      "source_sha256": "03910da18a6bce04e11e082305b8dc136e4253ea8ff3b82c1ecdab3b3c43dfcb",
+      "declaration_header": "theorem COMPLETED_PAIR_ACTUAL_CAYLEY_OBSERVABLE_DEFINED_OF_CRITICAL_ZERO_FREE\n    {N : ℕ} [NeZero N]\n    (χ : DirichletCharacter ℂ N)\n    (hfree : CompletedPairSlitThetaCriticalZeroFree χ)\n    (a r : ℝ) (hadm : CompletedPairCriticalCayleySample a r) :\n    completedPairActualCayleyObservable χ a r ≠ none",
+      "classification": "DERIVED_HELPER_OR_REFORMULATION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "CayleyGRHStrong.COMPLETED_PAIR_ACTUAL_CAYLEY_OBSERVABLE_CRITICAL_TOTAL_OF_ZERO_FREE",
+      "module": "CompletedPairLogDerivativeTotality",
+      "source_path": "CompletedPairLogDerivativeTotality.lean",
+      "source_line": 119,
+      "source_sha256": "03910da18a6bce04e11e082305b8dc136e4253ea8ff3b82c1ecdab3b3c43dfcb",
+      "declaration_header": "theorem COMPLETED_PAIR_ACTUAL_CAYLEY_OBSERVABLE_CRITICAL_TOTAL_OF_ZERO_FREE\n    {N : ℕ} [NeZero N]\n    (χ : DirichletCharacter ℂ N)\n    (hfree : CompletedPairSlitThetaCriticalZeroFree χ) :\n    CompletedPairActualCayleyObservableCriticalTotal χ",
+      "classification": "DERIVED_HELPER_OR_REFORMULATION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "CayleyGRHStrong.GRH_IMPLIES_GENERALIZED_COMPLETED_PAIR_ACTUAL_CAYLEY_OBSERVABLE_CRITICAL_TOTAL",
+      "module": "CompletedPairLogDerivativeTotality",
+      "source_path": "CompletedPairLogDerivativeTotality.lean",
+      "source_line": 137,
+      "source_sha256": "03910da18a6bce04e11e082305b8dc136e4253ea8ff3b82c1ecdab3b3c43dfcb",
+      "declaration_header": "theorem GRH_IMPLIES_GENERALIZED_COMPLETED_PAIR_ACTUAL_CAYLEY_OBSERVABLE_CRITICAL_TOTAL :\n    CayleyGRHClosure.GeneralizedRiemannHypothesis →\n      GeneralizedCompletedPairActualCayleyObservableCriticalTotal",
+      "classification": "DERIVED_HELPER_OR_REFORMULATION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "CayleyGRHStrong.COMPLETED_PAIR_GRH_LOG_DERIVATIVE_A_TIER_ATLAS",
+      "module": "CompletedPairLogDerivativeTotality",
+      "source_path": "CompletedPairLogDerivativeTotality.lean",
+      "source_line": 149,
+      "source_sha256": "03910da18a6bce04e11e082305b8dc136e4253ea8ff3b82c1ecdab3b3c43dfcb",
+      "declaration_header": "theorem COMPLETED_PAIR_GRH_LOG_DERIVATIVE_A_TIER_ATLAS :\n    (GeneralizedCompletedPairSlitThetaCriticalZeroFree ↔\n      CayleyGRHClosure.GeneralizedRiemannHypothesis) ∧\n    (GeneralizedCompletedPairSlitThetaCriticalLogDerivativeTotal ↔\n      CayleyGRHClosure.GeneralizedRiemannHypothesis) ∧\n    (CayleyGRHClosure.GeneralizedRiemannHypothesis →\n      GeneralizedCompletedPairActualCayleyObservableCriticalTotal) ∧\n    (CayleyGRHClosure.GeneralizedRiemannHypothesis → _root_.RiemannHypothesis)",
+      "classification": "CONJUNCTION_OF_EXISTING_RESULTS",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "CayleyGRHStrong.CAYLEY_POINT_MINUS_EQ_CONJ_PLUS",
+      "module": "CompletedPairCayleyCoverage",
+      "source_path": "CompletedPairCayleyCoverage.lean",
+      "source_line": 6,
+      "source_sha256": "4accf27b131c1552939e5064b37e3f076a5dbd1fdb69432c6f3972686bdca7a2",
+      "declaration_header": "theorem CAYLEY_POINT_MINUS_EQ_CONJ_PLUS (a r : ℝ) :\n    CayleyGolPhi.cayleyPointMinus a r =\n      (starRingEnd ℂ) (CayleyGolPhi.cayleyPointPlus a r)",
+      "classification": "DERIVED_HELPER_OR_REFORMULATION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "CayleyGRHStrong.CAYLEY_POINT_PLUS_EQ_CONJ_MINUS",
+      "module": "CompletedPairCayleyCoverage",
+      "source_path": "CompletedPairCayleyCoverage.lean",
+      "source_line": 14,
+      "source_sha256": "4accf27b131c1552939e5064b37e3f076a5dbd1fdb69432c6f3972686bdca7a2",
+      "declaration_header": "theorem CAYLEY_POINT_PLUS_EQ_CONJ_MINUS (a r : ℝ) :\n    CayleyGolPhi.cayleyPointPlus a r =\n      (starRingEnd ℂ) (CayleyGolPhi.cayleyPointMinus a r)",
+      "classification": "DERIVED_HELPER_OR_REFORMULATION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "CayleyGRHStrong.CONJ_MEM_SLIT_PLANE_IFF",
+      "module": "CompletedPairCayleyCoverage",
+      "source_path": "CompletedPairCayleyCoverage.lean",
+      "source_line": 22,
+      "source_sha256": "4accf27b131c1552939e5064b37e3f076a5dbd1fdb69432c6f3972686bdca7a2",
+      "declaration_header": "theorem CONJ_MEM_SLIT_PLANE_IFF (z : ℂ) :\n    (starRingEnd ℂ) z ∈ Complex.slitPlane ↔ z ∈ Complex.slitPlane",
+      "classification": "DERIVED_HELPER_OR_REFORMULATION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "CayleyGRHStrong.CONJ_MEM_COMPLETED_PAIR_CRITICAL_SQUARE_DOMAIN",
+      "module": "CompletedPairCayleyCoverage",
+      "source_path": "CompletedPairCayleyCoverage.lean",
+      "source_line": 27,
+      "source_sha256": "4accf27b131c1552939e5064b37e3f076a5dbd1fdb69432c6f3972686bdca7a2",
+      "declaration_header": "theorem CONJ_MEM_COMPLETED_PAIR_CRITICAL_SQUARE_DOMAIN\n    {z : ℂ} (hz : z ∈ completedPairCriticalSquareDomain) :\n    (starRingEnd ℂ) z ∈ completedPairCriticalSquareDomain",
+      "classification": "DERIVED_HELPER_OR_REFORMULATION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "CayleyGRHStrong.CAYLEY_PAIR_COVERS_SQUARE_OF_RE_NE_ZERO",
+      "module": "CompletedPairCayleyCoverage",
+      "source_path": "CompletedPairCayleyCoverage.lean",
+      "source_line": 39,
+      "source_sha256": "4accf27b131c1552939e5064b37e3f076a5dbd1fdb69432c6f3972686bdca7a2",
+      "declaration_header": "theorem CAYLEY_PAIR_COVERS_SQUARE_OF_RE_NE_ZERO\n    (w : ℂ) (hwre : w.re ≠ 0) :\n    ∃ a r : ℝ,\n      CayleyGolPhi.cayleyPointPlus a r = w ^ 2 ∨\n      CayleyGolPhi.cayleyPointMinus a r = w ^ 2",
+      "classification": "DERIVED_HELPER_OR_REFORMULATION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "CayleyGRHStrong.COMPLETED_PAIR_CRITICAL_CAYLEY_PARAMETER_COVERAGE",
+      "module": "CompletedPairCayleyCoverage",
+      "source_path": "CompletedPairCayleyCoverage.lean",
+      "source_line": 94,
+      "source_sha256": "4accf27b131c1552939e5064b37e3f076a5dbd1fdb69432c6f3972686bdca7a2",
+      "declaration_header": "theorem COMPLETED_PAIR_CRITICAL_CAYLEY_PARAMETER_COVERAGE\n    {z : ℂ}\n    (hzdom : z ∈ completedPairCriticalSquareDomain)\n    (hzslit : z ∈ Complex.slitPlane) :\n    ∃ a r : ℝ,\n      CompletedPairCriticalCayleySample a r ∧\n      (CayleyGolPhi.cayleyPointPlus a r = z ∨\n       CayleyGolPhi.cayleyPointMinus a r = z)",
+      "classification": "DERIVED_HELPER_OR_REFORMULATION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "CayleyGRHStrong.COMPLETED_PAIR_ACTUAL_CAYLEY_OBSERVABLE_CRITICAL_TOTAL_IFF_ZERO_FREE",
+      "module": "CompletedPairCayleyCoverage",
+      "source_path": "CompletedPairCayleyCoverage.lean",
+      "source_line": 138,
+      "source_sha256": "4accf27b131c1552939e5064b37e3f076a5dbd1fdb69432c6f3972686bdca7a2",
+      "declaration_header": "theorem COMPLETED_PAIR_ACTUAL_CAYLEY_OBSERVABLE_CRITICAL_TOTAL_IFF_ZERO_FREE\n    {N : ℕ} [NeZero N]\n    (χ : DirichletCharacter ℂ N) :\n    CompletedPairActualCayleyObservableCriticalTotal χ ↔\n      CompletedPairSlitThetaCriticalZeroFree χ",
+      "classification": "DERIVED_HELPER_OR_REFORMULATION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "CayleyGRHStrong.GENERALIZED_COMPLETED_PAIR_ACTUAL_CAYLEY_OBSERVABLE_CRITICAL_TOTAL_IFF_GRH",
+      "module": "CompletedPairCayleyCoverage",
+      "source_path": "CompletedPairCayleyCoverage.lean",
+      "source_line": 159,
+      "source_sha256": "4accf27b131c1552939e5064b37e3f076a5dbd1fdb69432c6f3972686bdca7a2",
+      "declaration_header": "theorem GENERALIZED_COMPLETED_PAIR_ACTUAL_CAYLEY_OBSERVABLE_CRITICAL_TOTAL_IFF_GRH :\n    GeneralizedCompletedPairActualCayleyObservableCriticalTotal ↔\n      CayleyGRHClosure.GeneralizedRiemannHypothesis",
+      "classification": "GRH_EQUIVALENT_CRITERION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "CayleyGRHStrong.COMPLETED_PAIR_GRH_CAYLEY_COVERAGE_A_TIER_ATLAS",
+      "module": "CompletedPairCayleyCoverage",
+      "source_path": "CompletedPairCayleyCoverage.lean",
+      "source_line": 172,
+      "source_sha256": "4accf27b131c1552939e5064b37e3f076a5dbd1fdb69432c6f3972686bdca7a2",
+      "declaration_header": "theorem COMPLETED_PAIR_GRH_CAYLEY_COVERAGE_A_TIER_ATLAS :\n    (GeneralizedCompletedPairSlitThetaCriticalZeroFree ↔\n      CayleyGRHClosure.GeneralizedRiemannHypothesis) ∧\n    (GeneralizedCompletedPairSlitThetaCriticalLogDerivativeTotal ↔\n      CayleyGRHClosure.GeneralizedRiemannHypothesis) ∧\n    (GeneralizedCompletedPairActualCayleyObservableCriticalTotal ↔\n      CayleyGRHClosure.GeneralizedRiemannHypothesis) ∧\n    (CayleyGRHClosure.GeneralizedRiemannHypothesis → _root_.RiemannHypothesis)",
+      "classification": "CONJUNCTION_OF_EXISTING_RESULTS",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "CayleyGRHStrong.DIRICHLET_CHARACTER_NORM_APPLY_LE_ONE",
+      "module": "TextbookDirichletGRH",
+      "source_path": "TextbookDirichletGRH.lean",
+      "source_line": 19,
+      "source_sha256": "95f6f1563f9701f7c144be437713abbdc6136a96c963f129aede9c61280e49fb",
+      "declaration_header": "theorem DIRICHLET_CHARACTER_NORM_APPLY_LE_ONE\n    {N : ℕ} [NeZero N]\n    (χ : DirichletCharacter ℂ N) (n : ℕ) :\n    ‖χ n‖ ≤ 1",
+      "classification": "DERIVED_HELPER_OR_REFORMULATION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "CayleyGRHStrong.DIRICHLET_CHANGE_LEVEL_EULER_FACTOR_NE_ZERO_OF_RE_POS",
+      "module": "TextbookDirichletGRH",
+      "source_path": "TextbookDirichletGRH.lean",
+      "source_line": 45,
+      "source_sha256": "95f6f1563f9701f7c144be437713abbdc6136a96c963f129aede9c61280e49fb",
+      "declaration_header": "theorem DIRICHLET_CHANGE_LEVEL_EULER_FACTOR_NE_ZERO_OF_RE_POS\n    {M : ℕ} [NeZero M]\n    (χ : DirichletCharacter ℂ M) {p : ℕ} (hp : p.Prime)\n    {s : ℂ} (hs : 0 < s.re) :\n    1 - χ p * (p : ℂ) ^ (-s) ≠ 0",
+      "classification": "DERIVED_HELPER_OR_REFORMULATION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "CayleyGRHStrong.DIRICHLET_CHANGE_LEVEL_EULER_PRODUCT_NE_ZERO_OF_RE_POS",
+      "module": "TextbookDirichletGRH",
+      "source_path": "TextbookDirichletGRH.lean",
+      "source_line": 73,
+      "source_sha256": "95f6f1563f9701f7c144be437713abbdc6136a96c963f129aede9c61280e49fb",
+      "declaration_header": "theorem DIRICHLET_CHANGE_LEVEL_EULER_PRODUCT_NE_ZERO_OF_RE_POS\n    {M N : ℕ} [NeZero M] [NeZero N]\n    (χ : DirichletCharacter ℂ M) {s : ℂ} (hs : 0 < s.re) :\n    (∏ p ∈ N.primeFactors, (1 - χ p * (p : ℂ) ^ (-s))) ≠ 0",
+      "classification": "DERIVED_HELPER_OR_REFORMULATION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "CayleyGRHStrong.LFUNCTION_ZERO_IMPLIES_PRIMITIVE_LFUNCTION_ZERO_IN_CRITICAL_STRIP",
+      "module": "TextbookDirichletGRH",
+      "source_path": "TextbookDirichletGRH.lean",
+      "source_line": 86,
+      "source_sha256": "95f6f1563f9701f7c144be437713abbdc6136a96c963f129aede9c61280e49fb",
+      "declaration_header": "theorem LFUNCTION_ZERO_IMPLIES_PRIMITIVE_LFUNCTION_ZERO_IN_CRITICAL_STRIP\n    {N : ℕ} [NeZero N]\n    (χ : DirichletCharacter ℂ N) [NeZero χ.conductor] {s : ℂ}\n    (hs0 : 0 < s.re) (hs1 : s.re < 1)\n    (hz : DirichletCharacter.LFunction χ s = 0) :\n    DirichletCharacter.LFunction χ.primitiveCharacter s = 0",
+      "classification": "DERIVED_HELPER_OR_REFORMULATION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "CayleyGRHStrong.GRH_IMPLIES_TEXTBOOK_GENERALIZED_RIEMANN_HYPOTHESIS",
+      "module": "TextbookDirichletGRH",
+      "source_path": "TextbookDirichletGRH.lean",
+      "source_line": 116,
+      "source_sha256": "95f6f1563f9701f7c144be437713abbdc6136a96c963f129aede9c61280e49fb",
+      "declaration_header": "theorem GRH_IMPLIES_TEXTBOOK_GENERALIZED_RIEMANN_HYPOTHESIS :\n    GeneralizedRiemannHypothesis → TextbookGeneralizedRiemannHypothesis",
+      "classification": "DERIVED_HELPER_OR_REFORMULATION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "CayleyGRHStrong.TEXTBOOK_GENERALIZED_RIEMANN_HYPOTHESIS_IMPLIES_GRH",
+      "module": "TextbookDirichletGRH",
+      "source_path": "TextbookDirichletGRH.lean",
+      "source_line": 129,
+      "source_sha256": "95f6f1563f9701f7c144be437713abbdc6136a96c963f129aede9c61280e49fb",
+      "declaration_header": "theorem TEXTBOOK_GENERALIZED_RIEMANN_HYPOTHESIS_IMPLIES_GRH :\n    TextbookGeneralizedRiemannHypothesis → GeneralizedRiemannHypothesis",
+      "classification": "DERIVED_HELPER_OR_REFORMULATION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "CayleyGRHStrong.TEXTBOOK_GENERALIZED_RIEMANN_HYPOTHESIS_IFF_GRH",
+      "module": "TextbookDirichletGRH",
+      "source_path": "TextbookDirichletGRH.lean",
+      "source_line": 136,
+      "source_sha256": "95f6f1563f9701f7c144be437713abbdc6136a96c963f129aede9c61280e49fb",
+      "declaration_header": "theorem TEXTBOOK_GENERALIZED_RIEMANN_HYPOTHESIS_IFF_GRH :\n    TextbookGeneralizedRiemannHypothesis ↔ GeneralizedRiemannHypothesis",
+      "classification": "GRH_EQUIVALENT_CRITERION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "CayleyGRHStrong.GENERALIZED_COMPLETED_PAIR_ACTUAL_CAYLEY_OBSERVABLE_CRITICAL_TOTAL_IFF_TEXTBOOK_GRH",
+      "module": "TextbookDirichletGRH",
+      "source_path": "TextbookDirichletGRH.lean",
+      "source_line": 144,
+      "source_sha256": "95f6f1563f9701f7c144be437713abbdc6136a96c963f129aede9c61280e49fb",
+      "declaration_header": "theorem GENERALIZED_COMPLETED_PAIR_ACTUAL_CAYLEY_OBSERVABLE_CRITICAL_TOTAL_IFF_TEXTBOOK_GRH :\n    GeneralizedCompletedPairActualCayleyObservableCriticalTotal ↔\n      TextbookGeneralizedRiemannHypothesis",
+      "classification": "GRH_EQUIVALENT_CRITERION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "CayleyGRHStrong.TEXTBOOK_ALL_CHARACTERS_GRH_A_TIER_ATLAS",
+      "module": "TextbookDirichletGRH",
+      "source_path": "TextbookDirichletGRH.lean",
+      "source_line": 152,
+      "source_sha256": "95f6f1563f9701f7c144be437713abbdc6136a96c963f129aede9c61280e49fb",
+      "declaration_header": "theorem TEXTBOOK_ALL_CHARACTERS_GRH_A_TIER_ATLAS :\n    (TextbookGeneralizedRiemannHypothesis ↔ GeneralizedRiemannHypothesis) ∧\n    (GeneralizedCompletedPairSlitThetaCriticalZeroFree ↔\n      TextbookGeneralizedRiemannHypothesis) ∧\n    (GeneralizedCompletedPairSlitThetaCriticalLogDerivativeTotal ↔\n      TextbookGeneralizedRiemannHypothesis) ∧\n    (GeneralizedCompletedPairActualCayleyObservableCriticalTotal ↔\n      TextbookGeneralizedRiemannHypothesis) ∧\n    (TextbookGeneralizedRiemannHypothesis → _root_.RiemannHypothesis)",
+      "classification": "CONJUNCTION_OF_EXISTING_RESULTS",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "RHToGRHFrontier.RIEMANN_TO_GENERALIZED_CAYLEY_LIFT_IFF_RH_IMPLIES_GRH",
+      "module": "RHToGRHCayleyLiftFrontier",
+      "source_path": "RHToGRHCayleyLiftFrontier.lean",
+      "source_line": 26,
+      "source_sha256": "1f4305998e7befe68c59fbdac4544f942508e5c15a4a147fa6a602a1483c5e2f",
+      "declaration_header": "theorem RIEMANN_TO_GENERALIZED_CAYLEY_LIFT_IFF_RH_IMPLIES_GRH :\n    RiemannToGeneralizedCayleyLift ↔\n      (_root_.RiemannHypothesis → GeneralizedRiemannHypothesis)",
+      "classification": "REFORMULATION_OF_OPEN_RH_TO_GRH_IMPLICATION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "RHToGRHFrontier.RIEMANN_TO_GENERALIZED_CAYLEY_LIFT_IFF_RH_IMPLIES_TEXTBOOK_GRH",
+      "module": "RHToGRHCayleyLiftFrontier",
+      "source_path": "RHToGRHCayleyLiftFrontier.lean",
+      "source_line": 43,
+      "source_sha256": "1f4305998e7befe68c59fbdac4544f942508e5c15a4a147fa6a602a1483c5e2f",
+      "declaration_header": "theorem RIEMANN_TO_GENERALIZED_CAYLEY_LIFT_IFF_RH_IMPLIES_TEXTBOOK_GRH :\n    RiemannToGeneralizedCayleyLift ↔\n      (_root_.RiemannHypothesis → TextbookGeneralizedRiemannHypothesis)",
+      "classification": "REFORMULATION_OF_OPEN_RH_TO_GRH_IMPLICATION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "RHToGRHFrontier.GRH_TO_RH_ALREADY_CLOSED",
+      "module": "RHToGRHCayleyLiftFrontier",
+      "source_path": "RHToGRHCayleyLiftFrontier.lean",
+      "source_line": 60,
+      "source_sha256": "1f4305998e7befe68c59fbdac4544f942508e5c15a4a147fa6a602a1483c5e2f",
+      "declaration_header": "theorem GRH_TO_RH_ALREADY_CLOSED :\n    GeneralizedRiemannHypothesis → _root_.RiemannHypothesis",
+      "classification": "GRH_TO_ACTUAL_MATHLIB_RH",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "RHToGRHFrontier.RH_IFF_GRH_OF_GENERALIZED_CAYLEY_LIFT",
+      "module": "RHToGRHCayleyLiftFrontier",
+      "source_path": "RHToGRHCayleyLiftFrontier.lean",
+      "source_line": 68,
+      "source_sha256": "1f4305998e7befe68c59fbdac4544f942508e5c15a4a147fa6a602a1483c5e2f",
+      "declaration_header": "theorem RH_IFF_GRH_OF_GENERALIZED_CAYLEY_LIFT\n    (hLift : RiemannToGeneralizedCayleyLift) :\n    _root_.RiemannHypothesis ↔ GeneralizedRiemannHypothesis",
+      "classification": "CONDITIONAL_RH_GRH_EQUIVALENCE",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "RHToGRHFrontier.RH_IFF_TEXTBOOK_GRH_OF_GENERALIZED_CAYLEY_LIFT",
+      "module": "RHToGRHCayleyLiftFrontier",
+      "source_path": "RHToGRHCayleyLiftFrontier.lean",
+      "source_line": 80,
+      "source_sha256": "1f4305998e7befe68c59fbdac4544f942508e5c15a4a147fa6a602a1483c5e2f",
+      "declaration_header": "theorem RH_IFF_TEXTBOOK_GRH_OF_GENERALIZED_CAYLEY_LIFT\n    (hLift : RiemannToGeneralizedCayleyLift) :\n    _root_.RiemannHypothesis ↔ TextbookGeneralizedRiemannHypothesis",
+      "classification": "CONDITIONAL_RH_GRH_EQUIVALENCE",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "RHToGRHFrontier.GRH_OF_CONSTRUCTED_RH_AND_GENERALIZED_CAYLEY_LIFT",
+      "module": "RHToGRHCayleyLiftFrontier",
+      "source_path": "RHToGRHCayleyLiftFrontier.lean",
+      "source_line": 94,
+      "source_sha256": "1f4305998e7befe68c59fbdac4544f942508e5c15a4a147fa6a602a1483c5e2f",
+      "declaration_header": "theorem GRH_OF_CONSTRUCTED_RH_AND_GENERALIZED_CAYLEY_LIFT\n    (hRH : _root_.RiemannHypothesis)\n    (hLift : RiemannToGeneralizedCayleyLift) :\n    GeneralizedRiemannHypothesis",
+      "classification": "ASSEMBLY_REQUIRING_RH_AND_LIFT",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "RHToGRHFrontier.TEXTBOOK_GRH_OF_CONSTRUCTED_RH_AND_GENERALIZED_CAYLEY_LIFT",
+      "module": "RHToGRHCayleyLiftFrontier",
+      "source_path": "RHToGRHCayleyLiftFrontier.lean",
+      "source_line": 105,
+      "source_sha256": "1f4305998e7befe68c59fbdac4544f942508e5c15a4a147fa6a602a1483c5e2f",
+      "declaration_header": "theorem TEXTBOOK_GRH_OF_CONSTRUCTED_RH_AND_GENERALIZED_CAYLEY_LIFT\n    (hRH : _root_.RiemannHypothesis)\n    (hLift : RiemannToGeneralizedCayleyLift) :\n    TextbookGeneralizedRiemannHypothesis",
+      "classification": "ASSEMBLY_REQUIRING_RH_AND_LIFT",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "RHToGRHFrontier.RH_TO_GRH_SINGLE_FRONTIER_ATLAS",
+      "module": "RHToGRHCayleyLiftFrontier",
+      "source_path": "RHToGRHCayleyLiftFrontier.lean",
+      "source_line": 117,
+      "source_sha256": "1f4305998e7befe68c59fbdac4544f942508e5c15a4a147fa6a602a1483c5e2f",
+      "declaration_header": "theorem RH_TO_GRH_SINGLE_FRONTIER_ATLAS :\n    (RiemannToGeneralizedCayleyLift ↔\n      (_root_.RiemannHypothesis → GeneralizedRiemannHypothesis)) ∧\n    (RiemannToGeneralizedCayleyLift ↔\n      (_root_.RiemannHypothesis → TextbookGeneralizedRiemannHypothesis)) ∧\n    (GeneralizedRiemannHypothesis → _root_.RiemannHypothesis)",
+      "classification": "CONJUNCTION_OF_EXISTING_RESULTS",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "RHToGRHCrossCayley.GOLPHI_TO_GENERALIZED_COMPLETED_PAIR_CAYLEY_TRANSFER_IFF_RH_IMPLIES_GRH",
+      "module": "RHToGRHCrossCayleyDisassembly",
+      "source_path": "RHToGRHCrossCayleyDisassembly.lean",
+      "source_line": 34,
+      "source_sha256": "56819defdfea949bfbaed3e836de87e0f00f020acbf640f70c76d40aa0221661",
+      "declaration_header": "theorem GOLPHI_TO_GENERALIZED_COMPLETED_PAIR_CAYLEY_TRANSFER_IFF_RH_IMPLIES_GRH :\n    GolPhiToGeneralizedCompletedPairCayleyTransfer ↔\n      (_root_.RiemannHypothesis → GeneralizedRiemannHypothesis)",
+      "classification": "REFORMULATION_OF_OPEN_RH_TO_GRH_IMPLICATION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "RHToGRHCrossCayley.ZETA_TO_GENERALIZED_COMPLETED_PAIR_CAYLEY_TRANSFER_IFF_RH_IMPLIES_GRH",
+      "module": "RHToGRHCrossCayleyDisassembly",
+      "source_path": "RHToGRHCrossCayleyDisassembly.lean",
+      "source_line": 55,
+      "source_sha256": "56819defdfea949bfbaed3e836de87e0f00f020acbf640f70c76d40aa0221661",
+      "declaration_header": "theorem ZETA_TO_GENERALIZED_COMPLETED_PAIR_CAYLEY_TRANSFER_IFF_RH_IMPLIES_GRH :\n    ZetaToGeneralizedCompletedPairCayleyTransfer ↔\n      (_root_.RiemannHypothesis → GeneralizedRiemannHypothesis)",
+      "classification": "REFORMULATION_OF_OPEN_RH_TO_GRH_IMPLICATION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "RHToGRHCrossCayley.GOLPHI_TRANSFER_IFF_ZETA_TRANSFER",
+      "module": "RHToGRHCrossCayleyDisassembly",
+      "source_path": "RHToGRHCrossCayleyDisassembly.lean",
+      "source_line": 76,
+      "source_sha256": "56819defdfea949bfbaed3e836de87e0f00f020acbf640f70c76d40aa0221661",
+      "declaration_header": "theorem GOLPHI_TRANSFER_IFF_ZETA_TRANSFER :\n    GolPhiToGeneralizedCompletedPairCayleyTransfer ↔\n      ZetaToGeneralizedCompletedPairCayleyTransfer",
+      "classification": "DERIVED_HELPER_OR_REFORMULATION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "RHToGRHCrossCayley.GOLPHI_CROSS_CAYLEY_TRANSFER_IFF_SINGLE_FRONTIER",
+      "module": "RHToGRHCrossCayleyDisassembly",
+      "source_path": "RHToGRHCrossCayleyDisassembly.lean",
+      "source_line": 87,
+      "source_sha256": "56819defdfea949bfbaed3e836de87e0f00f020acbf640f70c76d40aa0221661",
+      "declaration_header": "theorem GOLPHI_CROSS_CAYLEY_TRANSFER_IFF_SINGLE_FRONTIER :\n    GolPhiToGeneralizedCompletedPairCayleyTransfer ↔\n      RHToGRHFrontier.RiemannToGeneralizedCayleyLift",
+      "classification": "DERIVED_HELPER_OR_REFORMULATION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "RHToGRHCrossCayley.GOLPHI_CROSS_CAYLEY_TRANSFER_IFF_RH_IMPLIES_TEXTBOOK_GRH",
+      "module": "RHToGRHCrossCayleyDisassembly",
+      "source_path": "RHToGRHCrossCayleyDisassembly.lean",
+      "source_line": 95,
+      "source_sha256": "56819defdfea949bfbaed3e836de87e0f00f020acbf640f70c76d40aa0221661",
+      "declaration_header": "theorem GOLPHI_CROSS_CAYLEY_TRANSFER_IFF_RH_IMPLIES_TEXTBOOK_GRH :\n    GolPhiToGeneralizedCompletedPairCayleyTransfer ↔\n      (_root_.RiemannHypothesis → TextbookGeneralizedRiemannHypothesis)",
+      "classification": "REFORMULATION_OF_OPEN_RH_TO_GRH_IMPLICATION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "RHToGRHCrossCayley.RH_IFF_GRH_OF_CROSS_CAYLEY_TRANSFER",
+      "module": "RHToGRHCrossCayleyDisassembly",
+      "source_path": "RHToGRHCrossCayleyDisassembly.lean",
+      "source_line": 103,
+      "source_sha256": "56819defdfea949bfbaed3e836de87e0f00f020acbf640f70c76d40aa0221661",
+      "declaration_header": "theorem RH_IFF_GRH_OF_CROSS_CAYLEY_TRANSFER\n    (hTransfer : GolPhiToGeneralizedCompletedPairCayleyTransfer) :\n    _root_.RiemannHypothesis ↔ GeneralizedRiemannHypothesis",
+      "classification": "CONDITIONAL_RH_GRH_EQUIVALENCE",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "RHToGRHCrossCayley.RH_TO_GRH_CROSS_CAYLEY_DISASSEMBLY_ATLAS",
+      "module": "RHToGRHCrossCayleyDisassembly",
+      "source_path": "RHToGRHCrossCayleyDisassembly.lean",
+      "source_line": 114,
+      "source_sha256": "56819defdfea949bfbaed3e836de87e0f00f020acbf640f70c76d40aa0221661",
+      "declaration_header": "theorem RH_TO_GRH_CROSS_CAYLEY_DISASSEMBLY_ATLAS :\n    (GolPhiToGeneralizedCompletedPairCayleyTransfer ↔\n      (_root_.RiemannHypothesis → GeneralizedRiemannHypothesis)) ∧\n    (ZetaToGeneralizedCompletedPairCayleyTransfer ↔\n      (_root_.RiemannHypothesis → GeneralizedRiemannHypothesis)) ∧\n    (GolPhiToGeneralizedCompletedPairCayleyTransfer ↔\n      RHToGRHFrontier.RiemannToGeneralizedCayleyLift)",
+      "classification": "CONJUNCTION_OF_EXISTING_RESULTS",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "RHToGRHPrimitiveCharacter.PRIMITIVE_CHARACTER_SLIT_THETA_ZERO_FREE_IFF_GENERALIZED_ZERO_FREE_LIFT",
+      "module": "RHToGRHPrimitiveCharacterFrontier",
+      "source_path": "RHToGRHPrimitiveCharacterFrontier.lean",
+      "source_line": 34,
+      "source_sha256": "f72650a4756e0785316309a53f208c3dbd4d6fd4067526ccbc5036f25f262254",
+      "declaration_header": "theorem PRIMITIVE_CHARACTER_SLIT_THETA_ZERO_FREE_IFF_GENERALIZED_ZERO_FREE_LIFT :\n    RiemannToPrimitiveCharacterSlitThetaZeroFree ↔\n      (_root_.RiemannHypothesis →\n        GeneralizedCompletedPairSlitThetaCriticalZeroFree)",
+      "classification": "DERIVED_HELPER_OR_REFORMULATION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "RHToGRHPrimitiveCharacter.PRIMITIVE_CHARACTER_ACTUAL_CAYLEY_TOTAL_IFF_GENERALIZED_CAYLEY_LIFT",
+      "module": "RHToGRHPrimitiveCharacterFrontier",
+      "source_path": "RHToGRHPrimitiveCharacterFrontier.lean",
+      "source_line": 48,
+      "source_sha256": "f72650a4756e0785316309a53f208c3dbd4d6fd4067526ccbc5036f25f262254",
+      "declaration_header": "theorem PRIMITIVE_CHARACTER_ACTUAL_CAYLEY_TOTAL_IFF_GENERALIZED_CAYLEY_LIFT :\n    RiemannToPrimitiveCharacterActualCayleyTotal ↔\n      (_root_.RiemannHypothesis →\n        GeneralizedCompletedPairActualCayleyObservableCriticalTotal)",
+      "classification": "DERIVED_HELPER_OR_REFORMULATION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "RHToGRHPrimitiveCharacter.PRIMITIVE_CHARACTER_ACTUAL_CAYLEY_TOTAL_IFF_SLIT_THETA_ZERO_FREE",
+      "module": "RHToGRHPrimitiveCharacterFrontier",
+      "source_path": "RHToGRHPrimitiveCharacterFrontier.lean",
+      "source_line": 62,
+      "source_sha256": "f72650a4756e0785316309a53f208c3dbd4d6fd4067526ccbc5036f25f262254",
+      "declaration_header": "theorem PRIMITIVE_CHARACTER_ACTUAL_CAYLEY_TOTAL_IFF_SLIT_THETA_ZERO_FREE :\n    RiemannToPrimitiveCharacterActualCayleyTotal ↔\n      RiemannToPrimitiveCharacterSlitThetaZeroFree",
+      "classification": "DERIVED_HELPER_OR_REFORMULATION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "RHToGRHPrimitiveCharacter.PRIMITIVE_CHARACTER_SLIT_THETA_ZERO_FREE_IFF_RH_IMPLIES_GRH",
+      "module": "RHToGRHPrimitiveCharacterFrontier",
+      "source_path": "RHToGRHPrimitiveCharacterFrontier.lean",
+      "source_line": 79,
+      "source_sha256": "f72650a4756e0785316309a53f208c3dbd4d6fd4067526ccbc5036f25f262254",
+      "declaration_header": "theorem PRIMITIVE_CHARACTER_SLIT_THETA_ZERO_FREE_IFF_RH_IMPLIES_GRH :\n    RiemannToPrimitiveCharacterSlitThetaZeroFree ↔\n      (_root_.RiemannHypothesis → GeneralizedRiemannHypothesis)",
+      "classification": "REFORMULATION_OF_OPEN_RH_TO_GRH_IMPLICATION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "RHToGRHPrimitiveCharacter.PRIMITIVE_CHARACTER_ACTUAL_CAYLEY_TOTAL_IFF_RH_IMPLIES_GRH",
+      "module": "RHToGRHPrimitiveCharacterFrontier",
+      "source_path": "RHToGRHPrimitiveCharacterFrontier.lean",
+      "source_line": 95,
+      "source_sha256": "f72650a4756e0785316309a53f208c3dbd4d6fd4067526ccbc5036f25f262254",
+      "declaration_header": "theorem PRIMITIVE_CHARACTER_ACTUAL_CAYLEY_TOTAL_IFF_RH_IMPLIES_GRH :\n    RiemannToPrimitiveCharacterActualCayleyTotal ↔\n      (_root_.RiemannHypothesis → GeneralizedRiemannHypothesis)",
+      "classification": "REFORMULATION_OF_OPEN_RH_TO_GRH_IMPLICATION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "RHToGRHPrimitiveCharacter.CROSS_CAYLEY_TRANSFER_IFF_PRIMITIVE_CHARACTER_SLIT_THETA_ZERO_FREE",
+      "module": "RHToGRHPrimitiveCharacterFrontier",
+      "source_path": "RHToGRHPrimitiveCharacterFrontier.lean",
+      "source_line": 107,
+      "source_sha256": "f72650a4756e0785316309a53f208c3dbd4d6fd4067526ccbc5036f25f262254",
+      "declaration_header": "theorem CROSS_CAYLEY_TRANSFER_IFF_PRIMITIVE_CHARACTER_SLIT_THETA_ZERO_FREE :\n    GolPhiToGeneralizedCompletedPairCayleyTransfer ↔\n      RiemannToPrimitiveCharacterSlitThetaZeroFree",
+      "classification": "DERIVED_HELPER_OR_REFORMULATION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "RHToGRHPrimitiveCharacter.CROSS_CAYLEY_TRANSFER_IFF_PRIMITIVE_CHARACTER_ACTUAL_CAYLEY_TOTAL",
+      "module": "RHToGRHPrimitiveCharacterFrontier",
+      "source_path": "RHToGRHPrimitiveCharacterFrontier.lean",
+      "source_line": 115,
+      "source_sha256": "f72650a4756e0785316309a53f208c3dbd4d6fd4067526ccbc5036f25f262254",
+      "declaration_header": "theorem CROSS_CAYLEY_TRANSFER_IFF_PRIMITIVE_CHARACTER_ACTUAL_CAYLEY_TOTAL :\n    GolPhiToGeneralizedCompletedPairCayleyTransfer ↔\n      RiemannToPrimitiveCharacterActualCayleyTotal",
+      "classification": "DERIVED_HELPER_OR_REFORMULATION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "RHToGRHPrimitiveCharacter.RH_TO_GRH_PRIMITIVE_CHARACTER_FRONTIER_ATLAS",
+      "module": "RHToGRHPrimitiveCharacterFrontier",
+      "source_path": "RHToGRHPrimitiveCharacterFrontier.lean",
+      "source_line": 126,
+      "source_sha256": "f72650a4756e0785316309a53f208c3dbd4d6fd4067526ccbc5036f25f262254",
+      "declaration_header": "theorem RH_TO_GRH_PRIMITIVE_CHARACTER_FRONTIER_ATLAS :\n    (RiemannToPrimitiveCharacterSlitThetaZeroFree ↔\n      (_root_.RiemannHypothesis → GeneralizedRiemannHypothesis)) ∧\n    (RiemannToPrimitiveCharacterActualCayleyTotal ↔\n      (_root_.RiemannHypothesis → GeneralizedRiemannHypothesis)) ∧\n    (GolPhiToGeneralizedCompletedPairCayleyTransfer ↔\n      RiemannToPrimitiveCharacterSlitThetaZeroFree) ∧\n    (RiemannToPrimitiveCharacterActualCayleyTotal ↔\n      RiemannToPrimitiveCharacterSlitThetaZeroFree)",
+      "classification": "CONJUNCTION_OF_EXISTING_RESULTS",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "RHToGRHCenteredPair.CENTERED_COMPLETED_PAIR_NONZERO_IFF_PRIMITIVE_SLIT_THETA_ZERO_FREE",
+      "module": "RHToGRHCenteredPairFrontier",
+      "source_path": "RHToGRHCenteredPairFrontier.lean",
+      "source_line": 29,
+      "source_sha256": "dd5c232d84b0d5d709b6f8fc1f9883578695dfae3824311c4e831999bc6cd174",
+      "declaration_header": "theorem CENTERED_COMPLETED_PAIR_NONZERO_IFF_PRIMITIVE_SLIT_THETA_ZERO_FREE :\n    RiemannToPrimitiveCharacterCenteredCompletedPairNonzero ↔\n      RiemannToPrimitiveCharacterSlitThetaZeroFree",
+      "classification": "DERIVED_HELPER_OR_REFORMULATION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "RHToGRHCenteredPair.CENTERED_COMPLETED_PAIR_NONZERO_IFF_RH_IMPLIES_GRH",
+      "module": "RHToGRHCenteredPairFrontier",
+      "source_path": "RHToGRHCenteredPairFrontier.lean",
+      "source_line": 35,
+      "source_sha256": "dd5c232d84b0d5d709b6f8fc1f9883578695dfae3824311c4e831999bc6cd174",
+      "declaration_header": "theorem CENTERED_COMPLETED_PAIR_NONZERO_IFF_RH_IMPLIES_GRH :\n    RiemannToPrimitiveCharacterCenteredCompletedPairNonzero ↔\n      (_root_.RiemannHypothesis → CayleyGRHClosure.GeneralizedRiemannHypothesis)",
+      "classification": "REFORMULATION_OF_OPEN_RH_TO_GRH_IMPLICATION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "RHToGRHCenteredPair.CENTERED_COMPLETED_PAIR_GLOBAL_IFF_POINTWISE",
+      "module": "RHToGRHCenteredPairFrontier",
+      "source_path": "RHToGRHCenteredPairFrontier.lean",
+      "source_line": 57,
+      "source_sha256": "dd5c232d84b0d5d709b6f8fc1f9883578695dfae3824311c4e831999bc6cd174",
+      "declaration_header": "theorem CENTERED_COMPLETED_PAIR_GLOBAL_IFF_POINTWISE :\n    RiemannToPrimitiveCharacterCenteredCompletedPairNonzero ↔\n      (_root_.RiemannHypothesis →\n        ∀ (N : ℕ) [NeZero N] (χ : DirichletCharacter ℂ N),\n          ∀ (hprim : χ.IsPrimitive) (z : ℂ)\n            (hzdom : z ∈ completedPairCriticalSquareDomain)\n            (hzslit : z ∈ Complex.slitPlane),\n              CenteredCompletedPairPointObligation\n                (N := N) (χ := χ) hRH hprim z hzdom hzslit)",
+      "classification": "DERIVED_HELPER_OR_REFORMULATION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "RHToGRHCenteredPair.RH_TO_GRH_CENTERED_PAIR_FRONTIER_ATLAS",
+      "module": "RHToGRHCenteredPairFrontier",
+      "source_path": "RHToGRHCenteredPairFrontier.lean",
+      "source_line": 69,
+      "source_sha256": "dd5c232d84b0d5d709b6f8fc1f9883578695dfae3824311c4e831999bc6cd174",
+      "declaration_header": "theorem RH_TO_GRH_CENTERED_PAIR_FRONTIER_ATLAS :\n    (RiemannToPrimitiveCharacterCenteredCompletedPairNonzero ↔\n      RiemannToPrimitiveCharacterSlitThetaZeroFree) ∧\n    (RiemannToPrimitiveCharacterCenteredCompletedPairNonzero ↔\n      (_root_.RiemannHypothesis → CayleyGRHClosure.GeneralizedRiemannHypothesis))",
+      "classification": "CONJUNCTION_OF_EXISTING_RESULTS",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "RHToGRHReflectionPair.REFLECTION_PAIR_NONZERO_IFF_CENTERED_PAIR_NONZERO",
+      "module": "RHToGRHReflectionPairFrontier",
+      "source_path": "RHToGRHReflectionPairFrontier.lean",
+      "source_line": 24,
+      "source_sha256": "0be288661754e85e00bc9ceab7905850cfb44bb9c63366078bdaccabafb5ee8e",
+      "declaration_header": "theorem REFLECTION_PAIR_NONZERO_IFF_CENTERED_PAIR_NONZERO :\n    RiemannToPrimitiveCharacterReflectionPairNonzero ↔\n      RiemannToPrimitiveCharacterCenteredCompletedPairNonzero",
+      "classification": "DERIVED_HELPER_OR_REFORMULATION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "RHToGRHReflectionPair.REFLECTION_PAIR_NONZERO_IFF_RH_IMPLIES_GRH",
+      "module": "RHToGRHReflectionPairFrontier",
+      "source_path": "RHToGRHReflectionPairFrontier.lean",
+      "source_line": 30,
+      "source_sha256": "0be288661754e85e00bc9ceab7905850cfb44bb9c63366078bdaccabafb5ee8e",
+      "declaration_header": "theorem REFLECTION_PAIR_NONZERO_IFF_RH_IMPLIES_GRH :\n    RiemannToPrimitiveCharacterReflectionPairNonzero ↔\n      (_root_.RiemannHypothesis → CayleyGRHClosure.GeneralizedRiemannHypothesis)",
+      "classification": "REFORMULATION_OF_OPEN_RH_TO_GRH_IMPLICATION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "RHToGRHReflectionPair.RH_TO_GRH_REFLECTION_PAIR_FRONTIER_ATLAS",
+      "module": "RHToGRHReflectionPairFrontier",
+      "source_path": "RHToGRHReflectionPairFrontier.lean",
+      "source_line": 49,
+      "source_sha256": "0be288661754e85e00bc9ceab7905850cfb44bb9c63366078bdaccabafb5ee8e",
+      "declaration_header": "theorem RH_TO_GRH_REFLECTION_PAIR_FRONTIER_ATLAS :\n    (RiemannToPrimitiveCharacterReflectionPairNonzero ↔\n      RiemannToPrimitiveCharacterCenteredCompletedPairNonzero) ∧\n    (RiemannToPrimitiveCharacterReflectionPairNonzero ↔\n      (_root_.RiemannHypothesis → CayleyGRHClosure.GeneralizedRiemannHypothesis))",
+      "classification": "CONJUNCTION_OF_EXISTING_RESULTS",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "RHToGRHCompletedPairFactor.COMPLETED_PAIR_FACTORS_NONZERO_IFF_REFLECTION_PAIR_NONZERO",
+      "module": "RHToGRHCompletedPairFactorFrontier",
+      "source_path": "RHToGRHCompletedPairFactorFrontier.lean",
+      "source_line": 29,
+      "source_sha256": "ab574e0d94e421df46da1ebab7ea7b3dbc177e883f3ddf93d88211201c930b95",
+      "declaration_header": "theorem COMPLETED_PAIR_FACTORS_NONZERO_IFF_REFLECTION_PAIR_NONZERO :\n    RiemannToPrimitiveCharacterCompletedPairFactorsNonzero ↔\n      RiemannToPrimitiveCharacterReflectionPairNonzero",
+      "classification": "DERIVED_HELPER_OR_REFORMULATION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "RHToGRHCompletedPairFactor.COMPLETED_PAIR_FACTORS_NONZERO_IFF_RH_IMPLIES_GRH",
+      "module": "RHToGRHCompletedPairFactorFrontier",
+      "source_path": "RHToGRHCompletedPairFactorFrontier.lean",
+      "source_line": 48,
+      "source_sha256": "ab574e0d94e421df46da1ebab7ea7b3dbc177e883f3ddf93d88211201c930b95",
+      "declaration_header": "theorem COMPLETED_PAIR_FACTORS_NONZERO_IFF_RH_IMPLIES_GRH :\n    RiemannToPrimitiveCharacterCompletedPairFactorsNonzero ↔\n      (_root_.RiemannHypothesis → CayleyGRHClosure.GeneralizedRiemannHypothesis)",
+      "classification": "REFORMULATION_OF_OPEN_RH_TO_GRH_IMPLICATION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "RHToGRHCompletedPairFactor.RH_TO_GRH_COMPLETED_PAIR_FACTOR_FRONTIER_ATLAS",
+      "module": "RHToGRHCompletedPairFactorFrontier",
+      "source_path": "RHToGRHCompletedPairFactorFrontier.lean",
+      "source_line": 78,
+      "source_sha256": "ab574e0d94e421df46da1ebab7ea7b3dbc177e883f3ddf93d88211201c930b95",
+      "declaration_header": "theorem RH_TO_GRH_COMPLETED_PAIR_FACTOR_FRONTIER_ATLAS :\n    (RiemannToPrimitiveCharacterCompletedPairFactorsNonzero ↔\n      RiemannToPrimitiveCharacterReflectionPairNonzero) ∧\n    (RiemannToPrimitiveCharacterCompletedPairFactorsNonzero ↔\n      (_root_.RiemannHypothesis → CayleyGRHClosure.GeneralizedRiemannHypothesis))",
+      "classification": "CONJUNCTION_OF_EXISTING_RESULTS",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "RHToGRHCompletedLFactor.COMPLETED_L_FACTORS_NONZERO_IFF_COMPLETED_PAIR_FACTORS_NONZERO",
+      "module": "RHToGRHCompletedLFactorFrontier",
+      "source_path": "RHToGRHCompletedLFactorFrontier.lean",
+      "source_line": 33,
+      "source_sha256": "a74bc6e0f557fa310fb8e596b72a231188c4b01872f56167eb6df0ec8644cc2d",
+      "declaration_header": "theorem COMPLETED_L_FACTORS_NONZERO_IFF_COMPLETED_PAIR_FACTORS_NONZERO :\n    RiemannToPrimitiveCharacterCompletedLFactorsNonzero ↔\n      RiemannToPrimitiveCharacterCompletedPairFactorsNonzero",
+      "classification": "DERIVED_HELPER_OR_REFORMULATION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "RHToGRHCompletedLFactor.COMPLETED_L_FACTORS_NONZERO_IFF_RH_IMPLIES_GRH",
+      "module": "RHToGRHCompletedLFactorFrontier",
+      "source_path": "RHToGRHCompletedLFactorFrontier.lean",
+      "source_line": 61,
+      "source_sha256": "a74bc6e0f557fa310fb8e596b72a231188c4b01872f56167eb6df0ec8644cc2d",
+      "declaration_header": "theorem COMPLETED_L_FACTORS_NONZERO_IFF_RH_IMPLIES_GRH :\n    RiemannToPrimitiveCharacterCompletedLFactorsNonzero ↔\n      (_root_.RiemannHypothesis → CayleyGRHClosure.GeneralizedRiemannHypothesis)",
+      "classification": "REFORMULATION_OF_OPEN_RH_TO_GRH_IMPLICATION",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    },
+    {
+      "name": "RHToGRHCompletedLFactor.RH_TO_GRH_COMPLETED_L_FACTOR_FRONTIER_ATLAS",
+      "module": "RHToGRHCompletedLFactorFrontier",
+      "source_path": "RHToGRHCompletedLFactorFrontier.lean",
+      "source_line": 80,
+      "source_sha256": "a74bc6e0f557fa310fb8e596b72a231188c4b01872f56167eb6df0ec8644cc2d",
+      "declaration_header": "theorem RH_TO_GRH_COMPLETED_L_FACTOR_FRONTIER_ATLAS :\n    (RiemannToPrimitiveCharacterCompletedLFactorsNonzero ↔\n      RiemannToPrimitiveCharacterCompletedPairFactorsNonzero) ∧\n    (RiemannToPrimitiveCharacterCompletedLFactorsNonzero ↔\n      (_root_.RiemannHypothesis → CayleyGRHClosure.GeneralizedRiemannHypothesis))",
+      "classification": "CONJUNCTION_OF_EXISTING_RESULTS",
+      "source_has_proof_body": true,
+      "native_verification": "NOT_RUN"
+    }
+  ],
+  "follow_up_source_issue": {
+    "path": "RHToGRHCenteredPairFrontier.lean",
+    "line": 57,
+    "theorem": "RHToGRHCenteredPair.CENTERED_COMPLETED_PAIR_GLOBAL_IFF_POINTWISE",
+    "status": "SOURCE_SCOPING_ISSUE_NATIVE_SIGNATURE_UNVERIFIED",
+    "suggested_future_fix": "Replace anonymous (_root_.RiemannHypothesis → ...) with (∀ hRH : _root_.RiemannHypothesis, ...) to bind the intended local hypothesis. Apply only as an explicitly recorded derived-source patch, keeping archived original bytes.",
+    "affects_main_endpoint_dependency": "This helper is not referenced by the principal equivalence proof bodies; the file containing it remains in the module import closure."
+  }
+}

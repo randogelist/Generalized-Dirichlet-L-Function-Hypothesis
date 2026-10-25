@@ -1,0 +1,12 @@
+.grh-cache/
+.lake/
+*.olean
+*.ilean
+*.ir
+*.o
+*.c
+*.exe
+*.dll
+*.pyc
+__pycache__/
+*.zip

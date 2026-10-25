@@ -1,0 +1,17 @@
+GP_BKQR_CAYLEY_RH_A_TIER_CLOSURE_LEAN_v0_4_2_FIX2
+
+Lean 4.33 compatibility-only patch after the user's native v0.4.1 FIX1 run.
+
+ZeroEquivalence.lean, ACTUAL_CAYLEY_OBSERVABLE_NONE_IFF_COMPLETED_GOLPHI_ZERO:
+replace the underpowered terminal `simp` with an explicit case split on the two
+literal slitTheta zero predicates.  In each of the three possible branches
+(plus zero; minus zero; neither zero), `actualCayleyObservable` reduces
+definitionally to the matching Option constructor and the disjunction closes.
+
+This repairs only propositional normalization.  No definitions, theorem
+statements, analytic identities, zero predicates, RH-equivalence interfaces,
+imports, or closure claims changed.
+
+FIX1 remains incorporated:
+1. exact natural normal form in natCast_mul_natCast_cpow;
+2. explicit `change` for completedGolPhiS1 differentiability.

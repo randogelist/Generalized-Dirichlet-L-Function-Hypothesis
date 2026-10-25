@@ -1,0 +1,19 @@
+GP_BKQR_CAYLEY_GRH_SLIT_THETA_A_TIER_LEAN_v0_7_0
+
+BASELINE:
+- v0.6.0 FIX5 native Windows Lean 4.33.0 PASS.
+
+NEW UNCONDITIONAL TARGETS:
+- principal sqrt square identity exposed explicitly;
+- sqrt(w^2) = w or -w;
+- exact value-level square descent Theta_chi(w^2) = H_chi(w);
+- exact zero descent Theta_chi(w^2)=0 iff H_chi(w)=0;
+- w^2 avoids Complex.slitPlane iff Re(w)=0;
+- actual completed-pair slit-theta critical-domain zero-freeness iff centered completed-pair RH;
+- family-level actual slit-theta critical-domain zero-freeness iff GRH;
+- extended A-tier atlas collecting the new analytic zero-free formulation.
+
+NO CLAIM:
+- no unconditional GRH proof;
+- no unconditional slit-theta zero-free proof;
+- no unconditional critical-line forcing theorem.

@@ -1,0 +1,15 @@
+FIX3 changes runner only.
+
+Observed FIX2 failure:
+  after COMPILE_START=GeneralizedCharacter.lean, cmd.exe printed
+  "Die Batchdatei kann nicht gefunden werden."
+
+Diagnosis:
+  batch runner control-flow/subroutine failure, not a Lean diagnostic.
+
+Change:
+  removed all CALL-based :hydrate_module and :compile_cached subroutines.
+  run.cmd now compiles modules in a straight-line sequence into a persistent
+  project build directory while reusing the existing cached Mathlib tree.
+
+Lean theorem source files are unchanged from FIX2.

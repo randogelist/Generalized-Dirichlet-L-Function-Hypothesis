@@ -1,0 +1,21 @@
+FASTCACHE REVISION v0.5.1
+
+The v0.5.0 runner was not incremental: it deleted its local build directory and
+recompiled all inherited RH/Cayley modules from ScaleGeometry onward.
+
+This revision:
+1. Reuses the native Windows .olean files from the already-passed
+   GP_BKQR_CAYLEY_RH_A_TIER_CLOSURE_LEAN_v0_4_2_FIX2 package when the inherited
+   sources are byte-identical (they are in this package).
+2. Compiles only CayleyGRHClosure.lean on the first GRH run.
+3. Stores that .olean in a persistent cache under %USERPROFILE%\LeanRuns.
+4. On later runs, skips the GRH compile too when the source snapshot is identical.
+5. Always reruns Main.lean for the printed axiom/dependency audit.
+6. Uses only native CMD and Lean: no PowerShell, Python, Lake, WSL, or network.
+
+Expected fast-path startup lines:
+  INHERITED_RH_V0_4_2_SOURCE_MATCH=PASS
+  INHERITED_RH_V0_4_2_OLEAN_REUSE=PASS
+  COMPILE_SKIP=ScaleGeometry.lean
+  ...
+  COMPILE_START=CayleyGRHClosure.lean

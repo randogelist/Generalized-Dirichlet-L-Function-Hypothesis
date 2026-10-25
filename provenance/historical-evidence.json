@@ -1,0 +1,318 @@
+{
+  "evidence_scope": "Historical source notices and audit command files only; not a native replay certificate",
+  "native_receipt_files_recovered": 0,
+  "native_compilation_this_session": "NOT_RUN",
+  "native_axiom_audit_this_session": "NOT_RUN",
+  "latest_library_archive_comparisons": [
+    {
+      "archive": "GP_BKQR_CAYLEY_GRH_A_TIER_CLOSURE_LEAN_v0_5_2_FASTCACHE_FIX2.zip",
+      "latest_library_copy_sha256": "0aad83a555d84118e10917e20f31422d0cc569f5101240ef5327b1427aab2dcc",
+      "bundle_copy_sha256": "0aad83a555d84118e10917e20f31422d0cc569f5101240ef5327b1427aab2dcc",
+      "byte_identical": true
+    },
+    {
+      "archive": "GP_BKQR_CAYLEY_GRH_TEXTBOOK_ALL_CHARACTERS_A_TIER_LEAN_v0_10_0_FIX1.zip",
+      "latest_library_copy_sha256": "32f964156018247b884f74259e193e0242afb4caffa1f0f4d4dcad269b252a89",
+      "bundle_copy_sha256": "32f964156018247b884f74259e193e0242afb4caffa1f0f4d4dcad269b252a89",
+      "byte_identical": true
+    }
+  ],
+  "source_era_claims": [
+    {
+      "file": "research/historical-notices/GP_BKQR_CAYLEY_GRH_CAYLEY_COVERAGE_A_TIER_LEAN_v0_9_0_FIX1/STATUS_v0_9_0.txt",
+      "claim": "BASELINE=v0.8.0_NATIVE_WINDOWS_LEAN_433_PASS",
+      "classification": "UNVERIFIED_HISTORICAL_BASELINE_NOTICE"
+    },
+    {
+      "file": "research/historical-notices/GP_BKQR_CAYLEY_GRH_A_TIER_CLOSURE_LEAN_v0_5_2_FASTCACHE_FIX2/STATIC_AUDIT.txt",
+      "claim": "NATIVE_WINDOWS_LEAN_433_COMPILE=REQUIRED_FOR_FINAL_CLASSIFICATION",
+      "classification": "SOURCE_ONLY_STATIC_AUDIT_NOTICE"
+    }
+  ],
+  "notices": [
+    {
+      "path": "research/historical-notices/GP_BKQR_CAYLEY_GRH_CAYLEY_COVERAGE_A_TIER_LEAN_v0_9_0_FIX1/Main.lean.txt",
+      "sha256": "f2cdfda7a14c9cad4f4983efab12aacc943af12beed0e367c47af0ddeff1d019",
+      "source_archive": "GP_BKQR_CAYLEY_GRH_CAYLEY_COVERAGE_A_TIER_LEAN_v0_9_0_FIX1.zip",
+      "source_member": "GP_BKQR_CAYLEY_GRH_CAYLEY_COVERAGE_A_TIER_LEAN_v0_9_0_FIX1/Main.lean",
+      "evidence_kind": "SOURCE_ERA_NOTICE_OR_AUDIT_COMMANDS_NOT_NATIVE_REPLAY_RECEIPT"
+    },
+    {
+      "path": "research/historical-notices/GP_BKQR_CAYLEY_GRH_CAYLEY_COVERAGE_A_TIER_LEAN_v0_9_0_FIX1/PATCH_NOTES_FIX3.txt",
+      "sha256": "37e61044947a1ef499c40a73e30eed5d4e57c07f065d092b60138578093d7368",
+      "source_archive": "GP_BKQR_CAYLEY_GRH_CAYLEY_COVERAGE_A_TIER_LEAN_v0_9_0_FIX1.zip",
+      "source_member": "GP_BKQR_CAYLEY_GRH_CAYLEY_COVERAGE_A_TIER_LEAN_v0_9_0_FIX1/PATCH_NOTES_FIX3.txt",
+      "evidence_kind": "SOURCE_ERA_NOTICE_OR_AUDIT_COMMANDS_NOT_NATIVE_REPLAY_RECEIPT"
+    },
+    {
+      "path": "research/historical-notices/GP_BKQR_CAYLEY_GRH_CAYLEY_COVERAGE_A_TIER_LEAN_v0_9_0_FIX1/README_v0_9_0.txt",
+      "sha256": "6590493b7f2fe1ddb55db70ebac46b703769b855e36efd1c7f31f8ddd625bce6",
+      "source_archive": "GP_BKQR_CAYLEY_GRH_CAYLEY_COVERAGE_A_TIER_LEAN_v0_9_0_FIX1.zip",
+      "source_member": "GP_BKQR_CAYLEY_GRH_CAYLEY_COVERAGE_A_TIER_LEAN_v0_9_0_FIX1/README_v0_9_0.txt",
+      "evidence_kind": "SOURCE_ERA_NOTICE_OR_AUDIT_COMMANDS_NOT_NATIVE_REPLAY_RECEIPT"
+    },
+    {
+      "path": "research/historical-notices/GP_BKQR_CAYLEY_GRH_CAYLEY_COVERAGE_A_TIER_LEAN_v0_9_0_FIX1/STATUS_v0_9_0.txt",
+      "sha256": "08b8921fa649ee6662dfbd813071896fa985f7ade3cf2ba330db6a24a0634a33",
+      "source_archive": "GP_BKQR_CAYLEY_GRH_CAYLEY_COVERAGE_A_TIER_LEAN_v0_9_0_FIX1.zip",
+      "source_member": "GP_BKQR_CAYLEY_GRH_CAYLEY_COVERAGE_A_TIER_LEAN_v0_9_0_FIX1/STATUS_v0_9_0.txt",
+      "evidence_kind": "SOURCE_ERA_NOTICE_OR_AUDIT_COMMANDS_NOT_NATIVE_REPLAY_RECEIPT"
+    },
+    {
+      "path": "research/historical-notices/GP_BKQR_CAYLEY_GRH_CAYLEY_COVERAGE_A_TIER_LEAN_v0_9_0_FIX1/PATCH_NOTES_FIX5.txt",
+      "sha256": "4891064eb62264ea97f824010f8d5cf9dd019b3328a9c697d36992526beef944",
+      "source_archive": "GP_BKQR_CAYLEY_GRH_CAYLEY_COVERAGE_A_TIER_LEAN_v0_9_0_FIX1.zip",
+      "source_member": "GP_BKQR_CAYLEY_GRH_CAYLEY_COVERAGE_A_TIER_LEAN_v0_9_0_FIX1/PATCH_NOTES_FIX5.txt",
+      "evidence_kind": "SOURCE_ERA_NOTICE_OR_AUDIT_COMMANDS_NOT_NATIVE_REPLAY_RECEIPT"
+    },
+    {
+      "path": "research/historical-notices/GP_BKQR_CAYLEY_GRH_CAYLEY_COVERAGE_A_TIER_LEAN_v0_9_0_FIX1/STATUS_v0_8_0.txt",
+      "sha256": "d7e7ecfb093dd22a247d81830d230556119532a74b9fee94d4dc9da0abc09c4d",
+      "source_archive": "GP_BKQR_CAYLEY_GRH_CAYLEY_COVERAGE_A_TIER_LEAN_v0_9_0_FIX1.zip",
+      "source_member": "GP_BKQR_CAYLEY_GRH_CAYLEY_COVERAGE_A_TIER_LEAN_v0_9_0_FIX1/STATUS_v0_8_0.txt",
+      "evidence_kind": "SOURCE_ERA_NOTICE_OR_AUDIT_COMMANDS_NOT_NATIVE_REPLAY_RECEIPT"
+    },
+    {
+      "path": "research/historical-notices/GP_BKQR_CAYLEY_GRH_CAYLEY_COVERAGE_A_TIER_LEAN_v0_9_0_FIX1/STATIC_AUDIT.txt",
+      "sha256": "c01d3cfbbf920fa6619d399151e80a32ea84d8d3c0084fa5f2d7dd7cc9649b9d",
+      "source_archive": "GP_BKQR_CAYLEY_GRH_CAYLEY_COVERAGE_A_TIER_LEAN_v0_9_0_FIX1.zip",
+      "source_member": "GP_BKQR_CAYLEY_GRH_CAYLEY_COVERAGE_A_TIER_LEAN_v0_9_0_FIX1/STATIC_AUDIT.txt",
+      "evidence_kind": "SOURCE_ERA_NOTICE_OR_AUDIT_COMMANDS_NOT_NATIVE_REPLAY_RECEIPT"
+    },
+    {
+      "path": "research/historical-notices/GP_BKQR_CAYLEY_GRH_CAYLEY_COVERAGE_A_TIER_LEAN_v0_9_0_FIX1/PATCH_NOTES_FIX4.txt",
+      "sha256": "ae0c55c1ce7bb708cdd456888f17e473d4d1800d82b891ee9c7972439045a73c",
+      "source_archive": "GP_BKQR_CAYLEY_GRH_CAYLEY_COVERAGE_A_TIER_LEAN_v0_9_0_FIX1.zip",
+      "source_member": "GP_BKQR_CAYLEY_GRH_CAYLEY_COVERAGE_A_TIER_LEAN_v0_9_0_FIX1/PATCH_NOTES_FIX4.txt",
+      "evidence_kind": "SOURCE_ERA_NOTICE_OR_AUDIT_COMMANDS_NOT_NATIVE_REPLAY_RECEIPT"
+    },
+    {
+      "path": "research/historical-notices/GP_BKQR_CAYLEY_GRH_CAYLEY_COVERAGE_A_TIER_LEAN_v0_9_0_FIX1/PATCH_NOTES.txt",
+      "sha256": "c03dba3cbc37c551a82429fbd802c4750e53d9064de5ebebba8eb0d51e3c3cb6",
+      "source_archive": "GP_BKQR_CAYLEY_GRH_CAYLEY_COVERAGE_A_TIER_LEAN_v0_9_0_FIX1.zip",
+      "source_member": "GP_BKQR_CAYLEY_GRH_CAYLEY_COVERAGE_A_TIER_LEAN_v0_9_0_FIX1/PATCH_NOTES.txt",
+      "evidence_kind": "SOURCE_ERA_NOTICE_OR_AUDIT_COMMANDS_NOT_NATIVE_REPLAY_RECEIPT"
+    },
+    {
+      "path": "research/historical-notices/GP_BKQR_CAYLEY_GRH_CAYLEY_COVERAGE_A_TIER_LEAN_v0_9_0_FIX1/STATUS_v0_7_0.txt",
+      "sha256": "1d87c466b2414cad97e4a7d1108889e53e7ad377a71a36583618f9a85c535632",
+      "source_archive": "GP_BKQR_CAYLEY_GRH_CAYLEY_COVERAGE_A_TIER_LEAN_v0_9_0_FIX1.zip",
+      "source_member": "GP_BKQR_CAYLEY_GRH_CAYLEY_COVERAGE_A_TIER_LEAN_v0_9_0_FIX1/STATUS_v0_7_0.txt",
+      "evidence_kind": "SOURCE_ERA_NOTICE_OR_AUDIT_COMMANDS_NOT_NATIVE_REPLAY_RECEIPT"
+    },
+    {
+      "path": "research/historical-notices/GP_BKQR_CAYLEY_GRH_CAYLEY_COVERAGE_A_TIER_LEAN_v0_9_0_FIX1/PATCH_NOTES_v0_9_0_FIX1.txt",
+      "sha256": "d8400d1b49b3fcf3853d314bff2e53547655109fd413ea31553894abbde8e2e6",
+      "source_archive": "GP_BKQR_CAYLEY_GRH_CAYLEY_COVERAGE_A_TIER_LEAN_v0_9_0_FIX1.zip",
+      "source_member": "GP_BKQR_CAYLEY_GRH_CAYLEY_COVERAGE_A_TIER_LEAN_v0_9_0_FIX1/PATCH_NOTES_v0_9_0_FIX1.txt",
+      "evidence_kind": "SOURCE_ERA_NOTICE_OR_AUDIT_COMMANDS_NOT_NATIVE_REPLAY_RECEIPT"
+    },
+    {
+      "path": "research/historical-notices/GP_BKQR_CAYLEY_GRH_CAYLEY_COVERAGE_A_TIER_LEAN_v0_9_0_FIX1/PATCH_NOTES_v0_9_0.txt",
+      "sha256": "35adcbcb929211adea17fbdb61166b5dddaa4d41480d3c69b20f49ebdec137bb",
+      "source_archive": "GP_BKQR_CAYLEY_GRH_CAYLEY_COVERAGE_A_TIER_LEAN_v0_9_0_FIX1.zip",
+      "source_member": "GP_BKQR_CAYLEY_GRH_CAYLEY_COVERAGE_A_TIER_LEAN_v0_9_0_FIX1/PATCH_NOTES_v0_9_0.txt",
+      "evidence_kind": "SOURCE_ERA_NOTICE_OR_AUDIT_COMMANDS_NOT_NATIVE_REPLAY_RECEIPT"
+    },
+    {
+      "path": "research/historical-notices/GP_BKQR_CAYLEY_GRH_CAYLEY_COVERAGE_A_TIER_LEAN_v0_9_0_FIX1/README.txt",
+      "sha256": "61771b209980d75c9b64c4abbb31b71594efe44914a60a540d97d0f66c7610a0",
+      "source_archive": "GP_BKQR_CAYLEY_GRH_CAYLEY_COVERAGE_A_TIER_LEAN_v0_9_0_FIX1.zip",
+      "source_member": "GP_BKQR_CAYLEY_GRH_CAYLEY_COVERAGE_A_TIER_LEAN_v0_9_0_FIX1/README.txt",
+      "evidence_kind": "SOURCE_ERA_NOTICE_OR_AUDIT_COMMANDS_NOT_NATIVE_REPLAY_RECEIPT"
+    },
+    {
+      "path": "research/historical-notices/GP_BKQR_CAYLEY_GRH_CAYLEY_COVERAGE_A_TIER_LEAN_v0_9_0_FIX1/PATCH_NOTES_FIX2.txt",
+      "sha256": "64e3cff0b51df36dd35ac5a84db91505247be65e6f03b465269ac92cda98ac76",
+      "source_archive": "GP_BKQR_CAYLEY_GRH_CAYLEY_COVERAGE_A_TIER_LEAN_v0_9_0_FIX1.zip",
+      "source_member": "GP_BKQR_CAYLEY_GRH_CAYLEY_COVERAGE_A_TIER_LEAN_v0_9_0_FIX1/PATCH_NOTES_FIX2.txt",
+      "evidence_kind": "SOURCE_ERA_NOTICE_OR_AUDIT_COMMANDS_NOT_NATIVE_REPLAY_RECEIPT"
+    },
+    {
+      "path": "research/historical-notices/GP_BKQR_CAYLEY_GRH_CAYLEY_COVERAGE_A_TIER_LEAN_v0_9_0_FIX1/PATCH_NOTES_v0_8_0.txt",
+      "sha256": "a440d480e9bf78f817f4f85d9b80776658e0b8dd501e7c160d3b5b6ff4c61478",
+      "source_archive": "GP_BKQR_CAYLEY_GRH_CAYLEY_COVERAGE_A_TIER_LEAN_v0_9_0_FIX1.zip",
+      "source_member": "GP_BKQR_CAYLEY_GRH_CAYLEY_COVERAGE_A_TIER_LEAN_v0_9_0_FIX1/PATCH_NOTES_v0_8_0.txt",
+      "evidence_kind": "SOURCE_ERA_NOTICE_OR_AUDIT_COMMANDS_NOT_NATIVE_REPLAY_RECEIPT"
+    },
+    {
+      "path": "research/historical-notices/GP_BKQR_CAYLEY_GRH_CAYLEY_COVERAGE_A_TIER_LEAN_v0_9_0_FIX1/PATCH_NOTES_v0_7_0.txt",
+      "sha256": "29e81ce533ec19024ab2a75f1cf8b32ffbef2508c20d22391672d2966bef7ec4",
+      "source_archive": "GP_BKQR_CAYLEY_GRH_CAYLEY_COVERAGE_A_TIER_LEAN_v0_9_0_FIX1.zip",
+      "source_member": "GP_BKQR_CAYLEY_GRH_CAYLEY_COVERAGE_A_TIER_LEAN_v0_9_0_FIX1/PATCH_NOTES_v0_7_0.txt",
+      "evidence_kind": "SOURCE_ERA_NOTICE_OR_AUDIT_COMMANDS_NOT_NATIVE_REPLAY_RECEIPT"
+    },
+    {
+      "path": "research/historical-notices/GP_BKQR_CAYLEY_GRH_CAYLEY_COVERAGE_A_TIER_LEAN_v0_9_0_FIX1/STATUS.txt",
+      "sha256": "48c5fbbbe5b74ebab253439003175717c4c0b48d5212234c047350e7e77c3622",
+      "source_archive": "GP_BKQR_CAYLEY_GRH_CAYLEY_COVERAGE_A_TIER_LEAN_v0_9_0_FIX1.zip",
+      "source_member": "GP_BKQR_CAYLEY_GRH_CAYLEY_COVERAGE_A_TIER_LEAN_v0_9_0_FIX1/STATUS.txt",
+      "evidence_kind": "SOURCE_ERA_NOTICE_OR_AUDIT_COMMANDS_NOT_NATIVE_REPLAY_RECEIPT"
+    },
+    {
+      "path": "research/historical-notices/GP_BKQR_CAYLEY_GRH_TEXTBOOK_ALL_CHARACTERS_A_TIER_LEAN_v0_10_0_FIX1/Main.lean.txt",
+      "sha256": "5662510824a9875db403e34c78163680874b0f10f729e0611eba828edd3d17cf",
+      "source_archive": "GP_BKQR_CAYLEY_GRH_TEXTBOOK_ALL_CHARACTERS_A_TIER_LEAN_v0_10_0_FIX1.zip",
+      "source_member": "GP_BKQR_CAYLEY_GRH_TEXTBOOK_ALL_CHARACTERS_A_TIER_LEAN_v0_10_0_FIX1/Main.lean",
+      "evidence_kind": "SOURCE_ERA_NOTICE_OR_AUDIT_COMMANDS_NOT_NATIVE_REPLAY_RECEIPT"
+    },
+    {
+      "path": "research/historical-notices/GP_BKQR_CAYLEY_GRH_TEXTBOOK_ALL_CHARACTERS_A_TIER_LEAN_v0_10_0_FIX1/PATCH_NOTES_FIX1.txt",
+      "sha256": "cba4cde22136eae400ad0199a91cb0e57bfd97dce9599204a883d862e5e0f9c3",
+      "source_archive": "GP_BKQR_CAYLEY_GRH_TEXTBOOK_ALL_CHARACTERS_A_TIER_LEAN_v0_10_0_FIX1.zip",
+      "source_member": "GP_BKQR_CAYLEY_GRH_TEXTBOOK_ALL_CHARACTERS_A_TIER_LEAN_v0_10_0_FIX1/PATCH_NOTES_FIX1.txt",
+      "evidence_kind": "SOURCE_ERA_NOTICE_OR_AUDIT_COMMANDS_NOT_NATIVE_REPLAY_RECEIPT"
+    },
+    {
+      "path": "research/historical-notices/GP_BKQR_CAYLEY_GRH_TEXTBOOK_ALL_CHARACTERS_A_TIER_LEAN_v0_10_0_FIX1/README.txt",
+      "sha256": "c232b8c6ff56b0466c87cf206d8bcaa2c7f088a3207f02558c3e0cc37293549b",
+      "source_archive": "GP_BKQR_CAYLEY_GRH_TEXTBOOK_ALL_CHARACTERS_A_TIER_LEAN_v0_10_0_FIX1.zip",
+      "source_member": "GP_BKQR_CAYLEY_GRH_TEXTBOOK_ALL_CHARACTERS_A_TIER_LEAN_v0_10_0_FIX1/README.txt",
+      "evidence_kind": "SOURCE_ERA_NOTICE_OR_AUDIT_COMMANDS_NOT_NATIVE_REPLAY_RECEIPT"
+    },
+    {
+      "path": "research/historical-notices/GP_BKQR_RH_TO_GRH_COMPLETED_PAIR_FACTOR_FRONTIER_LEAN_v0_6_0/Main.lean.txt",
+      "sha256": "4599ef1a9af0e9906a39ffe1bbe359cadc887f98cb70ed4ffb6b437edf1f3c74",
+      "source_archive": "GP_BKQR_RH_TO_GRH_COMPLETED_PAIR_FACTOR_FRONTIER_LEAN_v0_6_0.zip",
+      "source_member": "GP_BKQR_RH_TO_GRH_COMPLETED_PAIR_FACTOR_FRONTIER_LEAN_v0_6_0/Main.lean",
+      "evidence_kind": "SOURCE_ERA_NOTICE_OR_AUDIT_COMMANDS_NOT_NATIVE_REPLAY_RECEIPT"
+    },
+    {
+      "path": "research/historical-notices/GP_BKQR_RH_TO_GRH_COMPLETED_PAIR_FACTOR_FRONTIER_LEAN_v0_6_0/README.txt",
+      "sha256": "1a8e1b43266c73b0d7fb1734c9b033c7468c579f112fa9d284c1a2f59fb87b57",
+      "source_archive": "GP_BKQR_RH_TO_GRH_COMPLETED_PAIR_FACTOR_FRONTIER_LEAN_v0_6_0.zip",
+      "source_member": "GP_BKQR_RH_TO_GRH_COMPLETED_PAIR_FACTOR_FRONTIER_LEAN_v0_6_0/README.txt",
+      "evidence_kind": "SOURCE_ERA_NOTICE_OR_AUDIT_COMMANDS_NOT_NATIVE_REPLAY_RECEIPT"
+    },
+    {
+      "path": "research/historical-notices/GP_BKQR_RH_TO_GRH_COMPLETED_PAIR_FACTOR_FRONTIER_LEAN_v0_6_1_FASTCORE_FIX1/Main.lean.txt",
+      "sha256": "4599ef1a9af0e9906a39ffe1bbe359cadc887f98cb70ed4ffb6b437edf1f3c74",
+      "source_archive": "GP_BKQR_RH_TO_GRH_COMPLETED_PAIR_FACTOR_FRONTIER_LEAN_v0_6_1_FASTCORE_FIX1.zip",
+      "source_member": "GP_BKQR_RH_TO_GRH_COMPLETED_PAIR_FACTOR_FRONTIER_LEAN_v0_6_1_FASTCORE_FIX1/Main.lean",
+      "evidence_kind": "SOURCE_ERA_NOTICE_OR_AUDIT_COMMANDS_NOT_NATIVE_REPLAY_RECEIPT"
+    },
+    {
+      "path": "research/historical-notices/GP_BKQR_RH_TO_GRH_COMPLETED_PAIR_FACTOR_FRONTIER_LEAN_v0_6_1_FASTCORE_FIX1/README.txt",
+      "sha256": "308732998b33870dd436a36a6e393dcd1035916141d3769889564ac767dd4273",
+      "source_archive": "GP_BKQR_RH_TO_GRH_COMPLETED_PAIR_FACTOR_FRONTIER_LEAN_v0_6_1_FASTCORE_FIX1.zip",
+      "source_member": "GP_BKQR_RH_TO_GRH_COMPLETED_PAIR_FACTOR_FRONTIER_LEAN_v0_6_1_FASTCORE_FIX1/README.txt",
+      "evidence_kind": "SOURCE_ERA_NOTICE_OR_AUDIT_COMMANDS_NOT_NATIVE_REPLAY_RECEIPT"
+    },
+    {
+      "path": "research/historical-notices/GP_BKQR_RH_TO_GRH_COMPLETED_L_FACTOR_FRONTIER_LEAN_v0_7_0_FASTCORE/Main.lean.txt",
+      "sha256": "af51bd1ba70654ffdb6d6903aba94363bd44cd9d3e3b273ad3963537b9de80be",
+      "source_archive": "GP_BKQR_RH_TO_GRH_COMPLETED_L_FACTOR_FRONTIER_LEAN_v0_7_0_FASTCORE.zip",
+      "source_member": "GP_BKQR_RH_TO_GRH_COMPLETED_L_FACTOR_FRONTIER_LEAN_v0_7_0_FASTCORE/Main.lean",
+      "evidence_kind": "SOURCE_ERA_NOTICE_OR_AUDIT_COMMANDS_NOT_NATIVE_REPLAY_RECEIPT"
+    },
+    {
+      "path": "research/historical-notices/GP_BKQR_RH_TO_GRH_COMPLETED_L_FACTOR_FRONTIER_LEAN_v0_7_0_FASTCORE/README.txt",
+      "sha256": "537de413ecfcffc424cefa269ec83038a07db0b706c4286e37a4056f2965174a",
+      "source_archive": "GP_BKQR_RH_TO_GRH_COMPLETED_L_FACTOR_FRONTIER_LEAN_v0_7_0_FASTCORE.zip",
+      "source_member": "GP_BKQR_RH_TO_GRH_COMPLETED_L_FACTOR_FRONTIER_LEAN_v0_7_0_FASTCORE/README.txt",
+      "evidence_kind": "SOURCE_ERA_NOTICE_OR_AUDIT_COMMANDS_NOT_NATIVE_REPLAY_RECEIPT"
+    },
+    {
+      "path": "research/historical-notices/GP_BKQR_CAYLEY_GRH_A_TIER_CLOSURE_LEAN_v0_5_2_FASTCACHE_FIX2/Main.lean.txt",
+      "sha256": "4d54a286dca9b53b16bce0f37ad37e4ba7ccef6aae5d56c3a7e748a8af66474e",
+      "source_archive": "GP_BKQR_CAYLEY_GRH_A_TIER_CLOSURE_LEAN_v0_5_2_FASTCACHE_FIX2.zip",
+      "source_member": "GP_BKQR_CAYLEY_GRH_A_TIER_CLOSURE_LEAN_v0_5_2_FASTCACHE_FIX2/Main.lean",
+      "evidence_kind": "SOURCE_ERA_NOTICE_OR_AUDIT_COMMANDS_NOT_NATIVE_REPLAY_RECEIPT"
+    },
+    {
+      "path": "research/historical-notices/GP_BKQR_CAYLEY_GRH_A_TIER_CLOSURE_LEAN_v0_5_2_FASTCACHE_FIX2/STATUS_GRH.txt",
+      "sha256": "2403d84500f632284cbdbb32aec11758a5995e08572c7e09b0865489c2e3e358",
+      "source_archive": "GP_BKQR_CAYLEY_GRH_A_TIER_CLOSURE_LEAN_v0_5_2_FASTCACHE_FIX2.zip",
+      "source_member": "GP_BKQR_CAYLEY_GRH_A_TIER_CLOSURE_LEAN_v0_5_2_FASTCACHE_FIX2/STATUS_GRH.txt",
+      "evidence_kind": "SOURCE_ERA_NOTICE_OR_AUDIT_COMMANDS_NOT_NATIVE_REPLAY_RECEIPT"
+    },
+    {
+      "path": "research/historical-notices/GP_BKQR_CAYLEY_GRH_A_TIER_CLOSURE_LEAN_v0_5_2_FASTCACHE_FIX2/PATCH_NOTES_FIX1.txt",
+      "sha256": "c776c88d76d43c457db6c09c9ebe070a6e6e39e62a84fc7a58823516dfdff06e",
+      "source_archive": "GP_BKQR_CAYLEY_GRH_A_TIER_CLOSURE_LEAN_v0_5_2_FASTCACHE_FIX2.zip",
+      "source_member": "GP_BKQR_CAYLEY_GRH_A_TIER_CLOSURE_LEAN_v0_5_2_FASTCACHE_FIX2/PATCH_NOTES_FIX1.txt",
+      "evidence_kind": "SOURCE_ERA_NOTICE_OR_AUDIT_COMMANDS_NOT_NATIVE_REPLAY_RECEIPT"
+    },
+    {
+      "path": "research/historical-notices/GP_BKQR_CAYLEY_GRH_A_TIER_CLOSURE_LEAN_v0_5_2_FASTCACHE_FIX2/STATIC_AUDIT.txt",
+      "sha256": "7a98e716173d4e6b121815b89501c5b462b8c6bc6c186da07be08d21751c401f",
+      "source_archive": "GP_BKQR_CAYLEY_GRH_A_TIER_CLOSURE_LEAN_v0_5_2_FASTCACHE_FIX2.zip",
+      "source_member": "GP_BKQR_CAYLEY_GRH_A_TIER_CLOSURE_LEAN_v0_5_2_FASTCACHE_FIX2/STATIC_AUDIT.txt",
+      "evidence_kind": "SOURCE_ERA_NOTICE_OR_AUDIT_COMMANDS_NOT_NATIVE_REPLAY_RECEIPT"
+    },
+    {
+      "path": "research/historical-notices/GP_BKQR_CAYLEY_GRH_A_TIER_CLOSURE_LEAN_v0_5_2_FASTCACHE_FIX2/README.txt",
+      "sha256": "150317bf6f5c37c992ac031923049c987e0020ed35302a3ad8383309e5b4c46f",
+      "source_archive": "GP_BKQR_CAYLEY_GRH_A_TIER_CLOSURE_LEAN_v0_5_2_FASTCACHE_FIX2.zip",
+      "source_member": "GP_BKQR_CAYLEY_GRH_A_TIER_CLOSURE_LEAN_v0_5_2_FASTCACHE_FIX2/README.txt",
+      "evidence_kind": "SOURCE_ERA_NOTICE_OR_AUDIT_COMMANDS_NOT_NATIVE_REPLAY_RECEIPT"
+    },
+    {
+      "path": "research/historical-notices/GP_BKQR_CAYLEY_GRH_A_TIER_CLOSURE_LEAN_v0_5_2_FASTCACHE_FIX2/PATCH_NOTES_FIX2.txt",
+      "sha256": "f7a5dc7e422518f90d72527e4f6e36e5e0977efbb668b1dcddb42a95255e3c06",
+      "source_archive": "GP_BKQR_CAYLEY_GRH_A_TIER_CLOSURE_LEAN_v0_5_2_FASTCACHE_FIX2.zip",
+      "source_member": "GP_BKQR_CAYLEY_GRH_A_TIER_CLOSURE_LEAN_v0_5_2_FASTCACHE_FIX2/PATCH_NOTES_FIX2.txt",
+      "evidence_kind": "SOURCE_ERA_NOTICE_OR_AUDIT_COMMANDS_NOT_NATIVE_REPLAY_RECEIPT"
+    },
+    {
+      "path": "research/historical-notices/GP_BKQR_CAYLEY_GRH_A_TIER_CLOSURE_LEAN_v0_5_2_FASTCACHE_FIX2/PATCH_NOTES_FASTCACHE_FIX2.txt",
+      "sha256": "f9d0e662f2dee762b56e5160e21221cb2168cd3d7d9bbbe430dfe2064fe74e22",
+      "source_archive": "GP_BKQR_CAYLEY_GRH_A_TIER_CLOSURE_LEAN_v0_5_2_FASTCACHE_FIX2.zip",
+      "source_member": "GP_BKQR_CAYLEY_GRH_A_TIER_CLOSURE_LEAN_v0_5_2_FASTCACHE_FIX2/PATCH_NOTES_FASTCACHE_FIX2.txt",
+      "evidence_kind": "SOURCE_ERA_NOTICE_OR_AUDIT_COMMANDS_NOT_NATIVE_REPLAY_RECEIPT"
+    },
+    {
+      "path": "research/historical-notices/GP_BKQR_CAYLEY_GRH_A_TIER_CLOSURE_LEAN_v0_5_2_FASTCACHE_FIX2/SOURCE_PROVENANCE.txt",
+      "sha256": "e1ac84018438b21f52464aedf22d14a10fb94347557ed7d5bf845cafd78c989d",
+      "source_archive": "GP_BKQR_CAYLEY_GRH_A_TIER_CLOSURE_LEAN_v0_5_2_FASTCACHE_FIX2.zip",
+      "source_member": "GP_BKQR_CAYLEY_GRH_A_TIER_CLOSURE_LEAN_v0_5_2_FASTCACHE_FIX2/SOURCE_PROVENANCE.txt",
+      "evidence_kind": "SOURCE_ERA_NOTICE_OR_AUDIT_COMMANDS_NOT_NATIVE_REPLAY_RECEIPT"
+    },
+    {
+      "path": "research/historical-notices/GP_BKQR_CAYLEY_GRH_A_TIER_CLOSURE_LEAN_v0_5_2_FASTCACHE_FIX2/STATUS.txt",
+      "sha256": "b66500c6517817b1530db03112c48f4bf1731e104507dccd422eb4c9c8ec71dd",
+      "source_archive": "GP_BKQR_CAYLEY_GRH_A_TIER_CLOSURE_LEAN_v0_5_2_FASTCACHE_FIX2.zip",
+      "source_member": "GP_BKQR_CAYLEY_GRH_A_TIER_CLOSURE_LEAN_v0_5_2_FASTCACHE_FIX2/STATUS.txt",
+      "evidence_kind": "SOURCE_ERA_NOTICE_OR_AUDIT_COMMANDS_NOT_NATIVE_REPLAY_RECEIPT"
+    },
+    {
+      "path": "research/historical-notices/GP_BKQR_CAYLEY_GRH_A_TIER_CLOSURE_LEAN_v0_5_2_FASTCACHE_FIX2/FASTCACHE_NOTES.txt",
+      "sha256": "204db24f621eff25d4a1ad0005478ee4318fc305a28ab0c4c0b5885bc6c851fe",
+      "source_archive": "GP_BKQR_CAYLEY_GRH_A_TIER_CLOSURE_LEAN_v0_5_2_FASTCACHE_FIX2.zip",
+      "source_member": "GP_BKQR_CAYLEY_GRH_A_TIER_CLOSURE_LEAN_v0_5_2_FASTCACHE_FIX2/FASTCACHE_NOTES.txt",
+      "evidence_kind": "SOURCE_ERA_NOTICE_OR_AUDIT_COMMANDS_NOT_NATIVE_REPLAY_RECEIPT"
+    }
+  ],
+  "assembly": {
+    "source_modules": 25,
+    "missing_local_imports": [],
+    "external_dependencies": "Mathlib only",
+    "topological_order": [
+      "ScaleGeometry",
+      "HausdorffKernel",
+      "GeneralizedCharacter",
+      "CayleyConstruction",
+      "CayleyGolPhi.CayleyCore",
+      "CayleyGolPhi.GolPhiSlice",
+      "CayleyGolPhi.ZeroEquivalence",
+      "StandardCayleyLoss",
+      "CayleyRHClosure",
+      "CayleyGRHClosure",
+      "CompletedDirichletBridge",
+      "PrimitiveCompletedPair",
+      "CompletedPairCayleyAnalytic",
+      "StrongGRHClosure",
+      "CompletedPairSquareSlitGeometry",
+      "CompletedPairLogDerivativeTotality",
+      "CompletedPairCayleyCoverage",
+      "TextbookDirichletGRH",
+      "RHToGRHCayleyLiftFrontier",
+      "RHToGRHCrossCayleyDisassembly",
+      "RHToGRHPrimitiveCharacterFrontier",
+      "RHToGRHCenteredPairFrontier",
+      "RHToGRHReflectionPairFrontier",
+      "RHToGRHCompletedPairFactorFrontier",
+      "RHToGRHCompletedLFactorFrontier"
+    ]
+  }
+}

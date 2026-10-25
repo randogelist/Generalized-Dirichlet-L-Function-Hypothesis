@@ -1,0 +1,25 @@
+GP_BKQR_CAYLEY_GRH_A_TIER_CLOSURE_LEAN_v0_5_1_FASTCACHE_FIX1
+
+TARGET
+  CayleyGRHClosure.GENERALIZED_DIRICHLET_CAYLEY_ZERO_LOSS_IFF_GRH
+
+FORM
+  GeneralizedDirichletCayleyZeroLoss ↔ GeneralizedRiemannHypothesis
+
+GRH DEFINITION
+  For every positive modulus N and every primitive complex Dirichlet character χ modulo N,
+  every zero of Mathlib's analytically continued DirichletCharacter.LFunction χ in
+  0 < Re(s) < 1 lies on Re(s)=1/2.
+
+ADDITIONAL TARGETS
+  - universal zero-predicate Cayley closure;
+  - per-character Cayley zero-loss / saturation / unit-energy equivalences;
+  - family-level GRH equivalences;
+  - modulus-one Dirichlet RH iff Mathlib RH;
+  - GRH implies Mathlib RH.
+
+FIREWALL
+  - no unconditional proof of GRH;
+  - no global zero-loss witness;
+  - no completed-L zero bridge claimed in this version;
+  - primitive-character GRH is the authoritative first definition.

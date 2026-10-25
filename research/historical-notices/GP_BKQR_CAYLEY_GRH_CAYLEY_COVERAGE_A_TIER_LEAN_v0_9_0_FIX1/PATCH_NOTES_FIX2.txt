@@ -1,0 +1,9 @@
+FIX2
+====
+
+- Keeps the FIX1 inverse-primitivity repair.
+- Adds an explicit Mathlib.Analysis.Complex.SqrtDeriv import.
+- Rewrites the slit-theta differentiability proof with explicit pointwise types and a named sqrt differentiability fact.
+- Rewrites the observable-none/zero bridge by direct case analysis, avoiding fragile Iff.trans elaboration.
+- Removes redundant Complex.ofReal_re simp arguments that only produced linter warnings.
+- No theorem statement, mathematical assumption, or project axiom added.
