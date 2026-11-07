@@ -1,0 +1,50 @@
+name: HVR joint RH-GRH chain
+
+on:
+  push:
+    branches:
+      - main
+      - hvr-cyclotomic-extension
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  joint-chain:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Lean 4.33.0
+        shell: bash
+        run: |
+          curl -sSfL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain leanprover/lean4:v4.33.0
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+
+      - name: Restore Mathlib checkout
+        id: mathlib-cache
+        uses: actions/cache@v4
+        with:
+          path: .ci/mathlib4
+          key: mathlib4-v4.33.0-${{ runner.os }}-v1
+
+      - name: Prepare Mathlib 4.33 cache
+        shell: bash
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.elan/bin:$PATH"
+          if [[ ! -d .ci/mathlib4/.git ]]; then
+            rm -rf .ci/mathlib4
+            git clone --depth 1 --branch v4.33.0 https://github.com/leanprover-community/mathlib4.git .ci/mathlib4
+          fi
+          cd .ci/mathlib4
+          lake exe cache get
+
+      - name: Compile legacy + HVR + joint chain
+        shell: bash
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.elan/bin:$PATH"
+          bash scripts/ci_hvr_joint.sh "$PWD/.ci/mathlib4"

@@ -81,3 +81,49 @@ and the [theorem audit](provenance/theorem-audit.json). The runner preserves
 `YOU_ARE_GOODWORKFLOWFRONTIER`, PASS-ONCE and `LEAN_ANCHORINGS` fingerprint rules.
 The companion RH repository is
 [Riemann-Hypothesis-Final](https://github.com/randogelist/Riemann-Hypothesis-Final).
+
+
+## HVR cyclotomic extension
+
+The repository now contains an additive HVR refinement of the existing
+`RiemannToGeneralizedCayleyLift` frontier. The original Cayley/Dirichlet
+theorem files are unchanged.
+
+The new verified chain adds:
+
+- `HVR_CYCLOTOMIC_COMPLETED_PACKET_TOWER.lean`: HVR packet Subexp closure,
+  completed divisor decomposition interface, Mathlib Möbius recovery, and
+  relative-packet step equivalence;
+- `RH_TO_GRH_D_CHAIN.lean`: the actual Mathlib-RH to project-GRH endpoint
+  assembly;
+- `HVR_RH_GRH_CHAIN_SYNC.lean`: equivalence of relative completed-packet
+  propagation with the global cyclotomic propagation premise;
+- `HVR_GENERALIZED_CAYLEY_LIFT_BRIDGE.lean`: HVR relative propagation
+  supplies the repository's existing `RiemannToGeneralizedCayleyLift`
+  premise;
+- `JOINT_MAIN.lean`: the unified conditional root while preserving legacy
+  theorem visibility.
+
+The remaining substantive frontier is still explicit:
+
+```text
+PacketSubexp (cyclo 1)
+  -> forall q > 0, PacketSubexp (relativePacket cyclo q 1)
+```
+
+equivalently, by the verified synchronization theorem,
+
+```text
+PacketSubexp (cyclo 1)
+  -> forall q > 0, PacketSubexp (cyclo q)
+```
+
+This extension does **not** establish unconditional `RH → GRH`. It refines
+the existing generalized Cayley-lift obligation to the relative
+completed-packet propagation condition, while reusing the original
+`RH_IFF_TEXTBOOK_GRH_OF_GENERALIZED_CAYLEY_LIFT` theorem unchanged.
+
+GitHub Actions runs the complete legacy + HVR + joint chain through
+`.github/workflows/hvr-joint-chain.yml`. Native Windows Lean 4.33.0
+verification evidence is recorded in
+`provenance/hvr-native-evidence/README.md`.

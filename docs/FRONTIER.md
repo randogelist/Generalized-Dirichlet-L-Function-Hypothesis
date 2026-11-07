@@ -94,3 +94,58 @@ signature for the native run; see [theorem-audit.json](../provenance/theorem-aud
 It is not used by the principal lift and four-factor proof chains according
 to source inspection. No source-level uncertainty is reported as a compiler
 error or a verified pass.
+
+
+## HVR reduction of the same frontier
+
+The HVR extension does not replace the first-factor or generalized-Cayley
+frontiers above. It supplies an additional, finer reduction of the same
+missing implication.
+
+At the abstract completed-packet level let `D_q` be the cyclotomic packet
+and `P_q` the exact-conductor primitive packet. The verified theorem
+
+```lean
+HVRCyclotomicPacketTower.HVR_CYCLOTOMIC_COMPLETED_PACKET_TOWER
+```
+
+proves, under the explicit completed divisor-decomposition adapter,
+
+```text
+(forall q > 0, Subexp D_q) <->
+(forall q > 0, Subexp P_q)
+```
+
+and the relative step
+
+```text
+Subexp D_1 ->
+  (Subexp D_q <-> Subexp (D_q - D_1)).
+```
+
+The synchronization theorem
+
+```lean
+HVRRHGRHChainSync.RELATIVE_PROPAGATION_IFF_GLOBAL_PROPAGATION
+```
+
+therefore identifies the current HVR red arrow exactly as
+
+```text
+Subexp D_1 ->
+  forall q > 0, Subexp (D_q - D_1).
+```
+
+The bridge theorem
+
+```lean
+HVRGeneralizedCayleyLiftBridge.
+  HVR_RELATIVE_PROPAGATION_IMPLIES_GENERALIZED_CAYLEY_LIFT
+```
+
+shows that this relative propagation condition, together with the explicit
+packet/readout adapters, supplies the repository's existing
+`RiemannToGeneralizedCayleyLift` premise.
+
+Thus the HVR frontier is a lower-level refinement of the same open
+`RH → GRH` implication, not an unconditional proof of it.
